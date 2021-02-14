@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ceknimController;
+use App\Http\Controllers\Auth\Login\DatacaasController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,8 +26,13 @@ Route::get('/checkyournim', function () {
     return view('nimchecker');
 });
 
-Route::get('/checknim',[ceknimController::class,'index']);
+Route::get('/home', function () {
+    return view('home');
+})->name('home')->middleware('auth:datacaas');
 
-Route::get('/checknim/{find}',[ceknimController::class,'found']);
+Route::get('/login', function () {
+    return view('login');
+})->name('login')->middleware('guest:datacaas');
 
-Route::get('/testing',[CaasDaskomController::class,'index']);
+Route::post('/loginCaas', [DatacaasController::class,'login'])->name('loginCaas');
+Route::get('/logoutCaas', [DatacaasController::class,'logout'])->name('logoutCaas');
