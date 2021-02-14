@@ -8,6 +8,6 @@
 </head>
 <body>
     BERHASIL
-    <a href="/logoutCaas"><button type="button">LOGOUT</button></a>
+    <a href="/logoutCaas"><button type="submit">LOGOUT</button></a>
 </body>
 </html>

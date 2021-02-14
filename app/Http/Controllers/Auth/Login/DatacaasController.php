@@ -4,11 +4,13 @@ namespace App\Http\Controllers\Auth\Login;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Datacaas;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Route;
 use App\Http\Controllers\Controller;
 
 class DatacaasController extends Controller
 {
-    //protected $redirectTo = '/login';
+    protected $redirectTo = '/login';
     //public function __construct(){
 	//	$this->middleware('guest:datacaas', ['except' => ['logoutCaas']]);
 	//}
@@ -23,17 +25,16 @@ class DatacaasController extends Controller
 		
 		// Attempt to log the user in
 		if (Auth::guard('datacaas')->attempt(
-			['nim' => $request->nim, 'password' => $request->password], false)) {
-	
-			return '{"message": "success"}';
+			['nim' => $request->nim, 'password' => $request->password], true)) {
+
+			return redirect('home');
 		} 
 
         return '{"message": "Login Failed"}';
 	}
 	
-	public function logout(){
-
+	public function logout() {
 		Auth::guard('datacaas')->logout();
-		return redirect('/home');
+		return "A";
 	}
 }
