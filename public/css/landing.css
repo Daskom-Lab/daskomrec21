@@ -1,0 +1,55 @@
+#landing-section{
+    background-image: url('/assets/bck-1.png');
+    background-position:bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+.dlor-logoblue{
+    width: 400px;
+    height: 400px;
+    transition: 0.5s;
+}
+
+.dlor-logoblue:hover{
+    width: 400px;
+    height: auto;
+    filter:drop-shadow(8px 8px 10px gray);
+    transition: 0.5s;
+}
+
+.text-land-1{
+    font-size: 30px;
+    transition: 2s;
+}
+.text-land-1:hover{
+    font-size: 33px;
+    transition: 0.5s;
+}
+.text-land-2{
+    font-size: 20px;
+    transition: 2s;
+}
+.text-land-2:hover{
+    font-size: 24px;
+    transition: 0.5s;
+}
+.c-text-land-1{
+    margin-top: 10px;
+}
+.c-text-land-2{
+    margin-top: 20px;
+}
+
+.landing-text-p{
+    padding: 0px;
+}
+
+@media only screen and (max-width:576px){
+    .landing-text-p{
+        padding-right:30px;
+        padding-left: 30px;
+        padding-bottom: 20px;
+    }
+}

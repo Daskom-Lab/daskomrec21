@@ -1,0 +1,57 @@
+#daskom-section{
+    background-color: #FFCA68;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.text-about{
+    font-size: 20px;
+}
+
+.c-text-about-1{
+    margin-top: 10px;
+}
+
+.social-icon{
+    width: auto;
+    height: 40px;
+    margin-right: 5px;
+    transition: 0.5s;
+}
+
+.social-icon:hover{
+    width: auto;
+    height: 50px;
+    margin-right: 8px;
+    transition: 0.5s;
+}
+
+.daskom-logo{
+    width: 400px;
+    height: 400px;
+    transition: linear 0.5s;
+}
+
+.daskom-logo:hover{
+    width: 400px;
+    height: auto;
+    filter:drop-shadow(8px 8px 10px gray);
+    transition: 0.5s;
+}
+
+.c-text-about-p{
+    padding: 0px;
+}
+
+@media only screen and (max-width:576px){
+
+    .daskom-logo{
+        padding: 40px;
+    }
+
+    .c-text-about-p{
+        padding-right:30px;
+        padding-left: 30px;
+        padding-bottom: 20px;
+    }
+}

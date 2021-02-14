@@ -1,0 +1,68 @@
+#rekrutmen-section{
+    background-color: #FADBA2;
+    padding-top: 30px;
+    padding-bottom: 70px;
+    filter:drop-shadow(10px 0px 5px gray);
+}
+.req-card{
+    background-color: #D39E3B;
+    border-radius: 10px;
+    padding: 5px;
+    width: 250px;
+    margin: auto;
+    transition: 0.5s;
+}
+.req-card:hover{
+    background-color: #D39E3B;
+    border-radius: 10px;
+    padding: 5px;
+    width: 250px;
+    margin: auto;
+    filter:drop-shadow(4px 4px 5px gray);
+    transition: 0.5s;
+}
+.req-img{
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+}
+.req-button{
+    background-color: #FADBA2;
+    padding: 15px;
+    width: 200px;
+    border-radius: 10px;
+    display: inline;
+    border-style: none;
+    transition: 0.5s;
+}
+.req-button:hover{
+    background-color: #D39E3B;
+    padding: 10px;
+    width: 210px;
+    border-radius: 8px;
+    display: inline;
+    border-style: none;
+    transition: 0.5s;
+    color: aliceblue;
+    font-size: 20px;
+}
+.req-h1-text{
+    font-size: 3rem;
+    transition: 0.5s;
+}
+.req-h1-text:hover{
+    font-size: 3rem;
+    color: #D39E3B;
+    filter:drop-shadow(4px 4px 5px gray);
+    transition: 0.5s;
+}
+.a-req{
+    color: black;
+    text-decoration: none;
+}
+
+@media only screen and (max-width:576px){
+    .req-h1-text{
+        font-size: 2.5rem;
+    }
+}
