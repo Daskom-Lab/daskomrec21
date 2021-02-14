@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Status extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'datacaas_id', 'isLolos' , 'tahaps_id',
+    ];
 }

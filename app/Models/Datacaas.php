@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Datacaas extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'nama', 'nim' , 'email','password',
+    ];
 }
