@@ -47,34 +47,58 @@ class DatacaasController extends Controller
 	}
 
 	public function add(Request $request){
-		// Datacaas::
-        //         ->leftjoin('statuses','datacaas.id','=','statuses.datacaas_id')
-        //         ->leftjoin('tahaps','tahaps.id','=','statuses.tahaps_id')
-        //         ->orderBy('statuses.tahaps_id', 'desc')->create([
-		// 	'nama'=>$request->nama,
-		// 	'nim'=>$request->nim,
-		// 	'email'=>$request->email,
-		// 	'password'=>$request->password,
-		// 	'isLolos'=>$request->isLolos,
-		// 	'isLolos'=>$request->isLolos,
-		// 		]);
+
 		$caas = Datacaas::create([
 			'nama'=>$request->nama,
 			'nim'=>$request->nim,
 			'email'=>$request->email,
 			'password'=>Hash::make($request->password),
 		]);
+
 		$tahap = Tahap::create([
 			'urut_tahap'=>$request->urut_tahap,
 		]);
+
 		Status::create([
 			'datacaas_id'=>$caas->id,
 			'tahaps_id'=>$tahap->id,
 			'isLolos'=>$request->isLolos,
 		]);
 		
-		
 		return redirect('CaasAccount');
 	}
 
+	public function edit($datacaas_id){
+		$caas = Datacaas::where('datacaas.id', $datacaas_id)
+                ->leftjoin('statuses','datacaas.id','=','statuses.datacaas_id')
+                ->leftjoin('tahaps','tahaps.id','=','statuses.tahaps_id')
+                ->orderBy('statuses.tahaps_id', 'desc')->first();
+		echo $caas;
+		return view('EditCaasAccount',[
+			'datacaas_id'=>$caas->id,
+			'nama'=>$caas->nama,
+			'isLolos'=>$caas->isLolos,
+			'urut_tahap'=>$caas->urut_tahap,
+			'nim'=>$caas->nim,
+			'datacaas_id'=>$caas->datacaas_id,
+			'email'=>$caas->email,
+			]);
+	}
+
+	public function update($datacaas_id,Request $request){
+		$a = Datacaas::find($datacaas_id);
+		$caas = Datacaas::where('datacaas.id',$datacaas_id)
+                ->leftjoin('statuses','datacaas.id','=','statuses.datacaas_id')
+                ->leftjoin('tahaps','tahaps.id','=','statuses.tahaps_id')
+                ->orderBy('statuses.tahaps_id', 'desc')->update([
+					'nama'=>$a->nama,
+					'nim'=>$a->nim,
+					'email'=>$a->email,
+					'password'=>$a->password,
+					'datacaas.id'=>$datacaas_id,
+					'isLolos'=>$request->isLolos,
+					'urut_tahap'=>$request->urut_tahap,
+				]);
+		return redirect('CaasAccount');
+	}
 }

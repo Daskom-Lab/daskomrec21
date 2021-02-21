@@ -17,7 +17,7 @@ class CreateNamatahapTable extends Migration
             $table->bigIncrements('id');
             $table->string('nama');
             $table->unsignedBigInteger('statustahaps_id');
-            $table->foreign('statustahaps_id')->references('id')->on('statustahaps');
+            $table->foreign('statustahaps_id')->references('id')->on('statustahaps')->onDelete('cascade');
             $table->timestamps();
         });
     }

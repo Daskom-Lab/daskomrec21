@@ -26,17 +26,13 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/begin', function () {
-    return view('master');
-});
+//General Routes
 
 Route::get('/', function () {
     return view('main');
 })->name('main')->middleware('guest:admins');
 
-Route::get('/checkyournim', function () {
-    return view('nimchecker');
-});
+//Caas Routes
 
 Route::get('/home', function () {
     $id = Auth::id();
@@ -44,19 +40,29 @@ Route::get('/home', function () {
     return view('home',$caas);
 })->name('home')->middleware('auth:datacaas');
 
+Route::get('/login', function () {
+    return view('login');
+})->name('login')->middleware('guest:admins','guest:datacaas');
+
+Route::post('/loginCaas', [DatacaasController::class,'login'])->name('loginCaas');
+
+Route::get('/logoutCaas', [DatacaasController::class,'logout'])->name('logoutCaas');
+
+Route::get('/ceklulus', [StatusController::class,'check'])->name('ceklulus')->middleware('auth:datacaas');
+
+Route::get('/shift', [PlotController::class,'showplot'])->name('shift')->middleware('auth:datacaas');
+
+//Admin Routes
+
+Route::get('/loginAdmin', function () {
+    return view('loginAdmin');
+})->name('loginAdmin')->middleware('guest:admins','guest:datacaas');
+
 Route::get('/adminHome', function () {
     $id = Auth::id();
     $admin = Admin::find($id);
     return view('adminHome',$admin);
 })->name('home')->middleware('auth:admins');
-
-Route::get('/login', function () {
-    return view('login');
-})->name('login')->middleware('guest:admins','guest:datacaas');
-
-Route::get('/loginAdmin', function () {
-    return view('loginAdmin');
-})->name('loginAdmin')->middleware('guest:admins','guest:datacaas');
 
 Route::get('/CaasAccount', function () {
     $caas = DB::table('datacaas')
@@ -68,11 +74,10 @@ Route::get('/CaasAccount', function () {
 
 Route::post('/AddCaas', [DatacaasController::class,'add'])->name('Add')->middleware('auth:admins');
 
-Route::post('/loginCaas', [DatacaasController::class,'login'])->name('loginCaas');
-Route::get('/logoutCaas', [DatacaasController::class,'logout'])->name('logoutCaas');
 Route::post('/loginAdmin', [AdminController::class,'login'])->name('loginAdmin');
+
 Route::get('/logoutAdmin', [AdminController::class,'logout'])->name('logoutAdmin');
 
-Route::get('/ceklulus', [StatusController::class,'check'])->name('ceklulus')->middleware('auth:datacaas');
+Route::get('/EditCaasAccount/{datacaas_id}', [DatacaasController::class,'edit'])->name('Edit')->middleware('auth:admins');
 
-Route::get('/shift', [PlotController::class,'showplot'])->name('shift')->middleware('auth:datacaas');
+Route::post('/UpdateCaasAccount/{datacaas_id}', [DatacaasController::class,'update'])->name('Update')->middleware('auth:admins');

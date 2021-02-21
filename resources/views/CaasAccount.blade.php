@@ -99,8 +99,8 @@
                             @endif
                             <td>{{ $p->urut_tahap }}</td>
                             <td>
-                                <a href="/pegawai/edit/{{ $p->id }}" class="btn btn-warning">Edit</a>
-                                <a href="/pegawai/hapus/{{ $p->id }}" class="btn btn-danger">Hapus</a>
+                                <a href="/EditCaasAccount/{{ $p->datacaas_id }}" class="btn btn-warning">Edit</a>
+                                <a href="/caas/hapus/{{ $p->id }}" class="btn btn-danger">Hapus</a>
                             </td>
                         </tr>
                         @endforeach

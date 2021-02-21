@@ -18,9 +18,9 @@ class CreateStatusesTable extends Migration
             $table->boolean('isLolos');
             $table->timestamps();
             $table->unsignedBigInteger('datacaas_id');
-            $table->foreign('datacaas_id')->references('id')->on('datacaas');
+            $table->foreign('datacaas_id')->references('id')->on('datacaas')->onDelete('cascade');
             $table->unsignedBigInteger('tahaps_id');
-            $table->foreign('tahaps_id')->references('id')->on('tahaps');
+            $table->foreign('tahaps_id')->references('id')->on('tahaps')->onDelete('cascade');
         });
     }
 
