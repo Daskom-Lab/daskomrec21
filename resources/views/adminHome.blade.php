@@ -5,10 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Daskom Choose You</title>
-    <link rel="stylesheet" type="text/css" href="{{ asset('/css/navbar.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('/css/navbar-ex-admin.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('/css/footer.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('/css/nimchecker.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('/css/login.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('/css/about.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('/css/home.css') }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -20,23 +21,10 @@
     <nav class="navbar navbar-expand-lg dlor-navbar">
         <div class="container-fluid">
           <a class="navbar-brand" href=""><img src="{{asset('/assets/dlor.png')}}" alt="logo" class="dlor-logonav"></a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#dlor-toggler">
-            <img width="30px" height="30px" class="img-fluid" src="{{ asset('/assets/toogle.png') }}" alt="click">
-          </button>
-          <div class="dlor-navright collapse navbar-collapse" id="dlor-toggler">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="mobile-hide nav-item">
-                RECRUITMENT DASKOM LABORATORY</li>
-            </ul>
+          <div class="dlor-navright" id="dlor-toggler">
             <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link text-center" aria-current="page" href="#">HOME</a>
-              </li>
               <li class="nav-item">
-                <a class="nav-link text-center" href="#">RECRUITMENT</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link text-center" href="#" tabindex="-1" aria-disabled="true">ABOUT</a>
+                <a style="font-weight: 600;" class="nav-link text-center" href="/logoutAdmin" tabindex="-1" aria-disabled="true">LOGOUT</a>
               </li>
             </ul>
           </div>
@@ -48,20 +36,73 @@
       <div class="d-flex justify-content-center">
         <div class="checker-box">
           <div class="text-center text-nim-head">
-            <span>Apakah Kamu Lulus Tahap Berkas?</span>
+            <span>Admin of Daskom Choose You 2021</span>
           </div>
-          <div class="d-flex justify-content-center pt-3 pb-3">
-            <form method="GET" action="/checknim/find">
-              <div>
-              <input class="form-style" type="text" id="nim" name="find" alt="NIM" placeholder="Input NIM Kamu">
-            </div>
-            <div class="d-flex justify-content-center pt-3">
-              <button class="form-style-submit" type="submit">Cek</button>
-            </div>
-            </form>
+          <div class="text-center pt-3 pb-3">
+            <div>
+              <span class="Welcome-text">
+              {{$nama}}
+              </span>
+          </div>
           </div>
         </div>
       </div>
+      <div class="row pt-5">
+          <div class="col-lg">
+            <div class="d-flex justify-content-center pt-3">
+                <a style="text-decoration: none" href="/CaasAccount">
+                <button style="background-color: #67C0E0" class="home-button">
+                  <div class="menu-box-home">
+                  <div>
+                    Akun CaAs
+                  </div>
+                  </div>
+                </button>
+                </a>
+              </div>
+          </div>
+          <div class="col-lg">
+            <div class="d-flex justify-content-center pt-3">
+                <a style="text-decoration: none" href="">
+                <button style="background-color: #67C0E0" class="home-button">
+                  <div class="menu-box-home">
+                  <div>
+                    SHIFT
+                  </div>
+                  </div>
+                </button>
+                </a>
+              </div>
+          </div>
+          <div class="col-lg">
+            <div class="d-flex justify-content-center pt-3">
+                <a style="text-decoration: none" href="">
+                <button style="background-color: #67C0E0" class="home-button">
+                  <div class="menu-box-home">
+                  <div>
+                    SET CekLulus
+                  </div>
+                  </div>
+                </button>
+                </a>
+              </div>
+          </div>
+          <div class="col-lg">
+            <div class="d-flex justify-content-center pt-3">
+                <a style="text-decoration: none" href="">
+                <button style="background-color: #67C0E0" class="home-button">
+                  <div class="menu-box-home">
+                  <div>
+                    Ubah Password
+                  </div>
+                  </div>
+                </button>
+                </a>
+              </div>
+          </div>
+          
+      </div>
+      
     </div>
 </section>
 <section id="daskom-section">

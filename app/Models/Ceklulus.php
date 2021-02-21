@@ -5,13 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Tahap extends Model
+class Ceklulus extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'urut_tahap',
+        'isActiveCek' ,
     ];
-    /*public function Status(){
-        return $this->hasMany(Status::class);
-    }*/
 }

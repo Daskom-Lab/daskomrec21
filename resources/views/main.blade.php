@@ -88,7 +88,7 @@
             <img class="req-img" src="{{ asset('/assets/dlor.png') }}" alt="1">
           </div>
           <div class="d-flex justify-content-center pb-4">
-            <a class="a-req" href="/checkyournim"><button class="req-button">CEK NIM</button></a>
+            <a class="a-req" href="/login"><button class="req-button">LOGIN</button></a>
           </div>
         </div>
       </div>

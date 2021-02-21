@@ -35,10 +35,10 @@
       <div class="d-flex justify-content-center">
         <div class="checker-box">
           <div class="text-center text-nim-head">
-            <span>Daskom Choose You 2021</span>
+            <span>Admin Daskom Choose You 2021</span>
           </div>
           <div class="d-flex justify-content-center pt-3 pb-3">
-            <form method="POST" action="/loginCaas">
+            <form method="POST" action="/loginAdmin">
               @csrf
             <div>
               <input autocomplete="off" class="form-style" type="text" id="nim" name="nim" alt="NIM" placeholder="Input NIM Kamu" required>

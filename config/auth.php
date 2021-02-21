@@ -50,6 +50,11 @@ return [
             'redirectTo' => 'login',
             'driver' => 'session',
             'provider' => 'datacaas',
+        ],
+        'admins' => [
+            'redirectTo' => 'loginAdmin',
+            'driver' => 'session',
+            'provider' => 'admins',
            ],
     ],
 
@@ -78,6 +83,10 @@ return [
         'datacaas' => [
             'driver' => 'eloquent',
             'model' => App\Models\Datacaas::class,
+        ],
+        'admins' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Admin::class,
         ],
 
         // 'users' => [

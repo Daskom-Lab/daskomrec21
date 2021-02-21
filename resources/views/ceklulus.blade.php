@@ -9,6 +9,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('/css/footer.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('/css/login.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('/css/about.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('/css/home.css') }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -23,7 +24,7 @@
           <div class="dlor-navright" id="dlor-toggler">
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a class="nav-link text-center" href="/" tabindex="-1" aria-disabled="true"><img src="{{ asset('/assets/back-icon.png') }}" alt="icon" width="40px" height="40px"></a>
+                <a style="font-weight: 600;" class="nav-link text-center" href="/logoutCaas" tabindex="-1" aria-disabled="true">LOGOUT</a>
               </li>
             </ul>
           </div>
@@ -31,29 +32,98 @@
       </nav>
 </section>
 <section id="main-nim">
+  @if($Active==1)
     <div class="container p-5">
       <div class="d-flex justify-content-center">
         <div class="checker-box">
           <div class="text-center text-nim-head">
-            <span>Daskom Choose You 2021</span>
+            <span>Apakah kamu lulus Tahap {{ $namatahap }}?</span>  
           </div>
-          <div class="d-flex justify-content-center pt-3 pb-3">
-            <form method="POST" action="/loginCaas">
-              @csrf
+          <div class="text-center pt-3 pb-3">
             <div>
-              <input autocomplete="off" class="form-style" type="text" id="nim" name="nim" alt="NIM" placeholder="Input NIM Kamu" required>
-            </div>
-            <div class="pt-2">
-              <input class="form-style" type="password" id="nim" name="password" alt="NIM" placeholder="Password" required>
-            </div>
-            <div class="d-flex justify-content-center pt-3">
-              <button class="form-style-submit" type="submit">Login</button>
-            </div>
-            </form>
+              <span class="Welcome-text">
+              {{$nama}}
+              </span>
+          </div>
+          <div>
+            <span style="font-weight: 700" class="Welcome-text">
+              {{$nim}}
+            </span>
+          </div>
+          @if($isLolos==1 && $urut_tahap==$current_tahap)
+          <div>
+            <span style="font-size:28px;font-weight: 700;color:green;" class="Welcome-text">
+              {{$lulustext}}
+            </span>
+          </div>
+          <div>
+            @if($linktext!=NULL)
+            <a href="{{$linktext}}" target="_blank">
+              <span style="font-size:28px;font-weight: 700;color:blue;" class="Welcome-text">
+              LINK
+            </span>
+            </a>
+            @endif
+          </div>
+          @else
+          <div>
+            <span style="font-weight: 700;color:red;" class="Welcome-text">
+              {{$failedtext}}
+            </span>
+          </div>
+          @endif
           </div>
         </div>
       </div>
+      <div class="d-flex justify-content-center pt-3">
+        <a style="text-decoration: none" href="\home">
+        <button class="home-button">
+          <div class="menu-box-home">
+          <div>
+            KEMBALI
+          </div>
+          </div>
+        </button>
+        </a>
+      </div>
     </div>
+    @else
+    <div class="container p-5">
+      <div class="d-flex justify-content-center">
+        <div class="checker-box">
+          <div class="text-center text-nim-head">
+            <span>Daskom Choose You 2021</span>  
+          </div>
+          <div class="text-center pt-3 pb-3">
+          <div class="pb-2">
+            <span style="font-size:30px;font-weight: 400;color:black;" class="Welcome-text">
+              Nungguin pengumuman ya? hehehe ditunggu aja ya, kalian bakal dikasitau via instagram dan OA line untuk cek nanti
+            </span>
+          </div>
+          <div class="d-flex justify-content-center">
+            <div>
+              <a href="https://www.instagram.com/telu.daskom/" target="_blank"><img class="social-icon" src="{{ asset('/assets/instagram.png') }}" alt="ig"></a>
+            </div>
+            <div>
+              <a href="https://timeline.line.me/user/_dbhqzOurXL1CbjNxhYBPzSbYBVWZFDnFa5_ashs?utm_medium=windows&utm_source=desktop&utm_campaign=OA_Profile" target="_blank"><img class="social-icon" src="{{ asset('/assets/line.png') }}" alt="ig"></a>
+            </div>
+          </div>
+          </div>
+        </div>
+      </div>
+      <div class="d-flex justify-content-center pt-3">
+        <a style="text-decoration: none" href="\home">
+        <button class="home-button">
+          <div class="menu-box-home">
+          <div>
+            KEMBALI
+          </div>
+          </div>
+        </button>
+        </a>
+      </div>
+    </div>
+    @endif
 </section>
 <section id="daskom-section">
   <div class="container p-lg-5">

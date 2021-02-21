@@ -1,0 +1,27 @@
+.Welcome-text{
+    font-size: 30px;
+}
+.menu-box-home{
+    padding: 25px;
+}
+.home-button{
+    background-color: #feb224;
+    padding: 5px;
+    width: 250px;
+    border-radius: 10px;
+    display: inline;
+    border-style: none;
+    transition: 0.5s;
+    font-size: 20px;
+}
+.home-button:hover{
+    background-color: #fceed4;
+    padding: 0px;
+    width: 250px;
+    border-radius: 10px;
+    display: inline;
+    border-style: none;
+    transition: 0.5s;
+    font-size: 18px;
+    font-weight: 600;
+}

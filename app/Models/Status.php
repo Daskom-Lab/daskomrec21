@@ -11,4 +11,11 @@ class Status extends Model
     protected $fillable = [
         'datacaas_id', 'isLolos' , 'tahaps_id',
     ];
+
+    /*public function Datacaas(){
+        return $this->belongsTo(Datacaas::class);
+    }
+    public function Tahap(){
+        return $this->belongsTo(Tahap::class);
+    }*/
 }
