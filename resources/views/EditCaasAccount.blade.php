@@ -48,7 +48,6 @@
         <button type="submit" class="btn btn-primary">Save changes</button>
       </div>
     </form>
-    
 </div>
 </body>
 </html>
