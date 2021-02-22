@@ -128,7 +128,7 @@
                     </span></li>
                 @endif
             </ul>
-            
+            Total Caas : {{$caas->total()}}
         </div>
     </div>
 </body>
