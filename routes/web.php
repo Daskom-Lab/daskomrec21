@@ -68,8 +68,9 @@ Route::get('/CaasAccount', function () {
     $caas = DB::table('datacaas')
                 ->leftjoin('statuses','datacaas.id','=','statuses.datacaas_id')
                 ->leftjoin('tahaps','tahaps.id','=','statuses.tahaps_id')
-                ->orderBy('statuses.tahaps_id', 'desc')->paginate(4)->fragment('caas');
-    return view('CaasAccount',compact('caas')); 
+                ->orderBy('tahaps.urut_tahap', 'desc')->paginate(10)->fragment('caas');
+    $namatahap = DB::table('namatahaps')->get();
+    return view('CaasAccount',compact('caas','namatahap')); 
 })->name('CaasAccount')->middleware('auth:admins');
 
 Route::post('/AddCaas', [DatacaasController::class,'add'])->name('Add')->middleware('auth:admins');
@@ -83,3 +84,7 @@ Route::get('/EditCaasAccount/{datacaas_id}', [DatacaasController::class,'edit'])
 Route::post('/UpdateCaasAccount/{datacaas_id}', [DatacaasController::class,'update'])->name('Update')->middleware('auth:admins');
 
 Route::get('/CariNIM', [DatacaasController::class,'cari'])->name('cari')->middleware('auth:admins');
+
+Route::get('/delcaas/{datacaas_id}', [DatacaasController::class,'del'])->name('del')->middleware('auth:admins');
+
+Route::post('/PassAdmin', [AdminController::class,'changepass'])->name('changepass')->middleware('auth:admins');

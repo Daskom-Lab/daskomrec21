@@ -108,6 +108,13 @@ class DatacaasController extends Controller
 				->leftjoin('statuses','datacaas.id','=','statuses.datacaas_id')
 				->leftjoin('tahaps','tahaps.id','=','statuses.tahaps_id')
 				->orderBy('statuses.tahaps_id', 'desc')->paginate();
-		return view('CaasAccount',compact('caas')); 
+		$namatahap = Namatahap::get();
+		return view('CaasAccount',compact('caas','namatahap')); 
+	}
+
+	public function del($datacaas_id){
+		$caas = Datacaas::find($datacaas_id);
+		$caas -> delete();
+		return redirect('CaasAccount');
 	}
 }

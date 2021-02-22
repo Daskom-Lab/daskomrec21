@@ -13,7 +13,7 @@ class CreateNamatahapTable extends Migration
      */
     public function up()
     {
-        Schema::create('namatahap', function (Blueprint $table) {
+        Schema::create('namatahaps', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('nama');
             $table->unsignedBigInteger('statustahaps_id');
@@ -29,6 +29,6 @@ class CreateNamatahapTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('_namatahap');
+        Schema::dropIfExists('namatahaps');
     }
 }

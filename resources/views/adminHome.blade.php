@@ -17,6 +17,29 @@
     
 </head>
 <body>
+  <!-- Modal -->
+  <div class="modal fade" id="editpass" tabindex="-1" aria-labelledby="editpassLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="editpassLabel">Ganti Password</h5>
+        </div>
+        <div class="modal-body  text-center">
+            <form method="POST" action="\PassAdmin">
+                @csrf
+                @method('POST')
+            <div class="pt-2 pb-2">
+                <input class="text-center" type="password" name="password" placeholder="Password">
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+          <button type="submit" class="btn btn-primary">Ubah Pass</button>
+        </div>
+        </form>
+      </div>
+    </div>
+  </div>
 <section id="nav-section">
     <nav class="navbar navbar-expand-lg dlor-navbar">
         <div class="container-fluid">
@@ -89,15 +112,13 @@
           </div>
           <div class="col-lg">
             <div class="d-flex justify-content-center pt-3">
-                <a style="text-decoration: none" href="">
-                <button style="background-color: #67C0E0" class="home-button">
+                <button style="background-color: #67C0E0" class="home-button" data-bs-toggle="modal" data-bs-target="#editpass">
                   <div class="menu-box-home">
                   <div>
                     Ubah Password
                   </div>
                   </div>
                 </button>
-                </a>
               </div>
           </div>
           

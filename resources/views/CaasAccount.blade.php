@@ -46,11 +46,9 @@
             <div class="pt-2">
                 <label for="urut_tahap">Tahap:</label>
                 <select id="urut_tahap" name="urut_tahap">
-                  <option name="urut_tahap" value="1">Tes Tulis & Coding</option>
-                  <option name="urut_tahap" value="2">Wawancara</option>
-                  <option name="urut_tahap" value="3">Tucil</option>
-                  <option name="urut_tahap" value="4">Teaching</option>
-                  <option name="urut_tahap" value="5">Upgrading</option>
+                @foreach($namatahap as $a)
+                  <option name="urut_tahap" value="{{$a->id}}">{{$a->nama}}</option>
+                @endforeach
                 </select> 
             </div>
             
@@ -64,12 +62,13 @@
     </div>
   </div>
   
-    <form action="/CariNIM" method="GET">
-        <input type="text" name="find" placeholder="Cari NIM" value="{{ old('find') }}">
-        <button type="submit" class="btn btn-primary">CARI</button>
-    </form>
     <div class="container">
+        
         <div class="card mt-5">
+            <form action="/CariNIM" method="GET">
+                <input type="text" name="find" placeholder="Cari NIM" value="{{ old('find') }}">
+                <button type="submit" class="btn btn-primary">CARI</button>
+            </form>
             <div class="card-header text-center">
                 Data Calon Asisten Laboratorium Dasar Komputer 2021
             </div>
@@ -77,6 +76,9 @@
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#CaasInput">
                     Input Akun CaAs
                 </button>
+                <a href="/CaasAccount"><button type="button" class="btn btn-primary">
+                    Refresh
+                </button></a>
                 <br/>
                 <br/>
                 <table class="table table-bordered table-hover table-striped text-center">
@@ -104,7 +106,24 @@
                             <td>{{ $p->urut_tahap }}</td>
                             <td>
                                 <a href="/EditCaasAccount/{{ $p->datacaas_id }}" class="btn btn-warning">Edit</a>
-                                <a href="/caas/hapus/{{ $p->id }}" class="btn btn-danger">Hapus</a>
+                                <div class="modal fade" id="caasdel" tabindex="-1" aria-labelledby="caasdel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                      <div class="modal-content">
+                                        <div class="modal-header">
+                                          <h5 class="modal-title" id="caasdel">Modal title</h5>
+                                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                          ...
+                                        </div>
+                                        <div class="modal-footer">
+                                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                         
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <a href="/delcaas/{{ $p->datacaas_id }}" class="btn btn-danger">Hapus</a>                            
                             </td>
                         </tr>
                         @endforeach
@@ -114,13 +133,12 @@
             <ul class="pagination">
                 <!-- Previous Page Link -->
                 @if ($caas->onFirstPage())
-                    <li class="disabled"><span><i class="fa fa-chevron-left" aria-hidden="true"></i>
-                    </span>{{$caas->currentPage()}}</li>
+                    <li class="disabled"><span><i class="fa fa-chevron-left" aria-hidden="true"></i>{{$caas->currentPage()}}
+                    </span></li>
                 @else
                     <li><a href="{{ $caas->previousPageUrl() }}" rel="prev"><i class="fa fa-chevron-left" aria-hidden="true"></i>
                     </a>{{$caas->currentPage()}}</li>
                 @endif
-            
                 <!-- Next Page Link -->
                 @if ($caas->hasMorePages())
                     <li><a href="{{ $caas->nextPageUrl() }}" rel="next">

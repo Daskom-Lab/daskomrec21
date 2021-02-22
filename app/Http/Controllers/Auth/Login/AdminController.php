@@ -41,4 +41,16 @@ class AdminController extends Controller
 		Auth::guard('admins')->logout();
 		return redirect('/');
 	}
+
+	public function changepass(Request $request){
+		$id = Auth::id();
+		$admin = Admin::find($id);
+		Admin::where('id',$id)->update([
+			'nama'=>$admin->nama,
+			'nim'=>$admin->nim,
+			'password'=>Hash::make($request->password),
+		]);
+		Auth::guard('admins')->logout();
+		return redirect('loginAdmin');
+	}
 }

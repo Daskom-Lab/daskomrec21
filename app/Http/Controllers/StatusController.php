@@ -24,7 +24,7 @@ class StatusController extends Controller
                 ->leftjoin('tahaps','tahaps.id','=','statuses.tahaps_id')
                 ->orderBy('statuses.tahaps_id', 'desc')->first();
         $statustahap = Statustahap::where('statustahaps.id',1)
-                        ->leftjoin('namatahap','statustahaps.current_tahap','=','namatahap.id')->first();
+                        ->leftjoin('namatahaps','statustahaps.current_tahap','=','namatahaps.id')->first();
         return view('ceklulus',[
         'nama'=>$caas->nama,
         'isLolos'=>$caas->isLolos,
