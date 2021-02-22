@@ -40,6 +40,55 @@
       </div>
     </div>
   </div>
+  <!-- Modal -->
+  <div class="modal fade" id="setdata" tabindex="-1" aria-labelledby="setdataLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="setdataLabel">Set Data Cek Lulus</h5>
+        </div>
+        <div class="modal-body  text-center">
+            <form method="POST" action="\SetData">
+                @csrf
+                @method('POST')
+            <div class="mb-3">
+                  <label for="lolostext" class="form-label">is Lolos Text</label>
+                  <textarea name="lolostext" class="form-control" id="lolostext" rows="3" required>{{$message->lolostext}}</textarea>
+            </div>
+            <div class="mb-3">
+              <label for="notlolostext" class="form-label">is not Lolos Text</label>
+              <textarea name="notlolostext" class="form-control" id="notlolostext" rows="3" required>{{$message->notlolostext}}</textarea>
+            </div>
+            <div class="mb-3">
+              <label for="linktext" class="form-label">is Link Text</label>
+              <textarea name="linktext" class="form-control" id="linktext" rows="3" required>{{$message->linktext}}</textarea>
+            </div>
+            <div class="pt-2">
+              <label for="isActiveCek" required>Pengumuman : 
+                <input style="padding: 2px" type="radio" name="isActiveCek" value="0" id="isActiveCek" selected> Disable
+                <input style="padding: 2px" type="radio" name="isActiveCek" value="1" id="isActiveCek"> Enable
+            </label>
+          </div>
+          <div class="pt-2">
+            <label for="current_tahap">Tahap:</label>
+            <select id="current_tahap" name="current_tahap" value="{{ $tahapactive->current_tahap }}">
+                @foreach($namatahap as $a)
+                    <option name="current_tahap" value="{{$a->id}}">{{$a->nama}}</option>
+                @endforeach
+            </select> 
+          </div>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+          <button type="submit" class="btn btn-primary">Simpan</button>
+        </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+
 <section id="nav-section">
     <nav class="navbar navbar-expand-lg dlor-navbar">
         <div class="container-fluid">
@@ -64,7 +113,7 @@
           <div class="text-center pt-3 pb-3">
             <div>
               <span class="Welcome-text">
-              {{$nama}}
+              {{$admin->nama}}
               </span>
           </div>
           </div>
@@ -99,15 +148,13 @@
           </div>
           <div class="col-lg">
             <div class="d-flex justify-content-center pt-3">
-                <a style="text-decoration: none" href="">
-                <button style="background-color: #67C0E0" class="home-button">
+                <button style="background-color: #67C0E0" class="home-button" data-bs-toggle="modal" data-bs-target="#setdata">
                   <div class="menu-box-home">
                   <div>
                     SET CekLulus
                   </div>
                   </div>
                 </button>
-                </a>
               </div>
           </div>
           <div class="col-lg">

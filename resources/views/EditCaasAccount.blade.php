@@ -36,11 +36,9 @@
     <div class="pt-2">
         <label for="urut_tahap">Tahap:</label>
         <select id="urut_tahap" name="urut_tahap" value="{{ $urut_tahap }}">
-          <option name="urut_tahap" value="1">Tes Tulis & Coding</option>
-          <option name="urut_tahap" value="2">Wawancara</option>
-          <option name="urut_tahap" value="3">Tucil</option>
-          <option name="urut_tahap" value="4">Teaching</option>
-          <option name="urut_tahap" value="5">Upgrading</option>
+            @foreach($namatahap as $a)
+                <option name="urut_tahap" value="{{$a->id}}">{{$a->nama}}</option>
+            @endforeach
         </select> 
     </div>
     <div class="modal-footer">

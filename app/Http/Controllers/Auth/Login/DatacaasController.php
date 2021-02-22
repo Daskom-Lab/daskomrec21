@@ -73,6 +73,7 @@ class DatacaasController extends Controller
                 ->leftjoin('statuses','datacaas.id','=','statuses.datacaas_id')
                 ->leftjoin('tahaps','tahaps.id','=','statuses.tahaps_id')
                 ->orderBy('statuses.tahaps_id', 'desc')->first();
+		$namatahap = Namatahap::get();
 		echo $caas;
 		return view('EditCaasAccount',[
 			'datacaas_id'=>$caas->id,
@@ -82,6 +83,7 @@ class DatacaasController extends Controller
 			'nim'=>$caas->nim,
 			'datacaas_id'=>$caas->datacaas_id,
 			'email'=>$caas->email,
+			'namatahap'=>$namatahap,
 			]);
 	}
 

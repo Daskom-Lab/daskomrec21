@@ -6,6 +6,7 @@ use App\Http\Controllers\Auth\Login\AdminController;
 use App\Http\Controllers\StatusController;
 use App\Http\Controllers\PlotController;
 use App\Models\Datacaas;
+use Illuminate\Http\Request;
 use App\Models\Admin;
 use App\Models\Status;
 use App\Models\Tahap;
@@ -61,7 +62,11 @@ Route::get('/loginAdmin', function () {
 Route::get('/adminHome', function () {
     $id = Auth::id();
     $admin = Admin::find($id);
-    return view('adminHome',$admin);
+    $message = Messageceklulus::find(1);
+    $pengumuman = Ceklulus::find(1);
+    $namatahap = DB::table('namatahaps')->get();
+    $tahapactive = Statustahap::find(1);
+    return view('adminHome',compact('admin','message','pengumuman','namatahap','tahapactive'));
 })->name('home')->middleware('auth:admins');
 
 Route::get('/CaasAccount', function () {
@@ -88,3 +93,21 @@ Route::get('/CariNIM', [DatacaasController::class,'cari'])->name('cari')->middle
 Route::get('/delcaas/{datacaas_id}', [DatacaasController::class,'del'])->name('del')->middleware('auth:admins');
 
 Route::post('/PassAdmin', [AdminController::class,'changepass'])->name('changepass')->middleware('auth:admins');
+
+Route::post('/SetData', function(Request $request){
+    Messageceklulus::where('id',1)->update([
+        'id'=>1,
+        'lolostext'=>$request->lolostext,
+        'notlolostext'=>$request->notlolostext,
+        'linktext'=>$request->linktext,
+        ]);
+    Ceklulus::where('id',1)->update([
+        'id'=>1,
+        'isActiveCek'=>$request->isActiveCek,
+        ]);
+    Statustahap::where('id',1)->update([
+        'id'=>1,
+        'current_tahap'=>$request->current_tahap,
+        ]);
+    return redirect('adminHome');
+})->name('setdata')->middleware('auth:admins');

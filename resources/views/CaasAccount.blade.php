@@ -40,7 +40,7 @@
             <div>
                 <label for="isLolos">
                     <input style="padding: 2px" type="radio" name="isLolos" value="0" id="isLolos" selected> Tidak Lolos
-                    <input style="padding: 2px" type="radio" name="isLolos" value="1" id="jisLolos"> Lolos
+                    <input style="padding: 2px" type="radio" name="isLolos" value="1" id="isLolos"> Lolos
                 </label>
             </div>
             <div class="pt-2">

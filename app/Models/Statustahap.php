@@ -9,6 +9,6 @@ class Statustahap extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'nama',
+        'current_tahap',
     ];
 }
