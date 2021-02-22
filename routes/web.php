@@ -81,3 +81,5 @@ Route::get('/logoutAdmin', [AdminController::class,'logout'])->name('logoutAdmin
 Route::get('/EditCaasAccount/{datacaas_id}', [DatacaasController::class,'edit'])->name('Edit')->middleware('auth:admins');
 
 Route::post('/UpdateCaasAccount/{datacaas_id}', [DatacaasController::class,'update'])->name('Update')->middleware('auth:admins');
+
+Route::get('/CariNIM', [DatacaasController::class,'cari'])->name('cari')->middleware('auth:admins');

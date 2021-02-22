@@ -64,7 +64,10 @@
     </div>
   </div>
   
-
+    <form action="/CariNIM" method="GET">
+        <input type="text" name="find" placeholder="Cari NIM" value="{{ old('find') }}">
+        <button type="submit" class="btn btn-primary">CARI</button>
+    </form>
     <div class="container">
         <div class="card mt-5">
             <div class="card-header text-center">

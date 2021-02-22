@@ -101,4 +101,13 @@ class DatacaasController extends Controller
 				]);
 		return redirect('CaasAccount');
 	}
+
+	public function cari(Request $request){
+		$find = $request->find;
+		$caas = Datacaas::where('nim','like',$find."%")
+				->leftjoin('statuses','datacaas.id','=','statuses.datacaas_id')
+				->leftjoin('tahaps','tahaps.id','=','statuses.tahaps_id')
+				->orderBy('statuses.tahaps_id', 'desc')->paginate();
+		return view('CaasAccount',compact('caas')); 
+	}
 }
