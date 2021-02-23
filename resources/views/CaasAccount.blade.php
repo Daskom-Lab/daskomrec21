@@ -69,6 +69,7 @@
                 <input type="text" name="find" placeholder="Cari NIM" value="{{ old('find') }}">
                 <button type="submit" class="btn btn-primary">CARI</button>
             </form>
+            <a href="/adminHome"> <button type="button" class="btn btn-danger">BACK</button></a>
             <div class="card-header text-center">
                 Data Calon Asisten Laboratorium Dasar Komputer 2021
             </div>

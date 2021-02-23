@@ -10,6 +10,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('/css/login.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('/css/about.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('/css/home.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('/css/form-style.css') }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -20,21 +21,24 @@
   <!-- Modal -->
   <div class="modal fade" id="editpass" tabindex="-1" aria-labelledby="editpassLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="editpassLabel">Ganti Password</h5>
+      <div class="modal-background">
+        <div class="p-4 text-center">
+          <span class="text-center rec-title">Ubah Password</span>
         </div>
-        <div class="modal-body  text-center">
+        <div class="modal-body text-center">
             <form method="POST" action="\PassAdmin">
                 @csrf
                 @method('POST')
-            <div class="pt-2 pb-2">
-                <input class="text-center" type="password" name="password" placeholder="Password">
+            <div class="pb-2">
+                <input class="text-center text-area-fill" type="password" name="password" placeholder="Password" required>
             </div>
+            <div class="pb-2 text-center">
+              <span style="color: rgb(196, 5, 5);font-size:1.3rem;font-weight:600;" class="text-center">Pastikan kamu ingat password barumu</span>
+          </div>
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-          <button type="submit" class="btn btn-primary">Ubah Pass</button>
+        <div class="modal-footer d-flex justify-content-center">
+          <button type="button" class="button-cancel" data-bs-dismiss="modal">Batal</button>
+          <button type="submit" class="button-submit">Ubah Password</button>
         </div>
         </form>
       </div>
@@ -43,35 +47,35 @@
   <!-- Modal -->
   <div class="modal fade" id="setdata" tabindex="-1" aria-labelledby="setdataLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="setdataLabel">Set Data Cek Lulus</h5>
+      <div class="modal-background">
+        <div class="p-4 text-center">
+          <span class="text-center rec-title">Set Pengumuman</span>
         </div>
         <div class="modal-body  text-center">
             <form method="POST" action="\SetData">
                 @csrf
                 @method('POST')
             <div class="mb-3">
-                  <label for="lolostext" class="form-label">is Lolos Text</label>
-                  <textarea name="lolostext" class="form-control" id="lolostext" rows="3" required>{{$message->lolostext}}</textarea>
+                  <label for="lolostext" class="form-label text-area-set">Text Pengumuman lulus</label>
+                  <textarea name="lolostext" class="text-area-fill" id="lolostext" rows="3" required>{{$message->lolostext}}</textarea>
             </div>
             <div class="mb-3">
-              <label for="notlolostext" class="form-label">is not Lolos Text</label>
-              <textarea name="notlolostext" class="form-control" id="notlolostext" rows="3" required>{{$message->notlolostext}}</textarea>
+              <label for="notlolostext" class="form-label text-area-set">Text Pengumuman Tidak lulus</label>
+              <textarea name="notlolostext" class="text-area-fill" id="notlolostext" rows="3" required>{{$message->notlolostext}}</textarea>
             </div>
-            <div class="mb-3">
-              <label for="linktext" class="form-label">is Link Text</label>
-              <textarea name="linktext" class="form-control" id="linktext" rows="3" required>{{$message->linktext}}</textarea>
+            <div class="mb-2">
+              <label for="linktext" class="form-label text-area-set"> Text for Link</label>
+              <textarea name="linktext" class="text-area-fill" id="linktext" rows="3" required>{{$message->linktext}}</textarea>
             </div>
-            <div class="pt-2">
-              <label for="isActiveCek" required>Pengumuman : 
-                <input style="padding: 2px" type="radio" name="isActiveCek" value="0" id="isActiveCek" selected> Disable
-                <input style="padding: 2px" type="radio" name="isActiveCek" value="1" id="isActiveCek"> Enable
+            <div class="pt-1 pb-2">
+              <label class="text-area-set" for="isActiveCek">Pengumuman : 
+                <input class="form-check-input" type="radio" name="isActiveCek" value="0" id="isActiveCek" required><span> Disable</span>
+                <input class="form-check-input" style="padding: 2px" type="radio" name="isActiveCek" value="1" id="isActiveCek" required><span> Enable</span>
             </label>
-          </div>
+            </div>
           <div class="pt-2">
-            <label for="current_tahap">Tahap:</label>
-            <select id="current_tahap" name="current_tahap" value="{{ $tahapactive->current_tahap }}">
+            <label class="pb-1" for="current_tahap">Tahap:</label>
+            <select class="form-select-costum" id="current_tahap" name="current_tahap" value="{{ $tahapactive->current_tahap }}">
                 @foreach($namatahap as $a)
                     <option name="current_tahap" value="{{$a->id}}">{{$a->nama}}</option>
                 @endforeach
@@ -79,9 +83,9 @@
           </div>
 
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-          <button type="submit" class="btn btn-primary">Simpan</button>
+        <div class="modal-footer d-flex justify-content-center">
+          <button type="button" class="button-cancel" data-bs-dismiss="modal">Batal</button>
+          <button type="submit" class="button-submit">Simpan</button>
         </div>
         </form>
       </div>
