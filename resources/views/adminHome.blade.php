@@ -114,12 +114,36 @@
           <div class="text-center text-nim-head">
             <span>Admin of Daskom Choose You 2021</span>
           </div>
-          <div class="text-center pt-3 pb-3">
-            <div>
+          <div class="text-center pt-1 pb-3">
+            <div class="pb-4">
               <span class="Welcome-text">
               {{$admin->nama}}
               </span>
           </div>
+          <div>
+            <span style="font-weight: 700" class="Welcome-text">
+            STATUS REKRUTMEN:
+            </span>
+        </div>
+          <div>
+            <span class="Welcome-text">
+              @if($pengumuman->isActiveCek==1)
+              Pengumuman : Aktif
+              @else
+              Pengumuman : Tidak Aktif
+              @endif
+            </span>
+          </div>
+          <div>
+            <span style="font-weight: 700" class="Welcome-text">
+            @foreach($namatahap as $a)
+            @if($a->id==$tahapactive->current_tahap)
+            {{$a->nama}}
+            @else
+            @endif
+            @endforeach
+            </span>
+        </div>
           </div>
         </div>
       </div>

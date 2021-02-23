@@ -11,6 +11,18 @@
     padding-left: 3rem;
     padding-right: 3rem;
 }
+.centermid{
+	width: ;
+	height: ;
+}
+
+.shadow{
+	filter:drop-shadow(8px 8px 8px rgb(9, 110, 156));
+}
+
+#EditBackColor{
+	background-color: #2c87b3;
+}
 
 .rec-title{
     font-size: 2rem;
@@ -136,5 +148,49 @@
     border-style:solid;
     text-align: center;
     background-color: rgb(245, 37, 37);
+    transition: 0.5s;
+}
+
+.form-style-find{
+    border-radius: 15px;
+    font-size: 20px;
+    font-weight:600;
+    padding: 15px;
+    border-style:solid;
+    text-align: center;
+    background-color: antiquewhite;
+    transition: 0.5s;
+}
+.form-style-find:hover{
+    border-radius: 15px;
+    font-size: 20px;
+    color: antiquewhite;
+    font-weight:600;
+    padding: 15px;
+    border-style:solid;
+    text-align: center;
+    background-color: #FEB224;
+    transition: 0.5s;
+}
+
+.button-submit-find{
+    border-radius: 15px;
+    font-size: 20px;
+    font-weight:600;
+    padding: 15px;
+    border-style:solid;
+    text-align: center;
+    background-color: rgb(125, 238, 97);
+    transition: 0.5s;
+}
+.button-submit-find:hover{
+    border-radius: 15px;
+    font-size: 20px;
+    color: antiquewhite;
+    font-weight:600;
+    padding: 15px;
+    border-style:solid;
+    text-align: center;
+    background-color: #FEB224;
     transition: 0.5s;
 }

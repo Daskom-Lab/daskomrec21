@@ -97,7 +97,7 @@
           <div class="text-center pt-3 pb-3">
           <div class="pb-2">
             <span style="font-size:30px;font-weight: 400;color:black;" class="Welcome-text">
-              Nungguin pengumuman ya? hehehe ditunggu aja ya, kalian bakal dikasitau via instagram dan OA line untuk cek nanti
+              Nungguin pengumuman ya? hehehe ditunggu aja ya, kalian bakal dikasitau via instagram dan OA line untuk cek disini
             </span>
           </div>
           <div class="d-flex justify-content-center">

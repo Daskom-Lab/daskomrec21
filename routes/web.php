@@ -73,7 +73,7 @@ Route::get('/CaasAccount', function () {
     $caas = DB::table('datacaas')
                 ->leftjoin('statuses','datacaas.id','=','statuses.datacaas_id')
                 ->leftjoin('tahaps','tahaps.id','=','statuses.tahaps_id')
-                ->orderBy('tahaps.urut_tahap', 'desc')->paginate(10)->fragment('caas');
+                ->orderBy('tahaps.urut_tahap', 'desc')->get();
     $namatahap = DB::table('namatahaps')->get();
     return view('CaasAccount',compact('caas','namatahap')); 
 })->name('CaasAccount')->middleware('auth:admins');
