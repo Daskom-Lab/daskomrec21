@@ -31,32 +31,14 @@
             <form method="POST" action="\AddCaas">
                 @csrf
             <div class="pt-2 pb-2">
-                <input class="text-center text-area-fill" type="text" name="nama" placeholder="Nama Lengkap CaAs" required>
+                <input class="text-center text-area-fill" type="date" name="hari" placeholder="tanggal" required>
             </div>
             <div class="pt-2 pb-2">
-                <input class="text-center text-area-fill" type="text" name="nim" placeholder="NIM" required>
+                <input class="text-center text-area-fill" type="time" name="jam" placeholder="jam" required>
             </div>
             <div class="pt-2 pb-2">
-                <input class="text-center text-area-fill" type="email" name="email" placeholder="Email" required>
+                <input class="text-center text-area-fill" type="number" name="kuota" placeholder="Kuota" required>
             </div>
-            <div class="pt-2 pb-2">
-                <input class="text-center text-area-fill" type="password" name="password" placeholder="Password" required>
-            </div>
-            <div>
-                <label for="isLolos">
-                    <input class="form-check-input" style="padding: 2px" type="radio" name="isLolos" value="0" id="isLolos" required> Tidak Lolos
-                    <input class="form-check-input" style="padding: 2px" type="radio" name="isLolos" value="1" id="isLolos" required> Lolos
-                </label>
-            </div>
-            <div class="pt-2">
-                <label for="urut_tahap">Tahap:</label>
-                <select class="form-select-costum" id="urut_tahap" name="urut_tahap" required>
-                @foreach($namatahap as $a)
-                  <option name="urut_tahap" value="{{$a->id}}">{{$a->nama}}</option>
-                @endforeach
-                </select> 
-            </div>
-            
         </div>
         <div class="modal-footer d-flex justify-content-center">
             <button type="button" class="button-cancel" data-bs-dismiss="modal">Batal</button>
@@ -85,7 +67,7 @@
     <div class="pt-5 d-flex justify-content-center">
         <div class="checker-box">
           <div class="text-center text-nim-head">
-            <span>Data Calon Asisten Daskom Choose You 2021</span>
+            <span>SHIFT Daskom Choose You</span>
           </div>
           <div class="text-center pt-3 pb-3">
             <div>
@@ -114,16 +96,15 @@
             <table class="table table-bordered table-hover table-striped text-center align-middle">
                 <thead>
                     <tr>
-                        <th>Nama</th>
-                        <th>NIM</th>
-                        <th>Email</th>
-                        <th>Status</th>
-                        <th>Tahap</th>
+                        <th>Hari</th>
+                        <th>Jam</th>
+                        <th>Kuota</th>
+                        <th>List CaAs</th>
                         <th>OPSI</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($caas as $p)
+                    {{-- @foreach($caas as $p)
                     <tr>
                         <td>{{ $p->nama }}</td>
                         <td style="color:black;font-weight:700;background-color:#f1b442">{{ $p->nim }}</td>
@@ -134,29 +115,14 @@
                         <td style="color:red;font-weight:700">Tidak Lolos</td>
                         @endif
                         <td>
-                        @if($p->urut_tahap==1)
-                        {{ $namatahap->find(1)->nama }}
-                        @elseif($p->urut_tahap==2)
-                        {{ $namatahap->find(2)->nama }}
-                        @elseif($p->urut_tahap==3)
-                        {{ $namatahap->find(3)->nama }}
-                        @elseif($p->urut_tahap==4)
-                        {{ $namatahap->find(4)->nama }}
-                        @elseif($p->urut_tahap==5)
-                        {{ $namatahap->find(5)->nama }}
-                        @elseif($p->urut_tahap==6)
-                        {{ $namatahap->find(6)->nama }}
-                        @elseif($p->urut_tahap==7)
-                        {{ $namatahap->find(7)->nama }}
-                        @else
-                        @endif
+                        
                         </td>
                         <td>
                             <a href="/EditCaasAccount/{{ $p->datacaas_id }}"><button style="font-size: 1rem" class="button-submit-find">Edit</button></a>
                             <a href="/delcaasconfirm/{{ $p->datacaas_id }}" ><button class="button-cancel">Hapus</button></a>             
                         </td>
                     </tr>
-                    @endforeach
+                    @endforeach --}}
                 </tbody>
             </table>
         </div>

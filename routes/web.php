@@ -31,7 +31,7 @@ use Illuminate\Support\Facades\Auth;
 
 Route::get('/', function () {
     return view('main');
-})->name('main')->middleware('guest:admins');
+})->name('main')->middleware('guest:admins','guest:datacaas');
 
 //Caas Routes
 
@@ -67,18 +67,18 @@ Route::get('/adminHome', function () {
     $namatahap = DB::table('namatahaps')->get();
     $tahapactive = Statustahap::find(1);
     return view('adminHome',compact('admin','message','pengumuman','namatahap','tahapactive'));
-})->name('home')->middleware('auth:admins');
+})->name('adminHome')->middleware('auth:admins');
 
 Route::get('/CaasAccount', function () {
     $caas = DB::table('datacaas')
                 ->leftjoin('statuses','datacaas.id','=','statuses.datacaas_id')
                 ->leftjoin('tahaps','tahaps.id','=','statuses.tahaps_id')
                 ->orderBy('tahaps.urut_tahap', 'desc')->get();
-    $namatahap = DB::table('namatahaps')->get();
+    $namatahap = Namatahap::all();
     return view('CaasAccount',compact('caas','namatahap')); 
 })->name('CaasAccount')->middleware('auth:admins');
 
-Route::post('/AddCaas', [DatacaasController::class,'add'])->name('Add')->middleware('auth:admins');
+Route::post('/AddCaas', [DatacaasController::class,'add'])->name('Addcaas')->middleware('auth:admins');
 
 Route::post('/loginAdmin', [AdminController::class,'login'])->name('loginAdmin');
 
@@ -113,3 +113,12 @@ Route::post('/SetData', function(Request $request){
         ]);
     return redirect('adminHome');
 })->name('setdata')->middleware('auth:admins');
+
+Route::get('/ListShift', function () {
+    $shift = DB::table('shifts')
+                ->leftjoin('plots','shifts.id','=','plots.shifts_id')
+                ->leftjoin('datacaas','datacaas.id','=','plots.datacaas_id')
+                ->orderBy('shifts.kuota', 'desc')->get();
+    $namatahap = Namatahap::all();
+    return view('shift',compact('shift','namatahap')); 
+})->name('shift')->middleware('auth:admins');
