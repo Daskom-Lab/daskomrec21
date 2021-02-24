@@ -17,7 +17,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Electrolize&family=Fira+Code:wght@400&display=swap" rel="stylesheet">   
 </head>
-<body>
+<body id="list-section">
 <!-- Modal Caas Input -->
 <!-- Button trigger modal -->
   <!-- Modal -->
@@ -31,16 +31,16 @@
             <form method="POST" action="\AddCaas">
                 @csrf
             <div class="pt-2 pb-2">
-                <input class="text-center text-area-fill" type="text" name="nama" placeholder="Nama Lengkap CaAs">
+                <input class="text-center text-area-fill" type="text" name="nama" placeholder="Nama Lengkap CaAs" required>
             </div>
             <div class="pt-2 pb-2">
-                <input class="text-center text-area-fill" type="text" name="nim" placeholder="NIM">
+                <input class="text-center text-area-fill" type="text" name="nim" placeholder="NIM" required>
             </div>
             <div class="pt-2 pb-2">
-                <input class="text-center text-area-fill" type="email" name="email" placeholder="Email">
+                <input class="text-center text-area-fill" type="email" name="email" placeholder="Email" required>
             </div>
             <div class="pt-2 pb-2">
-                <input class="text-center text-area-fill" type="password" name="password" placeholder="Password">
+                <input class="text-center text-area-fill" type="password" name="password" placeholder="Password" required>
             </div>
             <div>
                 <label for="isLolos">
@@ -50,7 +50,7 @@
             </div>
             <div class="pt-2">
                 <label for="urut_tahap">Tahap:</label>
-                <select class="form-select-costum" id="urut_tahap" name="urut_tahap">
+                <select class="form-select-costum" id="urut_tahap" name="urut_tahap" required>
                 @foreach($namatahap as $a)
                   <option name="urut_tahap" value="{{$a->id}}">{{$a->nama}}</option>
                 @endforeach
@@ -136,7 +136,7 @@
                         <td>{{ $p->urut_tahap }}</td>
                         <td>
                             <a href="/EditCaasAccount/{{ $p->datacaas_id }}"><button style="font-size: 1rem" class="button-submit-find">Edit</button></a>
-                            <a href="/delcaas/{{ $p->datacaas_id }}" class="btn btn-danger">Hapus</a>                            
+                            <a href="/delcaasconfirm/{{ $p->datacaas_id }}" ><button class="button-cancel">Hapus</button></a>             
                         </td>
                     </tr>
                     @endforeach

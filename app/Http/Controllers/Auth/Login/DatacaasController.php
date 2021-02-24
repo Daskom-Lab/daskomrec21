@@ -113,6 +113,27 @@ class DatacaasController extends Controller
 		return view('CaasAccount',compact('caas','namatahap')); 
 	}
 
+	public function delconfirm($datacaas_id){
+		$caas = Datacaas::where('datacaas.id', $datacaas_id)
+                ->leftjoin('statuses','datacaas.id','=','statuses.datacaas_id')
+                ->leftjoin('tahaps','tahaps.id','=','statuses.tahaps_id')
+                ->orderBy('statuses.tahaps_id', 'desc')->first();
+		$namatahap = Namatahap::get();
+		$statustahap = Statustahap::where('statustahaps.id',1)
+                        ->leftjoin('namatahaps','statustahaps.current_tahap','=','namatahaps.id')->first();
+		return view('delcaas',[
+			'datacaas_id'=>$caas->id,
+			'nama'=>$caas->nama,
+			'isLolos'=>$caas->isLolos,
+			'urut_tahap'=>$caas->urut_tahap,
+			'nim'=>$caas->nim,
+			'datacaas_id'=>$caas->datacaas_id,
+			'email'=>$caas->email,
+			'namatahap'=>$namatahap,
+			'current_tahap'=>$statustahap->current_tahap,
+			]);
+	}
+
 	public function del($datacaas_id){
 		$caas = Datacaas::find($datacaas_id);
 		$caas -> delete();
