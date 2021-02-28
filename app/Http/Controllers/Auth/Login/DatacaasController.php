@@ -139,4 +139,27 @@ class DatacaasController extends Controller
 		$caas -> delete();
 		return redirect('CaasAccount');
 	}
+
+	public function changepass(Request $request){
+		$id = Auth::id();
+		$caas = Datacaas::find($id);
+		$rules = [
+			'password'	=>	'required|min:6',
+		];
+	
+		$messages = [
+			'password.required'	=>	'password tidak boleh kosong dan minimal 6 karakter',
+		];
+	
+		$this->validate($request,$rules,$messages);
+
+		Datacaas::where('id',$id)->update([
+			'nama'=>$caas->nama,
+			'nim'=>$caas->nim,
+			'email'=>$caas->email,
+			'password'=>Hash::make($request->password),
+		]);
+		Auth::guard('datacaas')->logout();
+		return redirect('login');
+	}
 }
