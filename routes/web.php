@@ -14,6 +14,8 @@ use App\Models\Statustahap;
 use App\Models\Namatahap;
 use App\Models\Ceklulus;
 use App\Models\Shift;
+use App\Models\Plot;
+use App\Models\Plotactive;
 use App\Models\Messageceklulus;
 use Illuminate\Support\Facades\Auth;
 
@@ -55,6 +57,89 @@ Route::get('/ceklulus', [StatusController::class,'check'])->name('ceklulus')->mi
 Route::get('/shift', [PlotController::class,'showplot'])->name('shift')->middleware('auth:datacaas');
 
 Route::post('/PassCaas', [DatacaasController::class,'changepass'])->name('changepass')->middleware('auth:datacaas');
+
+Route::get('/listplot', function () {
+    $shift = DB::table('shifts')->get();
+    // $shift = DB::table('plots')
+    //             ->leftjoin('datacaas','shifts.id','=','plots.shifts_id')
+    //             ->leftjoin('shifts','shifts.id','=','plots.shifts_id')
+    //             ->orderBy('shifts.kuota', 'desc')->get();
+    $id = Auth::id();
+    $caas = Datacaas::where('datacaas.id',$id)
+                ->leftjoin('statuses','datacaas.id','=','statuses.datacaas_id')
+                ->leftjoin('tahaps','tahaps.id','=','statuses.tahaps_id')
+                ->orderBy('tahaps.urut_tahap', 'desc')->first();
+    $plots = Datacaas::where('datacaas.id',$id)
+                ->leftjoin('plots','datacaas.id','=','plots.datacaas_id')
+                ->leftjoin('shifts','shifts.id','=','plots.shifts_id')
+                ->first();
+    $plotactive = Datacaas::where('datacaas.id',$id)
+                ->leftjoin('plotactives','datacaas.id','=','plotactives.datacaas_id')
+                ->first();
+    echo $plotactive;
+    echo '<br>';
+    echo $plots; 
+    echo '<br>';
+    echo $caas;
+    if($caas->isLolos==1){
+    return view('plotchoose',compact('shift','caas','plotactive')); 
+    }else return redirect('home');
+})->name('listplot')->middleware('auth:datacaas');
+
+Route::get('/takeplot/{id}', function ($id) {
+    $shift = Shift::find($id);
+    $caasid = Auth::id();
+    $caas = Datacaas::where('datacaas.id',$caasid)
+                ->leftjoin('statuses','datacaas.id','=','statuses.datacaas_id')
+                ->leftjoin('tahaps','tahaps.id','=','statuses.tahaps_id')
+                ->orderBy('tahaps.urut_tahap', 'desc')->first();
+    $plots = Datacaas::where('datacaas.id',$caasid)
+                ->leftjoin('plots','datacaas.id','=','plots.datacaas_id')
+                ->leftjoin('shifts','shifts.id','=','plots.shifts_id')
+                ->first();
+    $plotactive = Datacaas::where('datacaas.id',$caasid)
+                ->leftjoin('plotactives','datacaas.id','=','plotactives.datacaas_id')
+                ->first();
+    echo $plotactive;
+    echo '<br>';
+    echo $plots; 
+    echo '<br>';
+    echo $caas;
+    echo $shift;
+    if($caas->isLolos==1 && $plotactive->isPlotActive==NULL){
+    return view('takeplot',compact('shift','caas','plotactive')); 
+    }else return redirect('listplot');
+})->name('listplot')->middleware('auth:datacaas');
+
+Route::post('/takeplot/createplot/{id}', function ($id) {
+    $shift = Shift::find($id);
+    $caasid = Auth::id();
+    $caas = Datacaas::where('datacaas.id',$caasid)
+                ->leftjoin('statuses','datacaas.id','=','statuses.datacaas_id')
+                ->leftjoin('tahaps','tahaps.id','=','statuses.tahaps_id')
+                ->orderBy('tahaps.urut_tahap', 'desc')->first();
+    $plots = Datacaas::where('datacaas.id',$caasid)
+                ->leftjoin('plots','datacaas.id','=','plots.datacaas_id')
+                ->leftjoin('shifts','shifts.id','=','plots.shifts_id')
+                ->first();
+    $plotactive = Datacaas::where('datacaas.id',$caasid)
+                ->leftjoin('plotactives','datacaas.id','=','plotactives.datacaas_id')
+                ->first();
+
+    if($caas->isLolos==1 && $plotactive->isPlotActive==NULL){
+    Plot::create([
+                    'datacaas_id'=>$caas->id,
+                    'shifts_id'=>$shift->id,
+                ]);
+    Plotactive::create([
+                    'datacaas_id'=>$caas->id,
+                    'isPlotActive'=>1,
+                ]);
+    return redirect('listplot'); 
+    }else return redirect('listplot');
+})->name('chooseplot')->middleware('auth:datacaas');
+
+Route::post('/confirm/{datacaas_id}', [DatacaasController::class,'confirmplot'])->name('Update')->middleware('auth:datacaas');
 
 //Admin Routes
 
