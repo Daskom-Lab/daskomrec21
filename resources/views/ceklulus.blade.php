@@ -24,8 +24,9 @@
           <div class="dlor-navright" id="dlor-toggler">
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a style="font-weight: 600;" class="nav-link text-center" href="/logoutCaas" tabindex="-1" aria-disabled="true">LOGOUT</a>
+                  <a class="nav-link text-center" href="/home" tabindex="-1" aria-disabled="true"><img src="{{ asset('/assets/back-icon.png') }}" alt="icon" width="40px" height="40px"></a>
               </li>
+          </ul>
             </ul>
           </div>
         </div>
@@ -76,8 +77,19 @@
         </div>
       </div>
       <div class="d-flex justify-content-center pt-3">
+        <a style="text-decoration: none" href="\listplot">
+        <button  class="home-button">
+          <div class="menu-box-home">
+          <div>
+            ISI JADWAL REKRUTMEN
+          </div>
+          </div>
+        </button>
+        </a>
+      </div>
+      <div class="d-flex justify-content-center pt-3">
         <a style="text-decoration: none" href="\home">
-        <button class="home-button">
+        <button style="background-color: #FF4E4E;color: whitesmoke;" class="home-button">
           <div class="menu-box-home">
           <div>
             KEMBALI
