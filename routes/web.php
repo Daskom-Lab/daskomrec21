@@ -13,6 +13,7 @@ use App\Models\Tahap;
 use App\Models\Statustahap;
 use App\Models\Namatahap;
 use App\Models\Ceklulus;
+use App\Models\Shift;
 use App\Models\Messageceklulus;
 use Illuminate\Support\Facades\Auth;
 
@@ -52,6 +53,8 @@ Route::get('/logoutCaas', [DatacaasController::class,'logout'])->name('logoutCaa
 Route::get('/ceklulus', [StatusController::class,'check'])->name('ceklulus')->middleware('auth:datacaas');
 
 Route::get('/shift', [PlotController::class,'showplot'])->name('shift')->middleware('auth:datacaas');
+
+Route::post('/PassCaas', [DatacaasController::class,'changepass'])->name('changepass')->middleware('auth:datacaas');
 
 //Admin Routes
 
@@ -115,10 +118,21 @@ Route::post('/SetData', function(Request $request){
 })->name('setdata')->middleware('auth:admins');
 
 Route::get('/ListShift', function () {
-    $shift = DB::table('shifts')
-                ->leftjoin('plots','shifts.id','=','plots.shifts_id')
-                ->leftjoin('datacaas','datacaas.id','=','plots.datacaas_id')
-                ->orderBy('shifts.kuota', 'desc')->get();
+    $shift = DB::table('shifts')->get();
+    // $shift = DB::table('plots')
+    //             ->leftjoin('datacaas','shifts.id','=','plots.shifts_id')
+    //             ->leftjoin('shifts','shifts.id','=','plots.shifts_id')
+    //             ->orderBy('shifts.kuota', 'desc')->get();
     $namatahap = Namatahap::all();
+    echo $shift;
     return view('shift',compact('shift','namatahap')); 
 })->name('shift')->middleware('auth:admins');
+
+Route::post('/addShift', function(Request $request){
+    Shift::create([
+        'hari'=>$request->hari,
+        'jam'=>$request->jam,
+        'kuota'=>$request->kuota,
+    ]);
+    return redirect('ListShift');
+})->name('addShift')->middleware('auth:admins');
