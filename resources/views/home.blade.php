@@ -10,6 +10,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('/css/login.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('/css/about.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('/css/home.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('/css/form-style.css') }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -17,6 +18,32 @@
     
 </head>
 <body>
+  <!--Password change section-->
+  <div class="modal fade" id="editpass" tabindex="-1" aria-labelledby="editpassLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-background">
+        <div class="p-4 text-center">
+          <span class="text-center rec-title">Ubah Password</span>
+        </div>
+        <div class="modal-body text-center">
+            <form method="POST" action="\PassCaas">
+                @csrf
+                @method('POST')
+            <div class="pb-2">
+                <input class="text-center text-area-fill" type="password" name="password" placeholder="Password" required minlength="6">
+            </div>
+            <div class="pb-2 text-center">
+              <span style="color: rgb(196, 5, 5);font-size:1.3rem;font-weight:600;" class="text-center">Pastikan kamu ingat password barumu</span>
+          </div>
+        </div>
+        <div class="modal-footer d-flex justify-content-center">
+          <button type="button" class="button-cancel" data-bs-dismiss="modal">Batal</button>
+          <button type="submit" class="button-submit">Ubah Password</button>
+        </div>
+        </form>
+      </div>
+    </div>
+  </div>
 <section id="nav-section">
     <nav class="navbar navbar-expand-lg dlor-navbar">
         <div class="container-fluid">
@@ -59,14 +86,23 @@
       </div>
       <div class="d-flex justify-content-center pt-3">
         <a style="text-decoration: none" href="\ceklulus">
-        <button class="home-button">
+        <button style="background-color: #67C0E0" class="home-button">
           <div class="menu-box-home">
           <div>
-            CEK KELULUSAN
+            Cek Kelulusan
           </div>
           </div>
         </button>
         </a>
+      </div>
+      <div class="d-flex justify-content-center pt-3">
+        <button style="background-color: #FF4E4E;color: whitesmoke;" class="home-button" data-bs-toggle="modal" data-bs-target="#editpass">
+          <div class="menu-box-home">
+          <div>
+            Ganti Password
+          </div>
+          </div>
+        </button>
       </div>
     </div>
 </section>
