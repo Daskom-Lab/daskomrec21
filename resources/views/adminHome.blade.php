@@ -163,7 +163,7 @@
           </div>
           <div class="col-lg">
             <div class="d-flex justify-content-center pt-3">
-                <a style="text-decoration: none" href="">
+                <a style="text-decoration: none" href="\ListShift">
                 <button style="background-color: #67C0E0" class="home-button">
                   <div class="menu-box-home">
                   <div>
