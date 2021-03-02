@@ -103,7 +103,7 @@
                 <tbody>
                     @foreach($shift as $p)
                     <tr>
-                        <td>{{ $p->hari }}</td>
+                        <td>{{ \Carbon\Carbon::parse($p->hari)->format('j F Y') }}</td>
                         <td>{{ $p->jam }}</td>
                         <td>{{ $p->kuota }}</td>
                         <td>
