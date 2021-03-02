@@ -23,13 +23,13 @@
   <!-- Modal -->
 <div class="modal-dialog modal-dialog-centered shadow">
       <div class="modal-background">
-        <div class="p-4 text-center">
+        <div class="p-4 pb-2 text-center">
             <span class="text-center rec-title">Pilih Jadwal</span>
         </div>
         <div class="modal-body  text-center">
             <form method="POST" action="createplot/{{$shift->id}}">
                 @csrf
-            <div class="pt-2 pb-2">
+            <div class="pb-2">
                 <input class="text-center text-area-fill" type="text" name="nama" value="{{ $caas->nama }}" disabled>
             </div>
             <div class="pt-2 pb-2">
@@ -43,13 +43,28 @@
                 <br>
                 <span style="color: black;font-weight:500;font-size:25px;">Waktu : {{$shift->jam}}</span>
             </div>
+            @if($limit>0)
+            <div>
+                <span style="color: red;font-weight:600;font-size:25px;">Sisa Kuota : {{$limit}}</span>
+            </div>
+            @else
+            <div>
+                <span style="color: red;font-weight:700;font-size:25px;">Kuota untuk plot ini sudah full, silahkan cari jadwal lain</span>
+            </div>
+            @endif
         </div>
+        @if($limit>0)
         <div class="modal-footer d-flex justify-content-center">
             <a href="/listplot"><button type="button" class="button-cancel" data-bs-dismiss="modal">Batal</button></a>
-            <button type="submit" class="button-submit">Update</button>
+            <button type="submit" class="button-submit">Pilih</button>
+            </div>
+        @else
+        <div class="modal-footer d-flex justify-content-center">
+            <a href="/listplot"><button type="button" class="button-cancel" data-bs-dismiss="modal">Kembali</button></a>
+            </div>
+        @endif
           </div>
         </form>
       </div>
-    </div>
 </body>
 </html>
