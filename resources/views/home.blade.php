@@ -61,24 +61,29 @@
 <section id="main-nim">
     <div class="container p-5">
       <div class="d-flex justify-content-center">
-        <div class="checker-box">
+        <div style="background-color: #FFB936" class="checker-box">
           <div class="text-center text-nim-head">
             <span>Daskom Choose You 2021</span>
           </div>
           <div class="text-center pt-3 pb-3">
             <div>
-                <span class="Welcome-text">
-                Biodata:
-                </span>
-            </div>
-            <div>
-              <span class="Welcome-text">
-              {{$nama}}
+              <span style="font-weight: 600" class="Welcome-text">
+              NAMA : {{$caas->nama}}
               </span>
           </div>
           <div>
             <span style="font-weight: 700" class="Welcome-text">
-              {{$nim}}
+              NIM : {{$caas->nim}}
+            </span>
+          </div>
+          <div class="pt-4">
+            <span style="font-weight: 600;font-style:italic;color:#197c8c" class="Welcome-text">
+              #LoopingForever
+            </span>
+          </div>
+          <div class="pt-2">
+            <span style="font-weight: 600;font-style:italic;color:#197c8c" class="Welcome-text">
+              #StartYourJourneyTakeYourGoldey
             </span>
           </div>
           </div>
@@ -95,6 +100,20 @@
         </button>
         </a>
       </div>
+      @if($plotactive->isPlotActive==1)
+      <div class="d-flex justify-content-center pt-3">
+        <a style="text-decoration: none" href="\listplot">
+        <button style="background-color: #4FF569" class="home-button">
+          <div class="menu-box-home">
+          <div>
+            Lihat Jadwal Kamu
+          </div>
+          </div>
+        </button>
+        </a>
+      </div>
+      @else
+      @endif
       <div class="d-flex justify-content-center pt-3">
         <button style="background-color: #FF4E4E;color: whitesmoke;" class="home-button" data-bs-toggle="modal" data-bs-target="#editpass">
           <div class="menu-box-home">
