@@ -39,7 +39,7 @@
                 <input class="text-center text-area-fill" type="email" name="email" placeholder="Email" value="{{ $caas->email }}" disabled>
             </div>
             <div>
-                <span style="color: black;font-weight:500;font-size:25px;">Tanggal : {{$shift->hari}}</span>
+                <span style="color: black;font-weight:500;font-size:25px;">Tanggal : {{\Carbon\Carbon::parse($shift->hari)->format('j F Y')}}</span>
                 <br>
                 <span style="color: black;font-weight:500;font-size:25px;">Waktu : {{$shift->jam}}</span>
             </div>

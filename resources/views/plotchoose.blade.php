@@ -74,7 +74,7 @@
                 <tbody>
                     @foreach($shift as $p)
                     <tr>
-                        <td>{{ $p->hari }}</td>
+                        <td>{{ \Carbon\Carbon::parse($p->hari)->format('j F Y') }}</td>
                         <td>{{ $p->jam }}</td>
                         <td>
                             <a href="takeplot/{{ $p->id }}"><button style="font-size: 1rem" class="button-submit-find">CEK SLOT</button></a>            
@@ -96,7 +96,7 @@
                 <span style="color: red;font-size:20px;font-weight:700;">Kamu sudah memilih jadwal rekrutmen, jadwal tidak dapat diubah lagi ya</span>
             </div>
             <div class="pt-2">
-                <span style="color: black;font-size:30px;font-weight:700;">Tanggal : {{$plots->hari}}</span>
+                <span style="color: black;font-size:30px;font-weight:700;">Tanggal : {{\Carbon\Carbon::parse($plots->hari)->format('j F Y')}}</span>
             </div>
             <div class="pt-3">
                 <span style="color: black;font-size:30px;font-weight:700;">Jam : {{$plots->jam}}</span>
