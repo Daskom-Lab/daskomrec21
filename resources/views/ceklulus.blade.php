@@ -24,7 +24,7 @@
           <div class="dlor-navright" id="dlor-toggler">
             <ul class="navbar-nav">
               <li class="nav-item">
-                  <a class="nav-link text-center" href="/home" tabindex="-1" aria-disabled="true"><img src="{{ asset('/assets/back-icon.png') }}" alt="icon" width="40px" height="40px"></a>
+                <a style="font-weight: 600;" class="nav-link text-center" href="/logoutCaas" tabindex="-1" aria-disabled="true">LOGOUT</a>
               </li>
           </ul>
             </ul>
@@ -36,38 +36,44 @@
   @if($Active==1)
     <div class="container p-5">
       <div class="d-flex justify-content-center">
-        <div class="checker-box">
+        <div style="background-color:#FFB936" class="checker-box pb-5">
           <div class="text-center text-nim-head">
             <span>Apakah kamu lulus Tahap {{ $namatahap }}?</span>  
           </div>
           <div class="text-center pt-3 pb-3">
             <div>
-              <span class="Welcome-text">
-              {{$nama}}
+              <span style="font-weight: 600" class="Welcome-text">
+              Nama : {{$nama}}
               </span>
           </div>
           <div>
             <span style="font-weight: 700" class="Welcome-text">
-              {{$nim}}
+              NIM : {{$nim}}
             </span>
           </div>
           @if($isLolos==1 && $urut_tahap==$current_tahap)
-          <div>
+          <div class="pt-4">
             <span style="font-size:28px;font-weight: 700;color:green;" class="Welcome-text">
               {{$lulustext}}
             </span>
           </div>
           <div>
             @if($linktext!=NULL)
-            <a href="{{$linktext}}" target="_blank">
-              <span style="font-size:28px;font-weight: 700;color:blue;" class="Welcome-text">
-              LINK
-            </span>
-            </a>
+            <div class="d-flex justify-content-center pt-3">
+              <a style="text-decoration: none" href="{{$linktext}}" target="_blank">
+              <button style="background-color: #89ff90;color: black;border-radius:40px"  class="home-button">
+                <div class="menu-box-home">
+                <div>
+                  CLICK THIS LINK
+                </div>
+                </div>
+              </button>
+              </a>
+            </div>
             @endif
           </div>
           @else
-          <div>
+          <div class="pt-3">
             <span style="font-weight: 700;color:red;" class="Welcome-text">
               {{$failedtext}}
             </span>
@@ -76,17 +82,20 @@
           </div>
         </div>
       </div>
+      @if($isPlotActive==0 && $urut_tahap==$current_tahap && $isLolos==1)
       <div class="d-flex justify-content-center pt-3">
         <a style="text-decoration: none" href="\listplot">
-        <button  class="home-button">
+        <button style="background-color: #414953;color: whitesmoke;"  class="home-button">
           <div class="menu-box-home">
           <div>
-            ISI JADWAL REKRUTMEN
+            PILIH JADWAL
           </div>
           </div>
         </button>
         </a>
       </div>
+      @else
+      @endif
       <div class="d-flex justify-content-center pt-3">
         <a style="text-decoration: none" href="\home">
         <button style="background-color: #FF4E4E;color: whitesmoke;" class="home-button">
@@ -102,7 +111,7 @@
     @else
     <div class="container p-5">
       <div class="d-flex justify-content-center">
-        <div class="checker-box">
+        <div style="background-color: #FFB936" class="checker-box">
           <div class="text-center text-nim-head">
             <span>Daskom Choose You 2021</span>  
           </div>
