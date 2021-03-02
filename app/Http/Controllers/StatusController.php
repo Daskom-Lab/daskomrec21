@@ -25,6 +25,9 @@ class StatusController extends Controller
                 ->orderBy('statuses.tahaps_id', 'desc')->first();
         $statustahap = Statustahap::where('statustahaps.id',1)
                         ->leftjoin('namatahaps','statustahaps.current_tahap','=','namatahaps.id')->first();
+        $plotactive = Datacaas::where('datacaas.id',$id)
+                ->leftjoin('plotactives','datacaas.id','=','plotactives.datacaas_id')
+                ->first();
         return view('ceklulus',[
         'nama'=>$caas->nama,
         'isLolos'=>$caas->isLolos,
@@ -36,6 +39,7 @@ class StatusController extends Controller
         'lulustext'=>$message->lolostext,
         'failedtext'=>$message->notlolostext,
         'linktext'=>$message->linktext,
+        'isPlotActive'=>$plotactive->isPlotActive,
         ]);
     }
 }
