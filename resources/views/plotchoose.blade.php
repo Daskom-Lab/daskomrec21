@@ -27,7 +27,7 @@
           <div class="dlor-navright" id="dlor-toggler">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link text-center" href="/ceklulus" tabindex="-1" aria-disabled="true"><img src="{{ asset('/assets/back-icon.png') }}" alt="icon" width="40px" height="40px"></a>
+                    <a style="font-weight: 600;" class="nav-link text-center" href="/logoutCaas" tabindex="-1" aria-disabled="true">LOGOUT</a>
                 </li>
             </ul>
           </div>
@@ -36,8 +36,9 @@
 </section> 
 <section id="list-section">
 <div class="container pb-5">
+    @if($plotactive->isPlotActive==0)
     <div class="pt-5 d-flex justify-content-center">
-        <div class="checker-box">
+        <div style="background-color: #FFB936" class="checker-box">
           <div class="text-center text-nim-head">
             <span>PILIH JADWAL REKRUTMEN</span>
           </div>
@@ -52,6 +53,11 @@
         <div class="card-body">
             <div class="d-flex justify-content-center pb-4">
                 <div class="ms-2">
+                    <a href="/ceklulus"><button style="background-color:#FF4E4E;" type="button" class="button-submit-find">
+                    Kembali 
+                    </button></a>
+                    </div>
+                <div class="ms-2">
                 <a href="/listplot"><button type="button" class="button-submit-find">
                 Refresh 
                 </button></a>
@@ -62,7 +68,6 @@
                     <tr>
                         <th>Tanggal</th>
                         <th>Jam</th>
-                        <th>Kuota</th>
                         <th>OPSI</th>
                     </tr>
                 </thead>
@@ -71,9 +76,8 @@
                     <tr>
                         <td>{{ $p->hari }}</td>
                         <td>{{ $p->jam }}</td>
-                        <td>{{ $p->kuota }}</td>
                         <td>
-                            <a href="takeplot/{{ $p->id }}"><button style="font-size: 1rem" class="button-submit-find">PILIH</button></a>            
+                            <a href="takeplot/{{ $p->id }}"><button style="font-size: 1rem" class="button-submit-find">CEK SLOT</button></a>            
                         </td>
                     </tr>
                     @endforeach
@@ -81,6 +85,41 @@
             </table>
         </div>
     </div>
+    @else
+    <div class="pt-5 d-flex justify-content-center">
+        <div class="checker-box">
+          <div class="text-center text-nim-head">
+            <span>JADWAL REKRUTMEN KAMU</span>
+          </div>
+          <div class="text-center pt-3 pb-3">
+            <div class="pb-2">
+                <span style="color: red;font-size:20px;font-weight:700;">Kamu sudah memilih jadwal rekrutmen, jadwal tidak dapat diubah lagi ya</span>
+            </div>
+            <div class="pt-2">
+                <span style="color: black;font-size:30px;font-weight:700;">Tanggal : {{$plots->hari}}</span>
+            </div>
+            <div class="pt-3">
+                <span style="color: black;font-size:30px;font-weight:700;">Jam : {{$plots->jam}}</span>
+            </div>
+            <div class="pt-4 text-center text-nim-head">
+                <span style="color: rgb(5, 158, 5)">Semangat terus, pantau terus informasi di OA Line Rekrutmen ya</span>
+            </div>
+          </div>
+        </div>
+        
+    </div>
+    <div class="d-flex justify-content-center pt-3">
+        <a style="text-decoration: none" href="\home">
+        <button style="background-color: #FF4E4E;color: whitesmoke;" class="home-button">
+          <div class="menu-box-home">
+          <div>
+            KEMBALI
+          </div>
+          </div>
+        </button>
+        </a>
+      </div>
+    @endif
 </div>
 </section>
 </body>
