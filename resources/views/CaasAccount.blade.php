@@ -5,9 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Daskom Choose You</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('/assets/favicon/apple-touch-icon.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('/assets/favicon/favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('/assets/favicon/favicon-16x16.png') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('/css/navbar-ex-admin.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('/css/footer.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('/css/login.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('/css/admin-main.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('/css/about.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('/css/home.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('/css/form-style.css') }}">
@@ -73,7 +76,7 @@
           <div class="dlor-navright" id="dlor-toggler">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link text-center" href="/adminHome" tabindex="-1" aria-disabled="true"><img src="{{ asset('/assets/back-icon.png') }}" alt="icon" width="40px" height="40px"></a>
+                    <a class="nav-link text-center" href="/adminHome" tabindex="-1" aria-disabled="true"><img src="{{ asset('/assets/back-icon-admin.png') }}" alt="icon" width="40px" height="40px"></a>
                 </li>
             </ul>
           </div>
@@ -87,36 +90,53 @@
           <div class="text-center text-nim-head">
             <span>Data Calon Asisten Daskom Choose You 2021</span>
           </div>
+          @if($countcaas!=0)
           <div class="text-center pt-3 pb-3">
-            <div>
+            <div class="d-flex justify-content-center">
                 <form action="/CariNIM" method="GET">
-                <input autocomplete="off" class="form-style-find" type="text" id="find" name="find" alt="find" placeholder="Cari NIM..."><button type="submit" class="button-submit-find ms-1">CARI</button>
+                  @csrf
+                <div><input autocomplete="off" class="form-style-find" type="text" id="find" name="find" alt="find" placeholder="Cari NIM..."></div>
+                <div class="pt-2"><button type="submit" class="button-submit-find ms-1">CARI</button></div>
                 </form>
               </div>
+          </div>
+          @else
+          @endif
+          <div class="text-center">
+            <span style="color:rgb(49, 49, 49);font-weight:700;font-size:28px">Total CaAs : {{$countcaas}}</span>
+          </div>
+          <div class="text-center">
+            <span style="color:rgb(19, 133, 19);font-weight:700;font-size:28px">Total Lolos : {{$countcaaslolos}}</span>
+          </div>
+          <div class="text-center pb-3">
+            <span style="color:rgb(241, 41, 41);font-weight:700;font-size:28px">Total Tidak Lolos : {{$countcaasnotlolos}}</span>
           </div>
         </div>
       </div>
     <div class="p-3">
         <div class="card-body">
             <div class="d-flex justify-content-center pb-4">
+              <div class="d-flex text-center">
                 <div>
                     <button type="button" class="button-submit-find" data-bs-toggle="modal" data-bs-target="#CaasInput">Input Akun CaAs</button>
                 </div>
+                @if($countcaas!=0)
                 <div class="ms-2">
                 <a href="/CaasAccount"><button type="button" class="button-submit-find">
                 Refresh 
                 </button></a>
                 </div>
-                <div style="float: right">
-
-                </div>
+              </div>
+                @else
+                @endif
             </div>
+            @if($countcaas!=0)
             <table class="table table-bordered table-hover table-striped text-center align-middle">
                 <thead>
                     <tr>
-                        <th>Nama</th>
+                        <th class="mobile-hide">Nama</th>
                         <th>NIM</th>
-                        <th>Email</th>
+                        <th class="mobile-hide">Email</th>
                         <th>Status</th>
                         <th>Tahap</th>
                         <th>OPSI</th>
@@ -125,9 +145,9 @@
                 <tbody>
                     @foreach($caas as $p)
                     <tr>
-                        <td>{{ $p->nama }}</td>
+                        <td class="mobile-hide">{{ $p->nama }}</td>
                         <td style="color:black;font-weight:700;background-color:#f1b442">{{ $p->nim }}</td>
-                        <td>{{ $p->email }}</td>
+                        <td class="mobile-hide">{{ $p->email }}</td>
                         @if($p->isLolos==1)
                         <td style="color:rgb(20, 182, 20);font-weight:700">Lolos</td>
                         @else
@@ -159,6 +179,11 @@
                     @endforeach
                 </tbody>
             </table>
+            @else
+            <div class="text-center text-nim-head">
+                <span>Belum ada Data Caas yang diinput</span>
+              </div>
+            @endif
         </div>
     </div>
 </div>

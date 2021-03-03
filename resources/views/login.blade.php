@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Daskom Choose You</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('/assets/favicon/apple-touch-icon.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('/assets/favicon/favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('/assets/favicon/favicon-16x16.png') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('/css/navbar-ex.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('/css/footer.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('/css/login.css') }}">
@@ -23,7 +26,7 @@
           <div class="dlor-navright" id="dlor-toggler">
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a class="nav-link text-center" href="/" tabindex="-1" aria-disabled="true"><img src="{{ asset('/assets/back-icon.png') }}" alt="icon" width="40px" height="40px"></a>
+                <a class="nav-link text-center" href="/" tabindex="-1" aria-disabled="true"><img class="hover-white" src="{{ asset('/assets/back-icon.png') }}" alt="icon" width="40px" height="40px"></a>
               </li>
             </ul>
           </div>
@@ -31,7 +34,7 @@
       </nav>
 </section>
 <section id="main-nim">
-    <div class="container p-5">
+    <div class="container p-5 pt-2 pb-2">
       <div class="d-flex justify-content-center">
         <div class="checker-box">
           <div class="text-center text-nim-head">
@@ -56,7 +59,7 @@
     </div>
 </section>
 <section id="daskom-section">
-  <div class="container p-lg-5">
+  <div class="container p-lg-5 pad-top-about">
     <div class="row pt-sm-5 pb-5">
       <div class="col-lg">
         <div class="d-flex justify-content-center">
@@ -64,19 +67,19 @@
         </div>
       </div>
       <div class="col-lg">
-        <div class="c-text-about-p justify-content-center pt-lg-4 pt-sm-4">
+        <div class="c-text-about-p justify-content-center pt-lg-5 pt-sm-4">
           <div class="c-text-about-1">
-            <span class="text-about">Lab Dasar Komputer merupakan laboratorium di bawah naungan Fakultas Teknik Elektro yang memfasilitasi semua mahasiswa tingkat satu S1 Teknik Fisika, S1 Teknik Telekomunikasi, dan S1 Teknik Elektro untuk lebih memahami dan dapat mengaplikasikan secara langsung dasar dasar algoritma dan pemrograman menggunakan bahasa C </span>
+            <span class="text-about">Lab Dasar Komputer merupakan laboratorium di bawah naungan Fakultas Teknik Elektro yang memfasilitasi semua mahasiswa tingkat satu S1 Teknik Fisika, S1 Teknik Telekomunikasi, dan S1 Teknik Elektro untuk lebih memahami dan dapat mengaplikasikan secara langsung dasar dasar algoritma dan pemrograman menggunakan bahasa C.</span>
           </div>
-          <div class="d-flex pt-2">
+          <div class="d-flex pt-3">
             <div>
-              <a href="https://www.instagram.com/telu.daskom/" target="_blank"><img class="social-icon" src="{{ asset('/assets/instagram.png') }}" alt="ig"></a>
+              <a href="https://www.instagram.com/telu.daskom/" target="_blank"><img class="social-icon mt-2" src="{{ asset('/assets/instagram.png') }}" alt="ig"></a>
             </div>
             <div>
-              <a href="https://timeline.line.me/user/_dbhqzOurXL1CbjNxhYBPzSbYBVWZFDnFa5_ashs?utm_medium=windows&utm_source=desktop&utm_campaign=OA_Profile" target="_blank"><img class="social-icon" src="{{ asset('/assets/line.png') }}" alt="ig"></a>
+              <a href="https://timeline.line.me/user/_dbhqzOurXL1CbjNxhYBPzSbYBVWZFDnFa5_ashs?utm_medium=windows&utm_source=desktop&utm_campaign=OA_Profile" target="_blank"><img class="social-icon mt-2" src="{{ asset('/assets/line.png') }}" alt="ig"></a>
             </div>
             <div>
-              <a href="https://www.youtube.com/channel/UCgCAhA5CK3tG3pofQnn-VEA" target="_blank"><img class="social-icon" src="{{ asset('/assets/youtube.png') }}" alt="ig"></a>
+              <a href="https://www.youtube.com/channel/UCgCAhA5CK3tG3pofQnn-VEA" target="_blank"><img class="social-icon mt-2" src="{{ asset('/assets/youtube.png') }}" alt="ig"></a>
             </div>
           </div>
         </div>
@@ -88,7 +91,7 @@
 <footer class="container">
 <div class="d-flex justify-content-center">
   <div>
-    <span>Created By Chef of Daskomlab</span>
+    <span style="font-size: 13px">Created By Chef of Daskomlab</span>
   </div>
 </div>
 </footer>

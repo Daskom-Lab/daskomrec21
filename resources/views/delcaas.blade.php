@@ -5,9 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Daskom Choose You 2021</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('/assets/favicon/apple-touch-icon.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('/assets/favicon/favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('/assets/favicon/favicon-16x16.png') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('/css/navbar-ex-admin.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('/css/footer.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('/css/login.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('/css/admin-main.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('/css/about.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('/css/home.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('/css/form-style.css') }}">

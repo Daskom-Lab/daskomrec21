@@ -26,40 +26,31 @@
   <!-- Modal -->
 <div class="modal-dialog modal-dialog-centered shadow">
       <div class="modal-background">
-        <div class="p-4 text-center">
-            <span class="text-center rec-title">Edit Status Akun CaAs</span>
+        <div class="p-4 pb-2 text-center">
+            <span class="text-center rec-title">Edit Shift</span>
         </div>
         <div class="modal-body  text-center">
-            <form method="POST" action="/UpdateCaasAccount/{{ $datacaas_id }}">
+            <form method="POST" action="/delShift/{{ $id }}">
                 @csrf
-            <div class="pt-2 pb-2">
-                <input class="text-center text-area-fill" type="text" name="nama" value="{{ $nama }}" disabled>
-            </div>
-            <div class="pt-2 pb-2">
-                <input class="text-center text-area-fill" type="text" name="nim" placeholder="NIM" value="{{ $nim }}" disabled>
-            </div>
-            <div class="pt-2 pb-2">
-                <input class="text-center text-area-fill" type="email" name="email" placeholder="Email" value="{{ $email }}" disabled>
-            </div>
-            <div>
-                <label for="isLolos">
-                    <input class="form-check-input" style="padding: 2px" type="radio" name="isLolos" value="0" id="isLolos" required> Tidak Lolos
-                    <input class="form-check-input" style="padding: 2px" type="radio" name="isLolos" value="1" id="isLolos" required> Lolos
-                </label>
-            </div>
-            <div class="pt-2">
-                <label class="pb-1" for="urut_tahap">Tahap:</label>
-                    <select class="form-select-costum" id="urut_tahap" name="urut_tahap" value="{{ $urut_tahap }}">
-                     @foreach($namatahap as $a)
-                    <option name="urut_tahap" value="{{$a->id}}">{{$a->nama}}</option>
-                    @endforeach
-                    </select>
-            </div>
+                <label class="pb-2 text-area-set">Shift:</label>
+                <input class="text-center text-area-fill" type="text" value="{{$namashift}}" disabled>
+                <div class="pt-2 pb-2">
+                    <label style="display: block" class="text-area-set">Tanggal :
+                    <input class="text-center text-area-fill" type="text" placeholder="tanggal" value="{{\Carbon\Carbon::parse($hari)->format('j F Y')}}" disabled>
+                </div>
+                <div class="pt-2 pb-2">
+                    <label style="display: block" class="text-area-set">Waktu :
+                    <input class="text-center text-area-fill" type="text" value="{{$jam_start}} - {{$jam_end}}" placeholder="jam" disabled>
+                </div>
+                <div class="pt-2 pb-2">
+                  <label style="display: block" class="text-area-set" >Kuota :  
+                  <input class="text-center text-area-fill" type="text" value="{{$kuota}}" placeholder="Kuota" disabled>
+                </div>
             
         </div>
         <div class="modal-footer d-flex justify-content-center">
-            <a href="/CaasAccount"><button type="button" class="button-cancel" data-bs-dismiss="modal">Batal</button></a>
-            <button type="submit" class="button-submit">Update</button>
+            <a href="/ListShift"><button type="button" class="button-submit" data-bs-dismiss="modal">Batal</button></a>
+            <button type="submit" class="button-cancel">Hapus</button>
           </div>
         </form>
       </div>

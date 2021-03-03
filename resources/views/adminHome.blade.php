@@ -5,9 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Daskom Choose You</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('/assets/favicon/apple-touch-icon.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('/assets/favicon/favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('/assets/favicon/favicon-16x16.png') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('/css/navbar-ex-admin.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('/css/footer.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('/css/login.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('/css/admin-main.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('/css/about.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('/css/home.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('/css/form-style.css') }}">
@@ -48,7 +51,7 @@
   <div class="modal fade" id="setdata" tabindex="-1" aria-labelledby="setdataLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-background">
-        <div class="p-4 text-center">
+        <div class="p-4 pb-1 text-center">
           <span class="text-center rec-title">Set Pengumuman</span>
         </div>
         <div class="modal-body  text-center">
@@ -71,6 +74,12 @@
               <label class="text-area-set" for="isActiveCek">Pengumuman : 
                 <input class="form-check-input" type="radio" name="isActiveCek" value="0" id="isActiveCek" required><span> Disable</span>
                 <input class="form-check-input" style="padding: 2px" type="radio" name="isActiveCek" value="1" id="isActiveCek" required><span> Enable</span>
+            </label>
+            </div>
+            <div class="pt-1 pb-2">
+              <label class="text-area-set" for="isActiveCek">Plot Active : 
+                <input class="form-check-input" type="radio" name="isPlotRun" value="0" id="isActiveCek" required><span> Disable</span>
+                <input class="form-check-input" style="padding: 2px" type="radio" name="isPlotRun" value="1" id="isActiveCek" required><span> Enable</span>
             </label>
             </div>
           <div class="pt-2">
@@ -108,7 +117,7 @@
       </nav>
 </section>
 <section id="main-nim">
-    <div class="container p-5">
+    <div class="container p-3">
       <div class="d-flex justify-content-center">
         <div class="checker-box">
           <div class="text-center text-nim-head">
@@ -128,9 +137,18 @@
           <div>
             <span class="Welcome-text">
               @if($pengumuman->isActiveCek==1)
-              Pengumuman : Aktif
+              Pengumuman : <span style="color: green;font-weight:600">Aktif</span>
               @else
-              Pengumuman : Tidak Aktif
+              Pengumuman : <span style="color: red;font-weight:600">Tidak Aktif</span>
+              @endif
+            </span>
+          </div>
+          <div>
+            <span class="Welcome-text">
+              @if($pengumuman->isPlotRun==1)
+              Isi Jadwal : <span style="color: green;font-weight:600">Aktif</span>
+              @else
+              Isi Jadwal : <span style="color: red;font-weight:600">Tidak Aktif</span>
               @endif
             </span>
           </div>
@@ -147,11 +165,11 @@
           </div>
         </div>
       </div>
-      <div class="row pt-5">
+      <div class="row pt-lg-5">
           <div class="col-lg">
             <div class="d-flex justify-content-center pt-3">
                 <a style="text-decoration: none" href="/CaasAccount">
-                <button style="background-color: #67C0E0" class="home-button">
+                <button style="background-color: #404040;color: whitesmoke;" class="home-button">
                   <div class="menu-box-home">
                   <div>
                     Akun CaAs
@@ -164,7 +182,7 @@
           <div class="col-lg">
             <div class="d-flex justify-content-center pt-3">
                 <a style="text-decoration: none" href="\ListShift">
-                <button style="background-color: #67C0E0" class="home-button">
+                <button style="background-color: #404040;color: whitesmoke;" class="home-button">
                   <div class="menu-box-home">
                   <div>
                     SHIFT
@@ -176,7 +194,7 @@
           </div>
           <div class="col-lg">
             <div class="d-flex justify-content-center pt-3">
-                <button style="background-color: #67C0E0" class="home-button" data-bs-toggle="modal" data-bs-target="#setdata">
+                <button style="background-color: #404040;color: whitesmoke;" class="home-button" data-bs-toggle="modal" data-bs-target="#setdata">
                   <div class="menu-box-home">
                   <div>
                     SET CekLulus
@@ -187,7 +205,7 @@
           </div>
           <div class="col-lg">
             <div class="d-flex justify-content-center pt-3">
-                <button style="background-color: #67C0E0" class="home-button" data-bs-toggle="modal" data-bs-target="#editpass">
+                <button style="background-color: #404040;color: whitesmoke;" class="home-button" data-bs-toggle="modal" data-bs-target="#editpass">
                   <div class="menu-box-home">
                   <div>
                     Ubah Password

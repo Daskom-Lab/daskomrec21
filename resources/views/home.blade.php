@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Daskom Choose You</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('/assets/favicon/apple-touch-icon.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('/assets/favicon/favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('/assets/favicon/favicon-16x16.png') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('/css/navbar-ex.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('/css/footer.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('/css/login.css') }}">
@@ -22,7 +25,7 @@
   <div class="modal fade" id="editpass" tabindex="-1" aria-labelledby="editpassLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-background">
-        <div class="p-4 text-center">
+        <div class="p-4 pb-1 text-center">
           <span class="text-center rec-title">Ubah Password</span>
         </div>
         <div class="modal-body text-center">
@@ -68,7 +71,7 @@
           <div class="text-center pt-3 pb-3">
             <div>
               <span style="font-weight: 600" class="Welcome-text">
-              NAMA : {{$caas->nama}}
+              {{$caas->nama}}
               </span>
           </div>
           <div>
@@ -77,12 +80,12 @@
             </span>
           </div>
           <div class="pt-4">
-            <span style="font-weight: 600;font-style:italic;color:#197c8c" class="Welcome-text">
+            <span class="tagline-home">
               #LoopingForever
             </span>
           </div>
           <div class="pt-2">
-            <span style="font-weight: 600;font-style:italic;color:#197c8c" class="Welcome-text">
+            <span class="tagline-home">
               #StartYourJourneyTakeYourGoldey
             </span>
           </div>

@@ -5,7 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Daskom Choose You</title>
-    <link rel="stylesheet" type="text/css" href="{{ asset('/css/navbar.css') }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('/assets/favicon/apple-touch-icon.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('/assets/favicon/favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('/assets/favicon/favicon-16x16.png') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('/css/navbar-ex.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('/css/footer.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('/css/login.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('/css/about.css') }}">
@@ -44,7 +47,7 @@
           </div>
           <div class="text-center pt-3 pb-3">
             <div>
-                <span style="color: red;font-size:25px;font-weight:700;">PERHATIAN, SETELAH PILIH JADWAL, TIDAK BISA UBAH JADWAL LAGI, TERIMA KASIH</span>
+                <span style="color: red;font-size:20px;font-weight:700;">PERHATIAN, SETELAH PILIH JADWAL, TIDAK BISA UBAH JADWAL LAGI, TERIMA KASIH</span>
               </div>
           </div>
         </div>
@@ -66,18 +69,23 @@
             <table class="table table-bordered table-hover table-striped text-center align-middle">
                 <thead>
                     <tr>
-                        <th>Tanggal</th>
-                        <th>Jam</th>
-                        <th>OPSI</th>
+                      <th class="mobile-hide">No.</th>
+                      <th>SHIFT</th>
+                      <th>Tanggal</th>
+                      <th>Waktu</th>
+                      <th>OPSI</th>
                     </tr>
                 </thead>
                 <tbody>
+                  <?php $no = 1; ?>
                     @foreach($shift as $p)
                     <tr>
-                        <td>{{ \Carbon\Carbon::parse($p->hari)->format('j F Y') }}</td>
-                        <td>{{ $p->jam }}</td>
+                      <td class="mobile-hide">{{ $no++ }}</td>
+                      <td>{{ $p->namashift }}</td>
+                      <td>{{ \Carbon\Carbon::parse($p->hari)->format('j F Y') }} WIB</td>
+                      <td>{{ $p->jam_start }} - {{ $p->jam_end }} WIB</td>
                         <td>
-                            <a href="takeplot/{{ $p->id }}"><button style="font-size: 1rem" class="button-submit-find">CEK SLOT</button></a>            
+                            <a href="takeplot/{{ $p->id }}"><button style="font-size: 0.9rem" class="button-submit-find">CEK SLOT</button></a>            
                         </td>
                     </tr>
                     @endforeach
@@ -86,29 +94,40 @@
         </div>
     </div>
     @else
-    <div class="pt-5 d-flex justify-content-center">
-        <div class="checker-box">
+    <div class="pt-5 pb-3 d-flex justify-content-center">
+        <div style="background-color: #FFC844" class="checker-box">
           <div class="text-center text-nim-head">
-            <span>JADWAL REKRUTMEN KAMU</span>
+            <span>YOUR RECRUITMENT SCHEDULE</span>
           </div>
           <div class="text-center pt-3 pb-3">
             <div class="pb-2">
-                <span style="color: red;font-size:20px;font-weight:700;">Kamu sudah memilih jadwal rekrutmen, jadwal tidak dapat diubah lagi ya</span>
+                <span style="color: red;font-size:20px;font-weight:700;">Kamu sudah memilih jadwal rekrutmen & jadwal tidak dapat diubah lagi, terima kasih</span>
             </div>
             <div class="pt-2">
-                <span style="color: black;font-size:30px;font-weight:700;">Tanggal : {{\Carbon\Carbon::parse($plots->hari)->format('j F Y')}}</span>
+              <span class="Welcome-text">{{$plots->namashift}}</span>
+          </div>
+            <div class="pt-2">
+                <span class="Welcome-text">Date : {{\Carbon\Carbon::parse($plots->hari)->format('j F Y')}}</span>
             </div>
             <div class="pt-3">
-                <span style="color: black;font-size:30px;font-weight:700;">Jam : {{$plots->jam}}</span>
+                <span class="Welcome-text">Time : {{$plots->jam_start}} - {{$plots->jam_end}} WIB</span>
             </div>
             <div class="pt-4 text-center text-nim-head">
-                <span style="color: rgb(5, 158, 5)">Semangat terus, pantau terus informasi di OA Line Rekrutmen ya</span>
+                <span style="color: rgb(5, 158, 5)">Semangat terus dan pantau terus informasi di OA Line Recruitment Daskom Laboratory</span>
+            </div>
+            <div class="d-flex justify-content-center pt-2" >
+              <div>
+                <a href="https://www.instagram.com/telu.daskom/" target="_blank"><img class="social-icon m-0" src="{{ asset('/assets/instagram.png') }}" alt="ig"></a>
+              </div>
+              <div class="">
+                <a href="https://timeline.line.me/user/_dbhqzOurXL1CbjNxhYBPzSbYBVWZFDnFa5_ashs?utm_medium=windows&utm_source=desktop&utm_campaign=OA_Profile" target="_blank"><img class="social-icon m-0" src="{{ asset('/assets/line.png') }}" alt="ig"></a>
+              </div>
             </div>
           </div>
         </div>
         
     </div>
-    <div class="d-flex justify-content-center pt-3">
+    <div class="d-flex justify-content-center pb-2">
         <a style="text-decoration: none" href="\home">
         <button style="background-color: #FF4E4E;color: whitesmoke;" class="home-button">
           <div class="menu-box-home">

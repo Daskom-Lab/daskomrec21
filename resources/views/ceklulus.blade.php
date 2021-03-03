@@ -5,11 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Daskom Choose You</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('/assets/favicon/apple-touch-icon.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('/assets/favicon/favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('/assets/favicon/favicon-16x16.png') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('/css/navbar-ex.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('/css/footer.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('/css/login.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('/css/about.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('/css/home.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('/css/form-style.css') }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -36,14 +40,14 @@
   @if($Active==1)
     <div class="container p-5">
       <div class="d-flex justify-content-center">
-        <div style="background-color:#FFB936" class="checker-box pb-5">
+        <div style="background-color: #FFC844" class="checker-box pb-5">
           <div class="text-center text-nim-head">
             <span>Apakah kamu lulus Tahap {{ $namatahap }}?</span>  
           </div>
           <div class="text-center pt-3 pb-3">
             <div>
               <span style="font-weight: 600" class="Welcome-text">
-              Nama : {{$nama}}
+              {{$nama}}
               </span>
           </div>
           <div>
@@ -53,7 +57,7 @@
           </div>
           @if($isLolos==1 && $urut_tahap==$current_tahap)
           <div class="pt-4">
-            <span style="font-size:28px;font-weight: 700;color:green;" class="Welcome-text">
+            <span style="font-size:25px;font-weight: 700;color:green;" class="Welcome-text">
               {{$lulustext}}
             </span>
           </div>
@@ -61,8 +65,8 @@
             @if($linktext!=NULL)
             <div class="d-flex justify-content-center pt-3">
               <a style="text-decoration: none" href="{{$linktext}}" target="_blank">
-              <button style="background-color: #89ff90;color: black;border-radius:40px"  class="home-button">
-                <div class="menu-box-home">
+              <button style="background-color: #89ff90;color: black;border-radius:20px"  class="button-submit">
+                <div>
                 <div>
                   CLICK THIS LINK
                 </div>
@@ -82,7 +86,7 @@
           </div>
         </div>
       </div>
-      @if($isPlotActive==0 && $urut_tahap==$current_tahap && $isLolos==1)
+      @if($isPlotActive==0 && $urut_tahap==$current_tahap && $isLolos==1 && $isPlotRun==1)
       <div class="d-flex justify-content-center pt-3">
         <a style="text-decoration: none" href="\listplot">
         <button style="background-color: #414953;color: whitesmoke;"  class="home-button">
@@ -117,16 +121,16 @@
           </div>
           <div class="text-center pt-3 pb-3">
           <div class="pb-2">
-            <span style="font-size:30px;font-weight: 400;color:black;" class="Welcome-text">
-              Nungguin pengumuman ya? hehehe ditunggu aja ya, kalian bakal dikasitau via instagram dan OA line untuk cek disini
+            <span style="font-size:20px;font-weight: 400;color:black;" class="Welcome-text">
+              Belum ada Pengumuman nih, pantau terus ya Official Account Recruitment Daskom Laboratory, Semangat!
             </span>
           </div>
           <div class="d-flex justify-content-center">
-            <div>
-              <a href="https://www.instagram.com/telu.daskom/" target="_blank"><img class="social-icon" src="{{ asset('/assets/instagram.png') }}" alt="ig"></a>
+            <div >
+              <a href="https://www.instagram.com/telu.daskom/" target="_blank"><img class="social-icon m-0" src="{{ asset('/assets/instagram.png') }}" alt="ig"></a>
             </div>
             <div>
-              <a href="https://timeline.line.me/user/_dbhqzOurXL1CbjNxhYBPzSbYBVWZFDnFa5_ashs?utm_medium=windows&utm_source=desktop&utm_campaign=OA_Profile" target="_blank"><img class="social-icon" src="{{ asset('/assets/line.png') }}" alt="ig"></a>
+              <a href="https://timeline.line.me/user/_dbhqzOurXL1CbjNxhYBPzSbYBVWZFDnFa5_ashs?utm_medium=windows&utm_source=desktop&utm_campaign=OA_Profile" target="_blank"><img class="social-icon m-0" src="{{ asset('/assets/line.png') }}" alt="ig"></a>
             </div>
           </div>
           </div>
