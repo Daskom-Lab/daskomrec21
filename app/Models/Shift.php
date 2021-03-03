@@ -9,6 +9,6 @@ class Shift extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'hari', 'kuota' , 'jam',
+        'hari', 'kuota' , 'jam_start','jam_end','namashift',
     ];
 }
