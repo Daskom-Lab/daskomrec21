@@ -16,6 +16,7 @@ class CreateCeklulusesTable extends Migration
         Schema::create('cekluluses', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->boolean('isActiveCek');
+            $table->boolean('isPlotRun');
             $table->timestamps();
         });
     }
