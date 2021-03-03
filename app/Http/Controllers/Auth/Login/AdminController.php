@@ -3,10 +3,19 @@
 namespace App\Http\Controllers\Auth\Login;
 
 use Illuminate\Support\Facades\Auth;
-use App\Models\Admin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Route;
+use App\Models\Admin;
+use App\Models\Status;
+use App\Models\Tahap;
+use App\Models\Statustahap;
+use App\Models\Namatahap;
+use App\Models\Ceklulus;
+use App\Models\Shift;
+use App\Models\Plot;
+use App\Models\Plotactive;
+use App\Models\Messageceklulus;
 use App\Http\Controllers\Controller;
 
 class AdminController extends Controller
@@ -53,4 +62,15 @@ class AdminController extends Controller
 		Auth::guard('admins')->logout();
 		return redirect('loginAdmin');
 	}
+
+	public function home(){
+		$id = Auth::id();
+		$admin = Admin::find($id);
+		$message = Messageceklulus::find(1);
+		$pengumuman = Ceklulus::find(1);
+		$namatahap = Namatahap::all();
+		$tahapactive = Statustahap::find(1);
+		return view('adminHome',compact('admin','message','pengumuman','namatahap','tahapactive'));
+	}
+	
 }

@@ -3,10 +3,16 @@
 namespace App\Http\Controllers\Auth\Login;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Datacaas;
+use App\Models\Admin;
 use App\Models\Status;
 use App\Models\Tahap;
 use App\Models\Statustahap;
 use App\Models\Namatahap;
+use App\Models\Ceklulus;
+use App\Models\Shift;
+use App\Models\Plot;
+use App\Models\Plotactive;
+use App\Models\Messageceklulus;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Route;
@@ -44,6 +50,28 @@ class DatacaasController extends Controller
 	public function logout() {
 		Auth::guard('datacaas')->logout();
 		return redirect('login');
+	}
+
+	public function home() {
+		$id = Auth::id();
+		$caas = Datacaas::find($id);
+		$plotactive = Datacaas::where('datacaas.id',$id)
+					->leftjoin('plotactives','datacaas.id','=','plotactives.datacaas_id')
+					->first();
+		return view('home',compact('caas','plotactive'));
+	}
+
+	public function caasAccount() {
+		$caas = Datacaas::leftjoin('statuses','datacaas.id','=','statuses.datacaas_id')
+					->leftjoin('tahaps','tahaps.id','=','statuses.tahaps_id')
+					->orderBy('tahaps.urut_tahap', 'desc')->get();
+		$namatahap = Namatahap::all();
+		$countcaas = Datacaas::count();
+		$countcaaslolos = Datacaas::leftjoin('statuses','datacaas.id','=','statuses.datacaas_id')
+					->leftjoin('tahaps','tahaps.id','=','statuses.tahaps_id')
+					->where('statuses.isLolos',1)->count();
+		$countcaasnotlolos = $countcaas-$countcaaslolos;
+		return view('CaasAccount',compact('caas','namatahap','countcaas','countcaaslolos','countcaasnotlolos')); 
 	}
 
 	public function add(Request $request){
@@ -110,7 +138,12 @@ class DatacaasController extends Controller
 				->leftjoin('tahaps','tahaps.id','=','statuses.tahaps_id')
 				->orderBy('statuses.tahaps_id', 'desc')->paginate();
 		$namatahap = Namatahap::get();
-		return view('CaasAccount',compact('caas','namatahap')); 
+		$countcaas = Datacaas::count();
+    	$countcaaslolos = Datacaas::leftjoin('statuses','datacaas.id','=','statuses.datacaas_id')
+                ->leftjoin('tahaps','tahaps.id','=','statuses.tahaps_id')
+                ->where('statuses.isLolos',1)->count();
+    	$countcaasnotlolos = $countcaas-$countcaaslolos;
+		return view('CaasAccount',compact('caas','namatahap','countcaas','countcaaslolos','countcaasnotlolos')); 
 	}
 
 	public function delconfirm($datacaas_id){

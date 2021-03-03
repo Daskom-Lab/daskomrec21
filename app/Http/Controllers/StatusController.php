@@ -36,10 +36,30 @@ class StatusController extends Controller
         'current_tahap'=>$statustahap->current_tahap,
         'namatahap'=>$statustahap->nama,
         'Active'=>$CekActive->isActiveCek,
+        'isPlotRun'=>$CekActive->isPlotRun,
         'lulustext'=>$message->lolostext,
         'failedtext'=>$message->notlolostext,
         'linktext'=>$message->linktext,
         'isPlotActive'=>$plotactive->isPlotActive,
         ]);
+    }
+
+    public function SetData(Request $request){
+        Messageceklulus::where('id',1)->update([
+            'id'=>1,
+            'lolostext'=>$request->lolostext,
+            'notlolostext'=>$request->notlolostext,
+            'linktext'=>$request->linktext,
+            ]);
+        Ceklulus::where('id',1)->update([
+            'id'=>1,
+            'isActiveCek'=>$request->isActiveCek,
+            'isPlotRun'=>$request->isPlotRun,
+            ]);
+        Statustahap::where('id',1)->update([
+            'id'=>1,
+            'current_tahap'=>$request->current_tahap,
+            ]);
+        return redirect('adminHome');
     }
 }

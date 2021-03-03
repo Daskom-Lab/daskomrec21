@@ -26,7 +26,7 @@ class ShiftController extends Controller
         return view('shift',compact('shift','namatahap','ceklulus','countshift'));
     }
 
-    public function addShift(){
+    public function addShift(Request $request){
         Shift::create([
             'namashift'=>$request->namashift,
             'hari'=>$request->hari,
@@ -89,15 +89,8 @@ class ShiftController extends Controller
         else return redirect('ListShift');
     }
 
-    public function ResultPlot(){
-        $shift = Shift::orderBy('hari','asc')->orderBy('jam_start','asc')->get();
-        $countshift = Shift::count();
-        $namatahap = Namatahap::all();
-        $ceklulus = Ceklulus::where('id',1)->first();
-        $caas = Datacaas::all();
-        $plot = PLot::leftjoin('shifts','shifts.id','=','plots.shifts_id')
-            ->leftjoin('datacaas','datacaas.id','=','plots.datacaas_id')->get();
-        return view('resultplot',compact('namatahap','ceklulus','countshift','shift','caas','plot'));
+    public function deleteAll(){
+        $shift = Shift::whereNotNull('id')->delete();
+        return redirect('ListShift');
     }
-
 }
