@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
             [
                 'id'=>1,
                 'isActiveCek'=>1,
+                'isPlotRun'=>1,
             ],
         ]);
         DB::table('messagecekluluses')->insert([
