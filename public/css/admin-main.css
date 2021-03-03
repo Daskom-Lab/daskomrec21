@@ -1,0 +1,138 @@
+#main-nim{
+    background-image: url('/assets/bck-1.png');
+    background-position:bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding-top: 50px;
+    padding-bottom: 80px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin: auto;
+}
+
+.mid-content{
+    margin: auto;
+}
+
+.checker-box {
+	background-color: #FFD17A;
+	width: 800px;
+	padding: 50px;
+	border-radius: 20px;
+	filter: drop-shadow(8px 8px 8px gray);
+}
+
+.text-nim-head{
+    font-size: 30px;
+    font-weight: 700;
+}
+
+.form-style{
+    border-radius: 15px;
+    font-size: 30px;
+    font-weight:600;
+    padding: 20px;
+    border-style:solid;
+    text-align: center;
+    background-color: antiquewhite;
+    transition: 0.5s;
+}
+.form-style:hover{
+    border-radius: 15px;
+    font-size: 30px;
+    color: antiquewhite;
+    font-weight:600;
+    padding: 20px;
+    border-style:solid;
+    text-align: center;
+    background-color: #FEB224;
+    transition: 0.5s;
+}
+
+.form-style-submit{
+    border-radius: 15px;
+    font-size: 30px;
+    font-weight:600;
+    padding: 15px;
+    border-style:solid;
+    text-align: center;
+    background-color: antiquewhite;
+    transition: 0.5s;
+}
+.form-style-submit:hover{
+    border-radius: 15px;
+    font-size: 30px;
+    color: aliceblue;
+    font-weight:600;
+    padding: 20px;
+    border-style:solid;
+    text-align: center;
+    background-color: rgb(58, 207, 58);
+    transition: 0.5s;
+}
+
+@media only screen and (max-width:576px){
+    .checker-box{
+        background-color: #FFD17A;
+        width: 330px;
+        padding: 30px;
+        border-radius: 20px;
+    }
+    .form-style{
+        border-radius: 15px;
+        font-size: 18px;
+        font-weight:600;
+        padding: 15px;
+        border-style:solid;
+        text-align: center;
+        background-color: antiquewhite;
+        transition: 0.5s;
+    }
+    .form-style-submit{
+        border-radius: 15px;
+        font-size: 18px;
+        font-weight:600;
+        padding: 15px;
+        border-style:solid;
+        text-align: center;
+        background-color: antiquewhite;
+        transition: 0.5s;
+    }
+    .form-style-submit:hover{
+        border-radius: 15px;
+        font-size: 16px;
+        color: aliceblue;
+        font-weight:600;
+        padding: 18px;
+        border-style:solid;
+        text-align: center;
+        background-color: rgb(58, 207, 58);
+        transition: 0.5s;
+    }
+    .form-style:hover{
+        border-radius: 15px;
+        font-size: 18px;
+        color: antiquewhite;
+        font-weight:600;
+        padding: 15px;
+        border-style:solid;
+        text-align: center;
+        background-color: #FEB224;
+        transition: 0.5s;
+    }
+    #main-nim{
+        background-image: url('/assets/bck-1.png');
+        background-position:bottom;
+        background-repeat: no-repeat;
+        background-size: cover;
+        padding-top: 30px;
+        padding-bottom: 40px;
+        padding-left: 20px;
+        padding-right: 20px;
+        margin: auto;
+    }
+    .text-nim-head{
+        font-size: 20px;
+        font-weight: 700;
+    }
+}
