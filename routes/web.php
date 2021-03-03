@@ -97,6 +97,8 @@ Route::get('/EditShift/{id}', [ShiftController::class,'EditShift'])->name('EditS
 Route::post('/UpdateShift/{id}', [ShiftController::class,'UpdateShift'])->name('UpdateShift')->middleware('auth:admins');
 Route::get('/delShiftconfirm/{id}', [ShiftController::class,'delShiftConfirm'])->name('DelShiftconfrim')->middleware('auth:admins');
 Route::post('/delShift/{id}', [ShiftController::class,'delShift'])->name('delShift')->middleware('auth:admins');
+Route::post('/delAllShift', [ShiftController::class,'deleteAll'])->name('deleteAll')->middleware('auth:admins');
 
 #view plots result
 Route::get('/ResultPlot', [PlotController::class,'ResultPlot'])->name('resultplot')->middleware('auth:admins');
+Route::post('/resetplot', [PlotController::class,'resetplot'])->name('resetplot')->middleware('auth:admins');
