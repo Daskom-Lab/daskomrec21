@@ -9,6 +9,6 @@ class Ceklulus extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'isActiveCek' ,
+        'isActiveCek' ,'isPlotRun',
     ];
 }
