@@ -9,13 +9,15 @@
 .dlor-logoblue{
     width: 400px;
     height: 400px;
+    filter: brightness(25%);
     transition: 0.5s;
+    
 }
 
 .dlor-logoblue:hover{
     width: 400px;
     height: auto;
-    filter:drop-shadow(8px 8px 10px gray);
+    filter: brightness(100%);
     transition: 0.5s;
 }
 
@@ -24,7 +26,7 @@
     transition: 2s;
 }
 .text-land-1:hover{
-    font-size: 33px;
+    color: #3b8ca2;
     transition: 0.5s;
 }
 .text-land-2{
@@ -32,7 +34,7 @@
     transition: 2s;
 }
 .text-land-2:hover{
-    font-size: 24px;
+    color: #3b8ca2;
     transition: 0.5s;
 }
 .c-text-land-1{
@@ -45,11 +47,25 @@
 .landing-text-p{
     padding: 0px;
 }
-
+.tagline{
+    font-style: italic;
+    font-size: 20px;  
+}
 @media only screen and (max-width:576px){
     .landing-text-p{
         padding-right:30px;
         padding-left: 30px;
         padding-bottom: 20px;
+    }
+    .tagline{
+        font-size: 15px;
+        font-style: italic;  
+    }
+    .text-land-1{
+        font-size: 20px;
+        transition: 2s;
+    }
+    .pad-top-about{
+        padding-top: 25px;
     }
 }

@@ -11,17 +11,13 @@
     padding-left: 3rem;
     padding-right: 3rem;
 }
-.centermid{
-	width: ;
-	height: ;
-}
 
 .shadow{
 	filter:drop-shadow(8px 8px 8px rgb(9, 110, 156));
 }
 
 #EditBackColor{
-	background-color: #2c87b3;
+	background-color: #ffecc6;
 }
 
 .rec-title{
@@ -41,13 +37,13 @@
 	font-size: 1.3rem;
 	font-weight: 500;
 	line-height: 1.5;
-	color: whitesmoke;
-	background-color: #2c87b3;
+	color: #2b2b2b;
+	background-color: #ffecc6;
 	background-clip: padding-box;
-    border: none;
+	border: none;
 	transition: 0.5s;
 	border-radius: 0.75rem;
-    resize: none;
+	resize: none;
 }
 .text-area-fill:hover {
 	display: block;

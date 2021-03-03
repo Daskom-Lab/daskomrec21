@@ -1,10 +1,10 @@
 .dlor-navbar{
-    background-color: #bb5f14;
+    background-color: #2d2d2d;
     filter:drop-shadow(1px 2px 4px gray);
     transition: 0.5s;
 }
 .dlor-navbar:hover{
-    background-color: #67C0E0;
+    background-color: #6d645d;
     filter:drop-shadow(6px 6px 9px gray);
     transition:1s;
 }
@@ -25,12 +25,12 @@
     color: whitesmoke;
 }
 .nav-item{
-    background-color: #bb5f14;
+    background-color: #404040;
     border-radius: 10px;
     transition: 0.5s;
 }
 .nav-item:hover{
-    background-color: #3b7d96;
+    background-color: #534d49;
     color: whitesmoke;
     border-radius: 15px;
     transition: 0.5s;
@@ -39,9 +39,7 @@
 .nav-link:hover{
     color: whitesmoke;
 }
-.mobile-hide{
-    display: block;
-}
+
 
 
 @media only screen and (max-width:992px){
@@ -52,4 +50,18 @@
     .mobile-hide{
         display: none;
     }
+    .nav-item{
+        background-color: #404040;
+        border-radius: 10px;
+        padding: 8px;
+        transition: 0.5s;
+    }
+    .nav-item:hover{
+        background-color: #534d49;
+        color: whitesmoke;
+        border-radius: 15px;
+        transition: 0.5s;
+        padding: 8px;
+    }
+    
 }
