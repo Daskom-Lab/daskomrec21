@@ -31,7 +31,7 @@ class AdminController extends Controller
 		// Validate the form data
 		$this->validate($request, [
 			'kodas'      => 'required|min:3|string',
-			'password'  => 'required|min:3|string',
+			'password'  => 'required|min:8|string',
 		]);
 		
 		// Attempt to log the user in
@@ -51,6 +51,9 @@ class AdminController extends Controller
 
 	public function changepass(Request $request){
 		$id = Auth::id();
+		$this->validate($request, [
+			'password'  => 'required|min:8|string',
+		]);
 		$admin = Admin::find($id);
 		Admin::where('id',$id)->update([
 			'nama'=>$admin->nama,
