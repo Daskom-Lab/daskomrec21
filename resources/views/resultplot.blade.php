@@ -42,16 +42,8 @@
     <div class="pt-5 d-flex justify-content-center">
         <div class="checker-box">
           <div class="text-center text-nim-head">
-            <span>SHIFT Daskom Choose You</span>
+            <span>Hasil Plot Rekrutmen Daskom Choose You</span>
           </div>
-          @if($countshift!=0)
-          <div class="text-center pt-4 pb-2">
-            <div>
-                <button onclick="" type="submit" class="button-submit-find ms-1">PRINT Plottingan</button>
-              </div>
-          </div>
-          @else
-          @endif
           <div class="text-center pt-2 pb-3">
             <span style="color:rgb(19, 133, 19);font-weight:700;font-size:28px">Total Jadwal : {{$countshift}}</span>
           </div>
@@ -116,6 +108,9 @@
                     @endforeach
                 </tbody>
             </table>
+            <div class="d-flex justify-content-center">
+              <div class="">{{ $shift->links('pagination::pagination') }}</div>
+              </div>
           </div>
             @else
             <div class="text-center text-nim-head">
