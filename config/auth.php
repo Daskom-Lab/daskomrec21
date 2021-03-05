@@ -55,7 +55,12 @@ return [
             'redirectTo' => 'loginAdmin',
             'driver' => 'session',
             'provider' => 'admin',
-           ],
+        ],
+        'logistik' => [
+            'redirectTo' => 'loginLogistik',
+            'driver' => 'session',
+            'provider' => 'logistik',
+        ],
     ],
 
     /*
@@ -87,6 +92,10 @@ return [
         'admin' => [
             'driver' => 'eloquent',
             'model' => App\Models\Admin::class,
+        ],
+        'logistik' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Logistik::class,
         ],
 
         // 'users' => [
