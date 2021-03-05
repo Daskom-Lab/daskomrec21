@@ -1,0 +1,67 @@
+.dlor-navbar{
+    background-color: #2d2d2d;
+    filter:drop-shadow(1px 2px 4px gray);
+    transition: 0.5s;
+}
+.dlor-navbar:hover{
+    background-color: #6d645d;
+    filter:drop-shadow(6px 6px 9px gray);
+    transition:1s;
+}
+.navbar-collapse{
+    flex-grow: 0;
+}
+.dlor-logonav{
+    width: 50px;
+    height: 50px;
+}
+.dlor-navright{
+    font-size: 20px;
+}
+
+.nav-link{
+    transition:100s;
+    color: black;
+    color: whitesmoke;
+}
+.nav-item{
+    background-color: #404040;
+    border-radius: 10px;
+    transition: 0.5s;
+}
+.nav-item:hover{
+    background-color: #534d49;
+    color: whitesmoke;
+    border-radius: 15px;
+    transition: 0.5s;
+    padding: 4px;
+}
+.nav-link:hover{
+    color: whitesmoke;
+}
+
+
+
+@media only screen and (max-width:992px){
+    .dlor-navright{
+        font-size: 20px;
+        padding-right: 5px;
+    }
+    .mobile-hide{
+        display: none;
+    }
+    .nav-item{
+        background-color: #404040;
+        border-radius: 10px;
+        padding: 8px;
+        transition: 0.5s;
+    }
+    .nav-item:hover{
+        background-color: #534d49;
+        color: whitesmoke;
+        border-radius: 15px;
+        transition: 0.5s;
+        padding: 8px;
+    }
+    
+}

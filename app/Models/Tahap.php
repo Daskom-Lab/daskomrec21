@@ -11,4 +11,7 @@ class Tahap extends Model
     protected $fillable = [
         'urut_tahap',
     ];
+    /*public function Status(){
+        return $this->hasMany(Status::class);
+    }*/
 }

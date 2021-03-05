@@ -19,6 +19,7 @@ class CreateDatacaasTable extends Migration
             $table->string('nim')->unique();
             $table->string('email')->unique();
             $table->string('password');
+            $table->rememberToken();
             $table->timestamps();
         });
     }

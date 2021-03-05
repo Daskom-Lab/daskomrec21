@@ -1,0 +1,192 @@
+.modal-background{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    pointer-events: auto;
+    background-color: #67C0E0;
+    background-clip: padding-box;
+    border: 1px solid rgba(0,0,0,.2);
+    border-radius: .8rem;
+    padding-left: 3rem;
+    padding-right: 3rem;
+}
+
+.shadow{
+	filter:drop-shadow(8px 8px 8px rgb(9, 110, 156));
+}
+
+#EditBackColor{
+	background-color: #ffecc6;
+}
+
+.rec-title{
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+.text-area-set{
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.text-area-fill {
+	display: block;
+	width: 100%;
+	padding: 0.3rem 0.85rem;
+	font-size: 1.3rem;
+	font-weight: 500;
+	line-height: 1.5;
+	color: #2b2b2b;
+	background-color: #ffecc6;
+	background-clip: padding-box;
+	border: none;
+	transition: 0.5s;
+	border-radius: 0.75rem;
+	resize: none;
+}
+.text-area-fill:hover {
+	display: block;
+	width: 100%;
+	padding: 0.3rem 0.85rem;
+	font-size: 1.3rem;
+	font-weight: 500;
+	line-height: 1.5;
+	color: black;
+	background-color: #99ddff;
+	background-clip: padding-box;
+	border: none;
+    transition: 0.5s;
+	border-radius: 0.75rem;
+    resize: none;
+}
+
+.form-check-input {
+	width: 1.5em;
+	height: 1.5em;
+	margin-top: .25em;
+	vertical-align: top;
+	background-color: #fff;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: contain;
+	border: 1px solid rgba(0,0,0,.25);
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	-webkit-print-color-adjust: exact;
+	color-adjust: exact;
+}
+
+.selectform{
+	position: relative;
+}
+
+.form-select-costum {
+	display: block;
+	width: 100%;
+	padding: .375rem 2.25rem .375rem .75rem;
+	font-size: 1rem;
+	font-weight: 400;
+	line-height: 1.5;
+	color: #000;
+	background-color: #a8e2ff;
+	background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
+	background-repeat: no-repeat;
+	background-position: right .75rem center;
+	background-size: 16px 12px;
+	border: none;
+	border-radius: .45rem;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+}
+
+.button-submit{
+    border-radius: 15px;
+    font-size: 15px;
+    font-weight:600;
+    padding: 15px;
+    border-style:none;
+    text-align: center;
+    background-color: rgb(58, 207, 58);
+    transition: 0.5s;
+}
+.button-submit:hover{
+    border-radius: 15px;
+    font-size: 15px;
+    color: aliceblue;
+    font-weight:600;
+    padding: 20px;
+    border-style:solid;
+    text-align: center;
+    background-color: rgb(26, 182, 26);
+    transition: 0.5s;
+}
+
+.button-cancel{
+    border-radius: 15px;
+    font-size: 15px;
+    font-weight:600;
+    padding: 15px;
+	color: whitesmoke;
+    border-style:none;
+    text-align: center;
+    background-color: #fc3939;
+    transition: 0.5s;
+}
+.button-cancel:hover{
+    border-radius: 15px;
+    font-size: 15px;
+    color: aliceblue;
+    font-weight:600;
+    padding: 20px;
+    border-style:solid;
+    text-align: center;
+    background-color: rgb(245, 37, 37);
+    transition: 0.5s;
+}
+
+.form-style-find{
+    border-radius: 15px;
+    font-size: 20px;
+    font-weight:600;
+    padding: 15px;
+    border-style:solid;
+    text-align: center;
+    background-color: antiquewhite;
+    transition: 0.5s;
+}
+.form-style-find:hover{
+    border-radius: 15px;
+    font-size: 20px;
+    color: antiquewhite;
+    font-weight:600;
+    padding: 15px;
+    border-style:solid;
+    text-align: center;
+    background-color: #FEB224;
+    transition: 0.5s;
+}
+
+.button-submit-find{
+    border-radius: 15px;
+    font-size: 20px;
+    font-weight:600;
+    padding: 15px;
+    border-style:solid;
+    text-align: center;
+    background-color: rgb(125, 238, 97);
+    transition: 0.5s;
+}
+.button-submit-find:hover{
+    border-radius: 15px;
+    font-size: 20px;
+    color: antiquewhite;
+    font-weight:600;
+    padding: 15px;
+    border-style:solid;
+    text-align: center;
+    background-color: #FEB224;
+    transition: 0.5s;
+}

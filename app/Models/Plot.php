@@ -11,4 +11,8 @@ class Plot extends Model
     protected $fillable = [
         'datacaas_id', 'shifts_id' ,
     ];
+    
+    /*public function Datacaas(){
+        return $this->belongsTo(Datacaas::class);
+    }*/
 }

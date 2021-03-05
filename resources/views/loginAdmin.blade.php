@@ -5,10 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Daskom Choose You</title>
-    <link rel="stylesheet" type="text/css" href="{{ asset('/css/navbar.css') }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('/assets/favicon/apple-touch-icon.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('/assets/favicon/favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('/assets/favicon/favicon-16x16.png') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('/css/navbar-ex.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('/css/footer.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('/css/nimchecker.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('/css/login.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('/css/about.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('/css/main.css') }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -20,23 +24,10 @@
     <nav class="navbar navbar-expand-lg dlor-navbar">
         <div class="container-fluid">
           <a class="navbar-brand" href=""><img src="{{asset('/assets/dlor.png')}}" alt="logo" class="dlor-logonav"></a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#dlor-toggler">
-            <img width="30px" height="30px" class="img-fluid" src="{{ asset('/assets/toogle.png') }}" alt="click">
-          </button>
-          <div class="dlor-navright collapse navbar-collapse" id="dlor-toggler">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="mobile-hide nav-item">
-                RECRUITMENT DASKOM LABORATORY</li>
-            </ul>
+          <div class="dlor-navright" id="dlor-toggler">
             <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link text-center" aria-current="page" href="#">HOME</a>
-              </li>
               <li class="nav-item">
-                <a class="nav-link text-center" href="#">RECRUITMENT</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link text-center" href="#" tabindex="-1" aria-disabled="true">ABOUT</a>
+                <a class="nav-link text-center" href="/" tabindex="-1" aria-disabled="true"><img src="{{ asset('/assets/back-icon.png') }}" alt="icon" width="40px" height="40px"></a>
               </li>
             </ul>
           </div>
@@ -48,15 +39,24 @@
       <div class="d-flex justify-content-center">
         <div class="checker-box">
           <div class="text-center text-nim-head">
-            <span>Apakah Kamu Lulus Tahap Berkas?</span>
+            <span>Admin Daskom Choose You 2021</span>
           </div>
           <div class="d-flex justify-content-center pt-3 pb-3">
-            <form method="GET" action="/checknim/find">
-              <div>
-              <input class="form-style" type="text" id="nim" name="find" alt="NIM" placeholder="Input NIM Kamu">
+            <form method="POST" action="/loginAdmin">
+              @csrf
+            <div>
+              <input maxlength="3" autocomplete="off" class="uppercase form-style" type="text" id="kodas" name="kodas" alt="ZZZ" placeholder="ZZZ" required>
             </div>
+            <div class="pt-2">
+              <input minlength="3" class="form-style" type="password" id="nim" name="password" alt="NIM" placeholder="Password" required>
+            </div>
+            @if (session('error'))
+            <div class="text-center pt-1">
+                        <span class="text-center" style="color: red;font-weight:500;font-size:20px">{{ session('error') }}</span>
+            </div> 
+            @endif
             <div class="d-flex justify-content-center pt-3">
-              <button class="form-style-submit" type="submit">Cek</button>
+              <button class="form-style-submit" type="submit">Login</button>
             </div>
             </form>
           </div>
@@ -75,7 +75,7 @@
       <div class="col-lg">
         <div class="c-text-about-p justify-content-center pt-lg-4 pt-sm-4">
           <div class="c-text-about-1">
-            <span class="text-about">Lab Dasar Komputer merupakan laboratorium di bawah naungan Fakultas Teknik Elektro yang memfasilitasi semua mahasiswa tingkat satu S1 Teknik Fisika, S1 Teknik Telekomunikasi, dan S1 Teknik Elektro untuk lebih memahami dan dapat mengaplikasikan secara langsung dasar dasar algoritma dan pemrograman menggunakan bahasa C </span>
+            <span class="text-about">Lab Dasar Komputer merupakan laboratorium di bawah naungan Fakultas Teknik Elektro yang memfasilitasi semua mahasiswa tingkat satu S1 Teknik Fisika, S1 Teknik Telekomunikasi, dan S1 Teknik Elektro untuk lebih memahami dan dapat mengaplikasikan secara langsung dasar dasar algoritma dan pemrograman menggunakan bahasa C. </span>
           </div>
           <div class="d-flex pt-2">
             <div>

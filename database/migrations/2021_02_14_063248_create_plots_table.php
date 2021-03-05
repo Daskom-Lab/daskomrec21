@@ -17,9 +17,9 @@ class CreatePlotsTable extends Migration
             $table->bigIncrements('id');
             $table->timestamps();
             $table->unsignedBigInteger('datacaas_id');
-            $table->foreign('datacaas_id')->references('id')->on('datacaas');
+            $table->foreign('datacaas_id')->references('id')->on('datacaas')->onDelete('cascade');
             $table->unsignedBigInteger('shifts_id');
-            $table->foreign('shifts_id')->references('id')->on('shifts');
+            $table->foreign('shifts_id')->references('id')->on('shifts')->onDelete('cascade');
         });
     }
 
