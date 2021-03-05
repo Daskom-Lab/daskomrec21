@@ -30,6 +30,10 @@ class RedirectIfAuthenticated
                     if (Auth::guard($guard)->check()) 
                         return redirect()->route('adminHome');
                     break;
+                case 'logistik':
+                    if (Auth::guard($guard)->check()) 
+                        return redirect('/logistikplot');
+                    break;    
               }
         }
 
