@@ -167,6 +167,11 @@
             @endforeach
             </span>
         </div>
+        @error('password')
+                <div class="text-center pt-1">
+                  <span class="text-center" style="color: red;font-weight:600;font-size:20px">ganti password gagal, password tidak boleh kosong dan minimal 8 karakter</span>
+                </div> 
+        @enderror
           </div>
         </div>
       </div>
@@ -242,7 +247,7 @@
               <a href="https://www.instagram.com/telu.daskom/" target="_blank"><img class="social-icon" src="{{ asset('/assets/instagram.png') }}" alt="ig"></a>
             </div>
             <div>
-              <a href="https://timeline.line.me/user/_dbhqzOurXL1CbjNxhYBPzSbYBVWZFDnFa5_ashs?utm_medium=windows&utm_source=desktop&utm_campaign=OA_Profile" target="_blank"><img class="social-icon" src="{{ asset('/assets/line.png') }}" alt="ig"></a>
+              <a href="https://timeline.line.me/user/_dbhqzOurXL1CbjNxhYBPzSbYBVWZFDnFa5_ashs" target="_blank"><img class="social-icon" src="{{ asset('/assets/line.png') }}" alt="ig"></a>
             </div>
             <div>
               <a href="https://www.youtube.com/channel/UCgCAhA5CK3tG3pofQnn-VEA" target="_blank"><img class="social-icon" src="{{ asset('/assets/youtube.png') }}" alt="ig"></a>
