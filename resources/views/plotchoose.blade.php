@@ -25,19 +25,19 @@
 <!-- Modal Caas Input -->
 <!-- Button trigger modal -->
 <section id="nav-section">
-    <nav class="navbar navbar-expand-lg dlor-navbar">
-        <div class="container-fluid">
-          <a class="navbar-brand" href=""><img src="{{asset('/assets/dlor.png')}}" alt="logo" class="dlor-logonav"></a>
-          <div class="dlor-navright" id="dlor-toggler">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a style="font-weight: 600;" class="nav-link text-center" href="/logoutCaas" tabindex="-1" aria-disabled="true">LOGOUT</a>
-                </li>
-            </ul>
-          </div>
+  <nav class="navbar navbar-expand-lg dlor-navbar">
+      <div class="container-fluid">
+        <a class="navbar-brand" href=""><img src="{{asset('/assets/dlor.png')}}" alt="logo" class="dlor-logonav"></a>
+        <div class="dlor-navright" id="dlor-toggler">
+          <ul class="navbar-nav">
+            <li class="nav-item-logout">
+              <a style="font-weight: 600;color: wheat;padding: 10px;" class="nav-link text-center" href="/logoutCaas" tabindex="-1" aria-disabled="true">LOGOUT</a>
+            </li>
+          </ul>
         </div>
-      </nav>
-</section> 
+      </div>
+    </nav>
+</section>
 <section id="list-section">
 <div class="container pb-5">
     @if($plotactive->isPlotActive==0)
@@ -48,8 +48,11 @@
           </div>
           <div class="text-center pt-3 pb-3">
             <div>
-                <span style="color: red;font-size:20px;font-weight:700;">PERHATIAN, SETELAH PILIH JADWAL, TIDAK BISA UBAH JADWAL LAGI, TERIMA KASIH</span>
-              </div>
+                <span style="color: red;font-size:20px;font-weight:700;">!!!PERHATIAN!!!, SETELAH PILIH JADWAL, JADWAL TIDAK BISA DIUBAH LAGI, TERIMA KASIH</span>
+            </div>
+            <div>
+              <span style="color: red;font-size:15px;font-weight:700;">Pastikan kalian yakin dengan jadwal yang kalian pilih.</span>
+          </div>
           </div>
         </div>
       </div>
@@ -92,6 +95,9 @@
                     @endforeach
                 </tbody>
             </table>
+            <div class="d-flex justify-content-center">
+              <div class="">{{ $shift->links('pagination::pagination') }}</div>
+            </div>
         </div>
     </div>
     @else
@@ -102,26 +108,26 @@
           </div>
           <div class="text-center pt-3 pb-3">
             <div class="pb-2">
-                <span style="color: red;font-size:20px;font-weight:700;">Kamu sudah memilih jadwal rekrutmen & jadwal tidak dapat diubah lagi, terima kasih</span>
+                <span style="color: red;font-size:20px;font-weight:700;">You've chosen a recruitment schedule and your schedule can't be changed anymore, thank you</span>
             </div>
             <div class="pt-2">
-              <span class="Welcome-text">{{$plots->namashift}}</span>
+              <span class="Welcome-text-semibold">{{$plots->namashift}}</span>
           </div>
             <div class="pt-2">
-                <span class="Welcome-text">Date : {{\Carbon\Carbon::parse($plots->hari)->format('j F Y')}}</span>
+                <span class="Welcome-text-semibold">Date : {{\Carbon\Carbon::parse($plots->hari)->format('j F Y')}}</span>
             </div>
             <div class="pt-3">
-                <span class="Welcome-text">Time : {{$plots->jam_start}} - {{$plots->jam_end}} WIB</span>
+                <span class="Welcome-text-semibold">Time : {{$plots->jam_start}} - {{$plots->jam_end}} WIB</span>
             </div>
             <div class="pt-4 text-center text-nim-head">
-                <span style="color: rgb(5, 158, 5)">Semangat terus dan pantau terus informasi di OA Line Recruitment Daskom Laboratory</span>
+                <span style="color: rgb(5, 158, 5)">Semangat terus dan pantau terus informasi di OA Line Recruitment Daskom Laboratory untuk instruksi berikutnya.</span>
             </div>
             <div class="d-flex justify-content-center pt-2" >
               <div>
-                <a href="https://www.instagram.com/telu.daskom/" target="_blank"><img class="social-icon m-0" src="{{ asset('/assets/instagram.png') }}" alt="ig"></a>
+                <a href="https://www.instagram.com/telu.daskom/" target="_blank"><img class="social-icon mx-2" src="{{ asset('/assets/instagram.png') }}" alt="ig"></a>
               </div>
               <div class="">
-                <a href="https://timeline.line.me/user/_dbhqzOurXL1CbjNxhYBPzSbYBVWZFDnFa5_ashs?utm_medium=windows&utm_source=desktop&utm_campaign=OA_Profile" target="_blank"><img class="social-icon m-0" src="{{ asset('/assets/line.png') }}" alt="ig"></a>
+                <a href="https://lin.ee/wvgpfvI" target="_blank"><img class="social-icon mx-2" src="{{ asset('/assets/line.png') }}" alt="ig"></a>
               </div>
             </div>
           </div>

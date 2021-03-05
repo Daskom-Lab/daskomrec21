@@ -206,6 +206,9 @@
                     @endforeach
                 </tbody>
             </table>
+            <div class="d-flex justify-content-center">
+              <div class="">{{ $shift->links('pagination::pagination') }}</div>
+            </div>
             @else
             <div class="text-center text-nim-head">
               <span>Belum ada Jadwal yang dibuat</span>
