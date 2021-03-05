@@ -1,12 +1,12 @@
 <?php
 
 namespace App\Http\Controllers\Auth\Login;
-
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Route;
 use App\Models\Admin;
+use App\Models\Datacaas;
 use App\Models\Status;
 use App\Models\Tahap;
 use App\Models\Statustahap;
@@ -30,24 +30,22 @@ class AdminController extends Controller
 		
 		// Validate the form data
 		$this->validate($request, [
-			'nim'      => 'required|min:1|string',
-			'password'  => 'required|min:1|string',
+			'kodas'      => 'required|min:3|string',
+			'password'  => 'required|min:3|string',
 		]);
 		
 		// Attempt to log the user in
-		if (Auth::guard('admins')->attempt(
-			['nim' => $request->nim, 'password' => $request->password], true)) {
+		if (Auth::guard('admin')->attempt(
+			['kodas' => $request->kodas, 'password' => $request->password], true)) {
 			
 			return redirect('adminHome');
 		} 
-
-        echo "Login gagal";
 		
-		return redirect('loginAdmin');
+		return redirect()->back()->with(['error' => 'Kodas / Password Salah']);
 	}
 	
 	public function logout() {
-		Auth::guard('admins')->logout();
+		Auth::guard('admin')->logout();
 		return redirect('/');
 	}
 
@@ -56,12 +54,12 @@ class AdminController extends Controller
 		$admin = Admin::find($id);
 		Admin::where('id',$id)->update([
 			'nama'=>$admin->nama,
-			'nim'=>$admin->nim,
+			'kodas'=>$admin->kodas,
 			'password'=>Hash::make($request->password),
 		]);
-		Auth::guard('admins')->logout();
+		Auth::guard('admin')->logout();
 		return redirect('loginAdmin');
-	}
+	} 
 
 	public function home(){
 		$id = Auth::id();

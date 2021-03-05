@@ -15,6 +15,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('/css/home.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('/css/form-style.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('/css/list.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('/css/main.css') }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -34,16 +35,13 @@
             <form method="POST" action="\AddCaas">
                 @csrf
             <div class="pt-2 pb-2">
-                <input class="text-center text-area-fill" type="text" name="nama" placeholder="Nama Lengkap CaAs" required>
+                <input autocomplete="off" class="uppercase text-center text-area-fill" type="text" name="nama" placeholder="Nama Lengkap CaAs" required>
             </div>
             <div class="pt-2 pb-2">
-                <input class="text-center text-area-fill" type="text" name="nim" placeholder="NIM" required>
+                <input autocomplete="off" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" class="text-center text-area-fill" type="text" name="nim" placeholder="NIM" required>
             </div>
             <div class="pt-2 pb-2">
-                <input class="text-center text-area-fill" type="email" name="email" placeholder="Email" required>
-            </div>
-            <div class="pt-2 pb-2">
-                <input class="text-center text-area-fill" type="password" name="password" placeholder="Password" required>
+                <input autocomplete="off" class="text-center text-area-fill" type="email" name="email" placeholder="Email" required>
             </div>
             <div>
                 <label for="isLolos">
@@ -95,7 +93,7 @@
             <div class="d-flex justify-content-center">
                 <form action="/CariNIM" method="GET">
                   @csrf
-                <div><input autocomplete="off" class="form-style-find" type="text" id="find" name="find" alt="find" placeholder="Cari NIM..."></div>
+                <div><input oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" autocomplete="off" class="form-style-find" type="text" id="find" name="find" alt="find" placeholder="Cari NIM..."></div>
                 <div class="pt-2"><button type="submit" class="button-submit-find ms-1">CARI</button></div>
                 </form>
               </div>
@@ -130,10 +128,13 @@
                 @else
                 @endif
             </div>
+          </div>
             @if($countcaas!=0)
+            
             <table class="table table-bordered table-hover table-striped text-center align-middle">
                 <thead>
                     <tr>
+                        <th class="mobile-hide">No.</th>
                         <th class="mobile-hide">Nama</th>
                         <th>NIM</th>
                         <th class="mobile-hide">Email</th>
@@ -142,9 +143,11 @@
                         <th>OPSI</th>
                     </tr>
                 </thead>
+                <?php $no = 1; ?>
                 <tbody>
                     @foreach($caas as $p)
                     <tr>
+                      <td class="mobile-hide">{{ $no++ }}</td>
                         <td class="mobile-hide">{{ $p->nama }}</td>
                         <td style="color:black;font-weight:700;background-color:#f1b442">{{ $p->nim }}</td>
                         <td class="mobile-hide">{{ $p->email }}</td>
@@ -179,13 +182,16 @@
                     @endforeach
                 </tbody>
             </table>
+            <div class="d-flex justify-content-center">
+            <div class="">{{ $caas->links('pagination::pagination') }}</div>
+            </div>
             @else
+            <div>
             <div class="text-center text-nim-head">
                 <span>Belum ada Data Caas yang diinput</span>
               </div>
-            @endif
         </div>
-    </div>
+        @endif
 </div>
 </section>
 </body>

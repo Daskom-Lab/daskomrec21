@@ -12,6 +12,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('/css/footer.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('/css/login.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('/css/about.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('/css/main.css') }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -44,11 +45,26 @@
             <form method="POST" action="/loginCaas">
               @csrf
             <div>
-              <input autocomplete="off" class="form-style" type="text" id="nim" name="nim" alt="NIM" placeholder="Input NIM Kamu" required>
+              <input oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" maxlength="10" autocomplete="off" class="form-style" type="text" id="nim" name="nim" alt="NIM" placeholder="Input NIM Kamu" required >
             </div>
             <div class="pt-2">
               <input class="form-style" type="password" id="nim" name="password" alt="NIM" placeholder="Password" required>
             </div>
+            @if (session('error'))
+            <div class="text-center pt-1">
+                        <span class="text-center" style="color: red;font-weight:600;font-size:20px">{{ session('error') }}</span>
+            </div> 
+            @endif
+            @error('nim')
+            <div class="text-center pt-1">
+              <span class="text-center" style="color: red;font-weight:600;font-size:20px">NIM minimal 10 karakter</span>
+            </div> 
+            @enderror
+            @error('password')
+                <div class="text-center pt-1">
+                  <span class="text-center" style="color: red;font-weight:600;font-size:20px">Password Minimal 8 Karakter</span>
+                </div> 
+            @enderror
             <div class="d-flex justify-content-center pt-3">
               <button class="form-style-submit" type="submit">Login</button>
             </div>

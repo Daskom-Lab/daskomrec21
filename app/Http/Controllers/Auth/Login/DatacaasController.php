@@ -30,8 +30,8 @@ class DatacaasController extends Controller
 		
 		// Validate the form data
 		$this->validate($request, [
-			'nim'      => 'required|min:1|string',
-			'password'  => 'required|min:1|string',
+			'nim'      => 'required|min:10|string',
+			'password'  => 'required|min:8|string',
 		]);
 		
 		// Attempt to log the user in
@@ -41,10 +41,7 @@ class DatacaasController extends Controller
 			
 			return redirect('home');
 		} 
-
-        echo "Login gagal";
-		
-		return redirect('login');
+		return redirect()->back()->with(['error' => 'NIM / Password Salah']);
 	}
 	
 	public function logout() {
@@ -54,17 +51,20 @@ class DatacaasController extends Controller
 
 	public function home() {
 		$id = Auth::id();
-		$caas = Datacaas::find($id);
 		$plotactive = Datacaas::where('datacaas.id',$id)
 					->leftjoin('plotactives','datacaas.id','=','plotactives.datacaas_id')
 					->first();
+		$caas = Datacaas::where('datacaas.id',$id)
+					->leftjoin('statuses','datacaas.id','=','statuses.datacaas_id')
+					->leftjoin('tahaps','tahaps.id','=','statuses.tahaps_id')
+					->orderBy('tahaps.urut_tahap', 'desc')->first();			
 		return view('home',compact('caas','plotactive'));
 	}
 
 	public function caasAccount() {
 		$caas = Datacaas::leftjoin('statuses','datacaas.id','=','statuses.datacaas_id')
 					->leftjoin('tahaps','tahaps.id','=','statuses.tahaps_id')
-					->orderBy('tahaps.urut_tahap', 'desc')->get();
+					->orderBy('tahaps.urut_tahap', 'desc')->paginate(2);
 		$namatahap = Namatahap::all();
 		$countcaas = Datacaas::count();
 		$countcaaslolos = Datacaas::leftjoin('statuses','datacaas.id','=','statuses.datacaas_id')
@@ -80,7 +80,7 @@ class DatacaasController extends Controller
 			'nama'=>$request->nama,
 			'nim'=>$request->nim,
 			'email'=>$request->email,
-			'password'=>Hash::make($request->password),
+			'password'=>Hash::make($request->nim),
 		]);
 
 		$tahap = Tahap::create([
@@ -177,11 +177,11 @@ class DatacaasController extends Controller
 		$id = Auth::id();
 		$caas = Datacaas::find($id);
 		$rules = [
-			'password'	=>	'required|min:6',
+			'password'	=>	'required|min:8',
 		];
 	
 		$messages = [
-			'password.required'	=>	'password tidak boleh kosong dan minimal 6 karakter',
+			'password.required'	=>	'password tidak boleh kosong dan minimal 8 karakter',
 		];
 	
 		$this->validate($request,$rules,$messages);

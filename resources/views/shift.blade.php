@@ -15,6 +15,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('/css/home.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('/css/form-style.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('/css/list.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('/css/main.css') }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -57,7 +58,7 @@
           </div>
             <div class="pt-2 pb-2">
               <label style="display: block" class="text-area-set" for="kuota">Kuota :  
-              <input class="text-center text-area-fill" type="number" name="kuota" placeholder="Kuota" required>
+              <input autocomplete="off" class="text-center text-area-fill" type="number" name="kuota" placeholder="Kuota" required>
             </div>
         </div>
         <div class="modal-footer d-flex justify-content-center">

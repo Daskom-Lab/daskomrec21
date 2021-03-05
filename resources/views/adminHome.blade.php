@@ -14,6 +14,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('/css/about.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('/css/home.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('/css/form-style.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('/css/main.css') }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -71,16 +72,20 @@
               <textarea name="linktext" class="text-area-fill" id="linktext" rows="3" required>{{$message->linktext}}</textarea>
             </div>
             <div class="pt-1 pb-2">
-              <label class="text-area-set" for="isActiveCek">Pengumuman : 
+              <label class="text-area-set" for="isActiveCek">Pengumuman :
+                <div> 
                 <input class="form-check-input" type="radio" name="isActiveCek" value="0" id="isActiveCek" required><span> Disable</span>
                 <input class="form-check-input" style="padding: 2px" type="radio" name="isActiveCek" value="1" id="isActiveCek" required><span> Enable</span>
+              </div>
             </label>
             </div>
             <div class="pt-1 pb-2">
-              <label class="text-area-set" for="isActiveCek">Plot Active : 
+              <label class="text-area-set" for="isActiveCek">Plot Active :
+                <div> 
                 <input class="form-check-input" type="radio" name="isPlotRun" value="0" id="isActiveCek" required><span> Disable</span>
                 <input class="form-check-input" style="padding: 2px" type="radio" name="isPlotRun" value="1" id="isActiveCek" required><span> Enable</span>
-            </label>
+                </div>
+              </label>
             </div>
           <div class="pt-2">
             <label class="pb-1" for="current_tahap">Tahap:</label>
