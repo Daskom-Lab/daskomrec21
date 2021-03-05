@@ -12,8 +12,16 @@
     flex-grow: 0;
 }
 .dlor-logonav{
+    filter:brightness(0%) ;
     width: 50px;
     height: 50px;
+    transition: 0.5s;
+}
+.dlor-logonav:hover{
+    filter:brightness(100%) ;
+    width: 50px;
+    height: 50px;
+    transition: 0.5s;
 }
 .dlor-navright{
     font-size: 20px;
@@ -28,7 +36,22 @@
     border-radius: 10px;
     transition: 0.5s;
 }
+
+.nav-item-logout{
+    background-color: #ff4e4e;
+    border-radius: 10px;
+    transition: 0.5s;
+}
+
 .nav-item:hover{
+    background-color: #54aecf;
+    color: whitesmoke;
+    border-radius: 15px;
+    transition: 0.5s;
+    padding: 10px;
+}
+
+.nav-item-logout:hover{
     background-color: #54aecf;
     color: whitesmoke;
     border-radius: 15px;
@@ -42,9 +65,6 @@
 
 .nav-link:hover{
     color: whitesmoke;
-}
-.mobile-hide{
-    display: ;
 }
 
 
