@@ -19,7 +19,7 @@ use App\Http\Controllers\Controller;
 class PlotController extends Controller
 {
     public function ResultPlot(){
-        $shift = Shift::orderBy('hari','asc')->orderBy('jam_start','asc')->get();
+        $shift = Shift::orderBy('hari','asc')->orderBy('jam_start','asc')->paginate(10);
         $countshift = Shift::count();
         $namatahap = Namatahap::all();
         $ceklulus = Ceklulus::where('id',1)->first();
@@ -28,10 +28,20 @@ class PlotController extends Controller
             ->leftjoin('datacaas','datacaas.id','=','plots.datacaas_id')->get();
         return view('resultplot',compact('namatahap','ceklulus','countshift','shift','caas','plot'));
     }
+    public function logistikview(){
+        $shift = Shift::orderBy('hari','asc')->orderBy('jam_start','asc')->paginate(10);
+        $countshift = Shift::count();
+        $namatahap = Namatahap::all();
+        $ceklulus = Ceklulus::where('id',1)->first();
+        $caas = Datacaas::all();
+        $plot = PLot::leftjoin('shifts','shifts.id','=','plots.shifts_id')
+            ->leftjoin('datacaas','datacaas.id','=','plots.datacaas_id')->get();
+        return view('logistikplot',compact('namatahap','ceklulus','countshift','shift','caas','plot'));
+    }
 
     public function listplot() {
         $id = Auth::id();
-        $shift = Shift::all();
+        $shift = Shift::paginate(10);
         $caas = Datacaas::where('datacaas.id',$id)
                     ->leftjoin('statuses','datacaas.id','=','statuses.datacaas_id')
                     ->leftjoin('tahaps','tahaps.id','=','statuses.tahaps_id')
