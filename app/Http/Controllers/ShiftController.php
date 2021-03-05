@@ -19,7 +19,7 @@ class ShiftController extends Controller
 {
     public function ListShift()
     {
-        $shift = Shift::orderBy('hari','asc')->orderBy('jam_start','asc')->get();
+        $shift = Shift::orderBy('hari','asc')->orderBy('jam_start','asc')->paginate(10);
         $countshift = Shift::count();
         $namatahap = Namatahap::all();
         $ceklulus = Ceklulus::where('id',1)->first();
