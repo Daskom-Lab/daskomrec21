@@ -38,7 +38,7 @@
                 <input autocomplete="off" class="uppercase text-center text-area-fill" type="text" name="nama" placeholder="Nama Lengkap CaAs" required>
             </div>
             <div class="pt-2 pb-2">
-                <input autocomplete="off" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" class="text-center text-area-fill" type="text" name="nim" placeholder="NIM" required>
+                <input autocomplete="off" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" class="text-center text-area-fill" type="text" name="nim" placeholder="NIM" maxlength="10" required>
             </div>
             <div class="pt-2 pb-2">
                 <input autocomplete="off" class="text-center text-area-fill" type="email" name="email" placeholder="Email" required>
@@ -148,7 +148,7 @@
                     @foreach($caas as $p)
                     <tr>
                       <td class="mobile-hide">{{ $no++ }}</td>
-                        <td class="mobile-hide">{{ $p->nama }}</td>
+                        <td class="uppercase mobile-hide">{{ $p->nama }}</td>
                         <td style="color:black;font-weight:700;background-color:#f1b442">{{ $p->nim }}</td>
                         <td class="mobile-hide">{{ $p->email }}</td>
                         @if($p->isLolos==1)
