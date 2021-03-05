@@ -1,14 +1,20 @@
 .Welcome-text{
     font-size: 30px;
 }
+
+.Welcome-text-semibold {
+	font-size: 30px;
+	font-weight: 650;
+}
+
 .menu-box-home{
     padding: 25px;
 }
 .home-button{
     background-color: #feb224;
     padding: 5px;
-    width: 250px;
-    border-radius: 10px;
+    width: 200px;
+    border-radius: 35px;
     display: inline;
     border-style: none;
     transition: 0.5s;
@@ -18,7 +24,7 @@
     background-color: #fceed4;
     padding: 0px;
     width: 250px;
-    border-radius: 10px;
+    border-radius: 25px;
     display: inline;
     border-style: none;
     transition: 0.5s;
@@ -36,6 +42,10 @@
     .Welcome-text{
         font-size: 20px;
     }
+    .Welcome-text-semibold {
+        font-size: 20px;
+        font-weight: 600;
+    }
     .tagline-home{
         font-style: italic;
         font-size: 15px;
@@ -46,7 +56,7 @@
         background-color: #feb224;
         padding: 0px;
         width: 150px;
-        border-radius: 10px;
+        border-radius: 35px;
         display: inline;
         border-style: none;
         transition: 0.5s;
@@ -56,11 +66,25 @@
         background-color: #fceed4;
         padding: 0px;
         width: 170px;
-        border-radius: 10px;
+        border-radius: 25px;
         display: inline;
         border-style: none;
         transition: 0.5s;
         font-size: 15px;
         font-weight: 600;
     }
+}
+
+.dlor-logo-announce{
+    filter:brightness(0%) ;
+    width: 150px;
+    height: 150px;
+    transition: 0.5s;
+}
+
+.dlor-logo-announce:hover{
+    filter:brightness(100%) ;
+    width: 170px;
+    height: 170px;
+    transition: 0.5s;
 }
