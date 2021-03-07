@@ -18,6 +18,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@600&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Electrolize&family=Fira+Code:wght@400&display=swap" rel="stylesheet">   
     
 </head>
@@ -28,10 +29,9 @@
           <a class="navbar-brand" href=""><img src="{{asset('/assets/dlor.png')}}" alt="logo" class="dlor-logonav"></a>
           <div class="dlor-navright" id="dlor-toggler">
             <ul class="navbar-nav">
-              <li class="nav-item">
-                <a style="font-weight: 600;" class="nav-link text-center" href="/logoutCaas" tabindex="-1" aria-disabled="true">LOGOUT</a>
+              <li class="nav-item-logout">
+                <a style="font-weight: 600;color: wheat;padding: 10px;" class="nav-link text-center" href="/logoutCaas" tabindex="-1" aria-disabled="true">LOGOUT</a>
               </li>
-          </ul>
             </ul>
           </div>
         </div>
@@ -39,7 +39,12 @@
 </section>
 <section id="main-nim">
   @if($Active==1)
-    <div class="container p-5">
+    <div class="container p-5 pt-0">
+      <div class="d-flex justify-content-center pb-4">
+        <div>
+          <img src="{{asset('/assets/dlor-blue.png')}}" alt="logo" class="dlor-logo-announce">
+        </div>
+      </div>
       <div class="d-flex justify-content-center">
         <div style="background-color: #FFC844" class="checker-box pb-5">
           <div class="text-center text-nim-head">
@@ -47,7 +52,7 @@
           </div>
           <div class="text-center pt-3 pb-3">
             <div>
-              <span style="font-weight: 600" class="Welcome-text">
+              <span style="font-weight: 600" class="uppercase Welcome-text">
               {{$nama}}
               </span>
           </div>
@@ -63,10 +68,10 @@
             </span>
           </div>
           <div>
-            @if($linktext!=NULL)
+            @if($linktext!='-')
             <div class="d-flex justify-content-center pt-3">
               <a style="text-decoration: none" href="{{$linktext}}" target="_blank">
-              <button style="background-color: #89ff90;color: black;border-radius:20px"  class="button-submit">
+              <button style="background-color: #26b758;color: wheat;border-radius: 20px;"  class="button-submit">
                 <div>
                 <div>
                   CLICK THIS LINK
@@ -128,10 +133,10 @@
           </div>
           <div class="d-flex justify-content-center">
             <div >
-              <a href="https://www.instagram.com/telu.daskom/" target="_blank"><img class="social-icon m-0" src="{{ asset('/assets/instagram.png') }}" alt="ig"></a>
+              <a href="https://www.instagram.com/telu.daskom/" target="_blank"><img class="social-icon mx-2" src="{{ asset('/assets/instagram.png') }}" alt="ig"></a>
             </div>
             <div>
-              <a href="https://timeline.line.me/user/_dbhqzOurXL1CbjNxhYBPzSbYBVWZFDnFa5_ashs?utm_medium=windows&utm_source=desktop&utm_campaign=OA_Profile" target="_blank"><img class="social-icon m-0" src="{{ asset('/assets/line.png') }}" alt="ig"></a>
+              <a href="https://lin.ee/wvgpfvI" target="_blank"><img class="social-icon mx-2" src="{{ asset('/assets/line.png') }}" alt="ig"></a>
             </div>
           </div>
           </div>
@@ -162,14 +167,14 @@
       <div class="col-lg">
         <div class="c-text-about-p justify-content-center pt-lg-4 pt-sm-4">
           <div class="c-text-about-1">
-            <span class="text-about">Lab Dasar Komputer merupakan laboratorium di bawah naungan Fakultas Teknik Elektro yang memfasilitasi semua mahasiswa tingkat satu S1 Teknik Fisika, S1 Teknik Telekomunikasi, dan S1 Teknik Elektro untuk lebih memahami dan dapat mengaplikasikan secara langsung dasar dasar algoritma dan pemrograman menggunakan bahasa C </span>
+            <span class="text-about">Lab Dasar Komputer merupakan laboratorium di bawah naungan Fakultas Teknik Elektro yang memfasilitasi semua mahasiswa tingkat satu S1 Teknik Fisika, S1 Teknik Telekomunikasi, dan S1 Teknik Elektro untuk lebih memahami dan dapat mengaplikasikan secara langsung dasar dasar algoritma dan pemrograman menggunakan Bahasa C.</span>
           </div>
           <div class="d-flex pt-2">
             <div>
               <a href="https://www.instagram.com/telu.daskom/" target="_blank"><img class="social-icon" src="{{ asset('/assets/instagram.png') }}" alt="ig"></a>
             </div>
             <div>
-              <a href="https://timeline.line.me/user/_dbhqzOurXL1CbjNxhYBPzSbYBVWZFDnFa5_ashs?utm_medium=windows&utm_source=desktop&utm_campaign=OA_Profile" target="_blank"><img class="social-icon" src="{{ asset('/assets/line.png') }}" alt="ig"></a>
+              <a href="https://timeline.line.me/user/_dbhqzOurXL1CbjNxhYBPzSbYBVWZFDnFa5_ashs" target="_blank"><img class="social-icon" src="{{ asset('/assets/line.png') }}" alt="ig"></a>
             </div>
             <div>
               <a href="https://www.youtube.com/channel/UCgCAhA5CK3tG3pofQnn-VEA" target="_blank"><img class="social-icon" src="{{ asset('/assets/youtube.png') }}" alt="ig"></a>

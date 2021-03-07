@@ -16,13 +16,13 @@ class DatabaseSeeder extends Seeder
         DB::table('cekluluses')->insert([
             [
                 'id'=>1,
-                'isActiveCek'=>1,
-                'isPlotRun'=>1,
+                'isActiveCek'=>0,
+                'isPlotRun'=>0,
             ],
         ]);
         DB::table('messagecekluluses')->insert([
             'lolostext' => 'Selamat',
-            'notlolostext' => 'Tetap Semangat',
+            'notlolostext' => 'kamu tidak lolos',
             'linktext' => 'https://daskomlab.com/',
         ]);
         DB::table('statustahaps')->insert([

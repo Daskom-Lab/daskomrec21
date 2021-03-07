@@ -24,6 +24,35 @@
     <link href="https://fonts.googleapis.com/css2?family=Electrolize&family=Fira+Code:wght@400&display=swap" rel="stylesheet">   
 </head>
 <body id="list-section">
+<!-- Modal -->
+<div class="modal fade" id="editpass" tabindex="-1" aria-labelledby="editpassLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-background">
+        <div class="p-4 text-center">
+          <span class="text-center rec-title">Ubah Password</span>
+        </div>
+        <div class="modal-body text-center">
+            <form method="POST" action="\PassLogistik">
+                @csrf
+                @method('POST')
+            <div class="pb-2">
+                <input class="text-center text-area-fill" type="password" name="password" placeholder="Password" required>
+            </div>
+            <div class="pb-2 text-center">
+                <span style="color: rgb(196, 5, 5);font-size:1.1rem;font-weight:600;" class="text-center">Minimal 8 Karakter</span>
+            </div>
+            <div class="pb-2 text-center">
+              <span style="color: rgb(196, 5, 5);font-size:1.3rem;font-weight:600;" class="text-center">Pastikan kamu ingat password barumu</span>
+          </div>
+        </div>
+        <div class="modal-footer d-flex justify-content-center">
+          <button type="button" class="button-cancel" data-bs-dismiss="modal">Batal</button>
+          <button type="submit" class="button-submit">Ubah Password</button>
+        </div>
+        </form>
+      </div>
+    </div>
+  </div>
 <section id="nav-section">
     <nav class="navbar navbar-expand-lg dlor-navbar">
         <div class="container-fluid">
@@ -31,7 +60,7 @@
           <div class="dlor-navright" id="dlor-toggler">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link text-center" href="/ListShift" tabindex="-1" aria-disabled="true"><img src="{{ asset('/assets/back-icon-admin.png') }}" alt="icon" width="40px" height="40px"></a>
+                    <a style="font-weight: 600;color: wheat;padding: 10px;" class="nav-link text-center" href="/logoutLogistik" tabindex="-1" aria-disabled="true">LOGOUT</a>
                 </li>
             </ul>
           </div>
@@ -45,22 +74,25 @@
           <div class="text-center text-nim-head">
             <span>Hasil Plot Rekrutmen Daskom Choose You</span>
           </div>
+          <div class="text-center text-nim-head">
+            <span>-Logistik-</span>
+          </div>
           <div class="text-center pt-2 pb-3">
             <span style="color:rgb(19, 133, 19);font-weight:700;font-size:28px">Total Jadwal : {{$countshift}}</span>
           </div>
+          <div class="d-flex justify-content-center pt-2">
+            <button class="button-submit" type="submit" data-bs-toggle="modal" data-bs-target="#editpass">Ganti Password</button>
+          </div>
+          @error('password')
+                <div class="text-center pt-1">
+                  <span class="text-center" style="color: red;font-weight:600;font-size:20px">Untuk ganti Password, Minimal 8 Karakter</span>
+                </div> 
+        @enderror
         </div>
       </div>
     <div class="p-3">
         <div class="card-body">
             <div class="d-flex justify-content-center pb-4">
-              @if($ceklulus->isPlotRun==0)
-                <div>
-                    <a href="/ListShift"><button type="button" style="background-color: rgb(255, 80, 80)" class="button-submit-find">
-                       Kembali 
-                        </button></a>
-                </div>
-              @else
-              @endif
                 <div class="ms-2">
                 <a href="/ResultPlot"><button type="button" class="button-submit-find">
                 Refresh 
@@ -115,7 +147,7 @@
           </div>
             @else
             <div class="text-center text-nim-head">
-              <span>Belum ada Jadwal yang dibuat</span>
+              <span>Belum ada Jadwal Plotingan yang dibuat</span>
             </div>
             @endif
         </div>

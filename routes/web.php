@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\Login\DatacaasController;
 use App\Http\Controllers\Auth\Login\AdminController;
+use App\Http\Controllers\Auth\Login\LogistikController;
 use App\Http\Controllers\StatusController;
 use App\Http\Controllers\ShiftController;
 use App\Http\Controllers\PlotController;
@@ -35,14 +36,21 @@ use Illuminate\Support\Facades\Auth;
 
 Route::get('/', function () {
     return view('main');
-})->name('main')->middleware('guest:admin','guest:datacaas');
+})->name('main')->middleware('guest:admin','guest:datacaas','guest:logistik');
+
+
+Route::fallback(function () {
+
+    return redirect('/');
+
+});
 
 //Caas auth
 
 #Login Page
 Route::get('/login', function () {
     return view('login');
-})->name('login')->middleware('guest:admin','guest:datacaas');
+})->name('login')->middleware('guest:admin','guest:datacaas','guest:logistik');
 
 Route::post('/loginCaas', [DatacaasController::class,'login'])->name('loginCaas');
 
@@ -71,7 +79,7 @@ Route::post('/takeplot/createplot/{id}', [PlotController::class,'fixtakeplot'])-
 #Login Page for Admin
 Route::get('/loginAdmin', function () {
     return view('loginAdmin');
-})->name('loginAdmin')->middleware('guest:admin','guest:datacaas');
+})->name('loginAdmin')->middleware('guest:admin','guest:datacaas','guest:logistik');
 
 #home page Admin
 Route::get('/adminHome', [AdminController::class,'home'])->name('adminHome')->middleware('auth:admin');
@@ -103,3 +111,14 @@ Route::post('/delAllShift', [ShiftController::class,'deleteAll'])->name('deleteA
 #view plots result
 Route::get('/ResultPlot', [PlotController::class,'ResultPlot'])->name('resultplot')->middleware('auth:admin');
 Route::post('/resetplot', [PlotController::class,'resetplot'])->name('resetplot')->middleware('auth:admin');
+
+#logistik route
+Route::get('/loginLogistik', function () {
+    return view('logistikLogin');
+})->name('loginLogistik')->middleware('guest:admin','guest:datacaas','guest:logistik');
+
+Route::post('/loginLog', [LogistikController::class,'login'])->name('loginLogistik');
+Route::post('/PassLogistik', [LogistikController::class,'changepass'])->name('changepass')->middleware('auth:logistik');
+
+Route::get('/logistikplot', [PlotController::class,'logistikview'])->name('listlogistik')->middleware('auth:logistik');
+Route::get('/logoutLogistik', [LogistikController::class,'logout'])->name('logoutlogistik');

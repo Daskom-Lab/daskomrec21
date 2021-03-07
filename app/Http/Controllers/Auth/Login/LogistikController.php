@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Auth\Login;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Logistik;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Route;
-use App\Models\Admin;
 use App\Models\Datacaas;
 use App\Models\Status;
 use App\Models\Tahap;
@@ -15,12 +15,11 @@ use App\Models\Ceklulus;
 use App\Models\Shift;
 use App\Models\Plot;
 use App\Models\Plotactive;
-use App\Models\Messageceklulus;
 use App\Http\Controllers\Controller;
 
-class AdminController extends Controller
+class LogistikController extends Controller
 {
-    protected $redirectTo = '/loginAdmin';
+    protected $redirectTo = '/loginLogistik';
     //public function __construct(){
 	//	$this->middleware('guest:datacaas', ['except' => ['logoutCaas']]);
 	//}
@@ -30,48 +29,37 @@ class AdminController extends Controller
 		
 		// Validate the form data
 		$this->validate($request, [
-			'kodas'      => 'required|min:3|string',
+			'kodastik'      => 'required|min:3|string',
 			'password'  => 'required|min:8|string',
 		]);
 		
 		// Attempt to log the user in
-		if (Auth::guard('admin')->attempt(
-			['kodas' => $request->kodas, 'password' => $request->password], true)) {
+		if (Auth::guard('logistik')->attempt(
+			['kodastik' => $request->kodastik, 'password' => $request->password], true)) {
 			
-			return redirect('adminHome');
+			return redirect('logistikplot');
 		} 
 		
 		return redirect()->back()->with(['error' => 'Kodas / Password Salah']);
 	}
-	
+
 	public function logout() {
-		Auth::guard('admin')->logout();
-		return redirect('/');
+		Auth::guard('logistik')->logout();
+		return redirect('loginLogistik');
 	}
 
 	public function changepass(Request $request){
 		$id = Auth::id();
+		$logistik = Logistik::find($id);
 		$this->validate($request, [
 			'password'  => 'required|min:8|string',
 		]);
-		$admin = Admin::find($id);
-		Admin::where('id',$id)->update([
-			'nama'=>$admin->nama,
-			'kodas'=>$admin->kodas,
+		Logistik::where('id',$id)->update([
+			'nama'=>$logistik->nama,
+			'kodastik'=>$logistik->kodastik,
 			'password'=>Hash::make($request->password),
 		]);
-		Auth::guard('admin')->logout();
-		return redirect('loginAdmin');
-	} 
-
-	public function home(){
-		$id = Auth::id();
-		$admin = Admin::find($id);
-		$message = Messageceklulus::find(1);
-		$pengumuman = Ceklulus::find(1);
-		$namatahap = Namatahap::all();
-		$tahapactive = Statustahap::find(1);
-		return view('adminHome',compact('admin','message','pengumuman','namatahap','tahapactive'));
+		Auth::guard('logistik')->logout();
+		return redirect('loginLogistik')->with(['changed' => 'Password Berhasil diubah']);
 	}
-	
 }

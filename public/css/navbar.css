@@ -6,14 +6,37 @@
 .dlor-navbar:hover{
     background-color: #67C0E0;
     filter:drop-shadow(6px 6px 9px gray);
-    transition:1s;
+    transition:0.2s;
 }
 .navbar-collapse{
     flex-grow: 0;
 }
+
+.nav-item-login {
+	background-color: #92D3EA;
+	border-radius: 10px;
+	transition: 0.5s;
+}
+.nav-item-login:hover{
+    background-color: #3b7d96;
+    color: whitesmoke;
+    border-radius: 15px;
+    transition: 0.5s;
+    padding: 10px;
+}
+
+
 .dlor-logonav{
+    filter:brightness(0%) ;
     width: 50px;
     height: 50px;
+    transition: 0.5s;
+}
+.dlor-logonav:hover{
+    filter:brightness(100%) ;
+    width: 50px;
+    height: 50px;
+    transition: 0.5s;
 }
 .dlor-navright{
     font-size: 20px;

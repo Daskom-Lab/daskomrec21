@@ -40,17 +40,22 @@
       <div class="d-flex justify-content-center">
         <div class="checker-box">
           <div class="text-center text-nim-head">
-            <span>Admin Daskom Choose You 2021</span>
+            <span>Logistik Daskom Choose You 2021</span>
           </div>
           <div class="d-flex justify-content-center pt-3 pb-3">
-            <form method="POST" action="/loginAdmin">
+            <form method="POST" action="/loginLog">
               @csrf
             <div>
-              <input maxlength="3" autocomplete="off" class="uppercase form-style" type="text" id="kodas" name="kodas" alt="ZZZ" placeholder="???" required>
+              <input maxlength="3" autocomplete="off" class="uppercase form-style" type="text" id="kodas" name="kodastik" alt="UUU" placeholder="???" required>
             </div>
             <div class="pt-2">
               <input minlength="3" class="form-style" type="password" id="nim" name="password" alt="NIM" placeholder="Password" required>
             </div>
+            @error('kodastik')
+                <div class="text-center pt-1">
+                  <span class="text-center" style="color: red;font-weight:600;font-size:20px">Kode Asisten harus 3 karakter</span>
+                </div> 
+            @enderror
             @error('password')
                 <div class="text-center pt-1">
                   <span class="text-center" style="color: red;font-weight:600;font-size:20px">Password Minimal 8 Karakter</span>
@@ -59,6 +64,11 @@
             @if (session('error'))
             <div class="text-center pt-1">
                         <span class="text-center" style="color: red;font-weight:500;font-size:20px">{{ session('error') }}</span>
+            </div> 
+            @endif
+            @if (session('changed'))
+            <div class="text-center pt-1">
+                        <span class="text-center" style="color: green;font-weight:500;font-size:20px">{{ session('changed') }}</span>
             </div> 
             @endif
             <div class="d-flex justify-content-center pt-3">

@@ -64,7 +64,7 @@ class DatacaasController extends Controller
 	public function caasAccount() {
 		$caas = Datacaas::leftjoin('statuses','datacaas.id','=','statuses.datacaas_id')
 					->leftjoin('tahaps','tahaps.id','=','statuses.tahaps_id')
-					->orderBy('tahaps.urut_tahap', 'desc')->paginate(2);
+					->orderBy('tahaps.urut_tahap', 'desc')->paginate(10);
 		$namatahap = Namatahap::all();
 		$countcaas = Datacaas::count();
 		$countcaaslolos = Datacaas::leftjoin('statuses','datacaas.id','=','statuses.datacaas_id')
@@ -80,7 +80,7 @@ class DatacaasController extends Controller
 			'nama'=>$request->nama,
 			'nim'=>$request->nim,
 			'email'=>$request->email,
-			'password'=>Hash::make($request->nim),
+			'password'=>Hash::make($request->nim.='1804'),
 		]);
 
 		$tahap = Tahap::create([
@@ -193,6 +193,6 @@ class DatacaasController extends Controller
 			'password'=>Hash::make($request->password),
 		]);
 		Auth::guard('datacaas')->logout();
-		return redirect('login');
+		return redirect('login')->with(['changed' => 'Password berhasil diubah']);
 	}
 }
