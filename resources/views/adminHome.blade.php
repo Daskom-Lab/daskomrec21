@@ -38,6 +38,9 @@
                 <input class="text-center text-area-fill" type="password" name="password" placeholder="Password" required>
             </div>
             <div class="pb-2 text-center">
+              <span style="color: rgb(196, 5, 5);font-size:1.2rem;font-weight:600;" class="text-center">Minimal 8 Karakter</span>
+          </div>
+            <div class="pb-2 text-center">
               <span style="color: rgb(196, 5, 5);font-size:1.3rem;font-weight:600;" class="text-center">Pastikan kamu ingat password barumu</span>
           </div>
         </div>
