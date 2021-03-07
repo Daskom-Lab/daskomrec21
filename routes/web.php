@@ -38,6 +38,13 @@ Route::get('/', function () {
     return view('main');
 })->name('main')->middleware('guest:admin','guest:datacaas','guest:logistik');
 
+
+Route::fallback(function () {
+
+    return redirect('/');
+
+});
+
 //Caas auth
 
 #Login Page
