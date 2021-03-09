@@ -13,7 +13,5 @@ Daskom recruitment website is a website related to the recruitment of new [Dasko
 - Stage Announcements,
 - Select a stage schedule.
 
-## Contributors
-- [Adhi Muhammad Fahmi](https://adhimf.my.id/) [AMF]
-- [Muhammad Fakhri Putra Supriyadi](https://fakhrip.github.io/) [FAI]
-- [Iga Narendra Pramawijaya](https://iganarendra.my.id/) [AND]
+## Develop by:
+- [Adhi Muhammad Fahmi](https://github.com/adhiiimf) [AMF]
