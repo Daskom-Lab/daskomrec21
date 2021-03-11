@@ -79,11 +79,7 @@ class DatacaasController extends Controller
 			'nim'	=>	'required|unique:datacaas|min:10',
 		];
 	
-		$messages = [
-			'nim.required'	=>	'NIM sudah ada atau kurang dari 10 karakter',
-		];
-	
-		$this->validate($request,$rules,$messages);
+		$this->validate($request,$rules);
 
 		$caas = Datacaas::create([
 			'nama'=>$request->nama,
