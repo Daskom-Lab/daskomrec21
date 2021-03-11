@@ -110,6 +110,11 @@
           <div class="text-center pb-3">
             <span style="color:rgb(241, 41, 41);font-weight:700;font-size:28px">Total Tidak Lolos : {{$countcaasnotlolos}}</span>
           </div>
+          @error('nim')
+                <div class="text-center pt-1">
+                  <span class="text-center" style="color: red;font-weight:600;font-size:30px">NIM sudah ada atau kurang dari 10 karakter</span>
+                </div> 
+          @enderror
         </div>
       </div>
     <div class="p-3">

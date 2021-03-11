@@ -75,6 +75,11 @@ class DatacaasController extends Controller
 	}
 
 	public function add(Request $request){
+		$rules = [
+			'nim'	=>	'required|unique:datacaas|min:10',
+		];
+	
+		$this->validate($request,$rules);
 
 		$caas = Datacaas::create([
 			'nama'=>$request->nama,
