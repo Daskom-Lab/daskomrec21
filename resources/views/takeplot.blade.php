@@ -23,23 +23,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Electrolize&family=Fira+Code:wght@400&display=swap" rel="stylesheet">   
 </head>
 <body id="EditBackColor">
-<!-- Modal Caas Input -->
-<!-- Button trigger modal -->
-  <!-- Modal -->
-  <section id="nav-section">
-    <nav class="navbar navbar-expand-lg dlor-navbar">
-        <div class="container-fluid">
-          <a class="navbar-brand" href=""><img src="{{asset('/assets/dlor.png')}}" alt="logo" class="dlor-logonav"></a>
-          <div class="dlor-navright" id="dlor-toggler">
-            <ul class="navbar-nav">
-              <li class="nav-item-logout">
-                <a style="font-weight: 600;color: wheat;padding: 10px;" class="nav-link text-center" href="/logoutCaas" tabindex="-1" aria-disabled="true">LOGOUT</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
-</section>
+
+@include('layouts/navbarCaasLogout')
+@section('navcaaslogout')
+@endsection
+
 <div class="modal-dialog modal-dialog-centered pt-4 pb-4">
       <div class="modal-background">
         <div class="p-4 pb-2 text-center">
