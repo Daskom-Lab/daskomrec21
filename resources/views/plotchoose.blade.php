@@ -30,7 +30,6 @@
 
 <section id="list-section">
 <div class="container pb-5">
-    @if($plotactive->isPlotActive==0)
     <div class="pt-5 d-flex justify-content-center">
         <div style="background-color: #FFB936" class="checker-box">
           <div class="text-center text-nim-head">
@@ -90,52 +89,6 @@
             </div>
         </div>
     </div>
-    @else
-    <div class="pt-5 pb-3 d-flex justify-content-center">
-        <div style="background-color: #FFC844" class="checker-box">
-          <div class="text-center text-nim-head">
-            <span>YOUR RECRUITMENT SCHEDULE</span>
-          </div>
-          <div class="text-center pt-3 pb-3">
-            <div class="pb-2">
-                <span style="color: red;font-size:20px;font-weight:700;">You've chosen a recruitment schedule and your schedule can't be changed anymore, thank you</span>
-            </div>
-            <div class="pt-2">
-              <span class="Welcome-text-semibold">{{$plots->namashift}}</span>
-          </div>
-            <div class="pt-2">
-                <span class="Welcome-text-semibold">Date : {{\Carbon\Carbon::parse($plots->hari)->format('j F Y')}}</span>
-            </div>
-            <div class="pt-3">
-                <span class="Welcome-text-semibold">Time : {{$plots->jam_start}} - {{$plots->jam_end}} WIB</span>
-            </div>
-            <div class="pt-4 text-center text-nim-head">
-                <span style="color: rgb(5, 158, 5)">Semangat terus dan pantau terus informasi di OA Line Recruitment Daskom Laboratory untuk instruksi berikutnya.</span>
-            </div>
-            <div class="d-flex justify-content-center pt-2" >
-              <div>
-                <a href="https://www.instagram.com/telu.daskom/" target="_blank"><img class="social-icon mx-2" src="{{ asset('/assets/instagram.png') }}" alt="ig"></a>
-              </div>
-              <div class="">
-                <a href="https://lin.ee/wvgpfvI" target="_blank"><img class="social-icon mx-2" src="{{ asset('/assets/line.png') }}" alt="ig"></a>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-    </div>
-    <div class="d-flex justify-content-center pb-2">
-        <a style="text-decoration: none" href="\home">
-        <button style="background-color: #FF4E4E;color: whitesmoke;" class="home-button">
-          <div class="menu-box-home">
-          <div>
-            KEMBALI
-          </div>
-          </div>
-        </button>
-        </a>
-      </div>
-    @endif
 </div>
 </section>
 </body>
