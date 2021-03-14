@@ -89,11 +89,17 @@ class PlotController extends Controller
                     ->leftjoin('datacaas','datacaas.id','=','plots.datacaas_id')
                     ->leftjoin('shifts','shifts.id','=','plots.shifts_id')
                     ->get()->count();
+        $statustahap = Statustahap::where('statustahaps.id',1)
+                    ->leftjoin('namatahaps','statustahaps.current_tahap','=','namatahaps.id')->first();
         $limit = $shift->kuota - $sisakuota;
         $ceklulus = Ceklulus::where('id',1)->first();
-        if($caas->isLolos==1 && $plotactive->isPlotActive==NULL && $ceklulus->isPlotRun==1){
-        return view('takeplot',compact('shift','caas','plotactive','limit')); 
-        }else return redirect('listplot');
+        $firstmeet = Firstmeet::find(1);
+        if($caas->isLolos==1 && $plotactive->isPlotActive==NULL && $ceklulus->isPlotRun==1 && $statustahap->current_tahap==$caas->urut_tahap){
+            return view('takeplot',compact('shift','caas','plotactive','limit','ceklulus','firstmeet')); 
+        }elseif($caas->isLolos==0 && $statustahap->current_tahap==$caas->urut_tahap && $firstmeet->isPlotFirstmeet==1 && $plotactive->isPlotActive==NULL && $caas->urut_tahap==1 ){
+            return view('takeplot',compact('shift','caas','plotactive','limit','firstmeet','ceklulus'));
+    }
+        else return redirect('listplot');
     }
 
     public function fixtakeplot($id) {
