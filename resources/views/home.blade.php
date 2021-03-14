@@ -98,40 +98,66 @@
           </div>
         </div>
       </div>
+
       <div class="d-flex justify-content-center pt-3">
-        <a style="text-decoration: none" href="\ceklulus">
-        <button style="background-color: #67C0E0" class="home-button">
-          <div class="menu-box-home">
-          <div>
-            Cek Kelulusan
+        <div class="row">
+          <div class="col-lg">
+            <div class="d-flex justify-content-center pt-3">
+              <a style="text-decoration: none" href="\ceklulus">
+              <button style="background-color: #67C0E0" class="home-button">
+                <div class="menu-box-home">
+                <div>
+                  Cek Kelulusan
+                </div>
+                </div>
+              </button>
+              </a>
+            </div>
           </div>
+          @if($plotactive->isPlotActive==1)
+          <div class="col-lg">
+            <div class="d-flex justify-content-center pt-3">
+              <a style="text-decoration: none" href="\finalPlot">
+              <button style="background-color: #4FF569" class="home-button">
+                <div class="menu-box-home">
+                <div>
+                  Jadwal Kamu
+                </div>
+                </div>
+              </button>
+              </a>
+            </div>
           </div>
-        </button>
-        </a>
+          @elseif($firstmeet->isPlotFirstmeet==1 && $plotactive->isPlotActive==NULL && $caas->urut_tahap==1)
+          <div class="col-lg">
+            <div class="d-flex justify-content-center pt-3">
+              <a style="text-decoration: none" href="\listplot">
+              <button style="background-color: #4FF569" class="home-button">
+                <div class="menu-box-home">
+                <div>
+                  Pilih Jadwal
+                </div>
+                </div>
+              </button>
+              </a>
+            </div>
+          </div>
+          @else
+          @endif
+          <div class="col-lg">
+            <div class="d-flex justify-content-center pt-3">
+              <button style="background-color: #FF4E4E;color: whitesmoke;" class="home-button" data-bs-toggle="modal" data-bs-target="#editpass">
+                <div class="menu-box-home">
+                <div>
+                  Ganti Password
+                </div>
+                </div>
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
-      @if($plotactive->isPlotActive==1 && $caas->isLolos==1)
-      <div class="d-flex justify-content-center pt-3">
-        <a style="text-decoration: none" href="\listplot">
-        <button style="background-color: #4FF569" class="home-button">
-          <div class="menu-box-home">
-          <div>
-            Jadwal Kamu
-          </div>
-          </div>
-        </button>
-        </a>
-      </div>
-      @else
-      @endif
-      <div class="d-flex justify-content-center pt-3">
-        <button style="background-color: #FF4E4E;color: whitesmoke;" class="home-button" data-bs-toggle="modal" data-bs-target="#editpass">
-          <div class="menu-box-home">
-          <div>
-            Ganti Password
-          </div>
-          </div>
-        </button>
-      </div>
+
     </div>
 </section>
 
