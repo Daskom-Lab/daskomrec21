@@ -50,10 +50,13 @@
             </div>
             <label class="pb-2 text-area-set">Shift:</label>
                 <input class="text-center text-area-fill" type="text" value="{{$shift->namashift}}" disabled>
+                @if($caas->isLolos==1 && $ceklulus->isPlotRun==1)
                 <div class="pb-2 pt-1">
                     <label style="display: block" class="text-area-set">Tanggal :
                     <input class="text-center text-area-fill" type="text" placeholder="tanggal" value="{{\Carbon\Carbon::parse($shift->hari)->format('j F Y')}}" disabled>
                 </div>
+                @else
+                @endif
                 <div class="pb-2">
                     <label style="display: block" class="text-area-set">Waktu (WIB) :
                     <input class="text-center text-area-fill" type="text" value="{{$shift->jam_start}} - {{$shift->jam_end}}" placeholder="jam" disabled>
@@ -66,6 +69,12 @@
             <div>
                 <span style="color: red;font-weight:700;font-size:20px;">Kuota untuk plot ini sudah full, silahkan cari jadwal lain</span>
             </div>
+            @endif
+            @if($firstmeet->isPlotFirstmeet==1)
+            <div class="pt-2">
+                <span style="color: black;font-weight:800;font-size:22px;">{{ $firstmeet->textPlot }}</span>
+            </div>
+            @else
             @endif
         </div>
         @if($limit>0)
