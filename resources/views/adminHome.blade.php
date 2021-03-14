@@ -123,11 +123,11 @@
               @method('POST')
           <div class="mb-3">
                 <label for="textPlot" class="form-label text-area-set">Text Pilih Jadwal</label>
-                <textarea name="textPlot" class="text-area-fill" id="textPlot" rows="3" required>{{$firstmeet->textPlot}}</textarea>
+                <textarea name="textPlot" class="text-area-fill" id="textPlot" rows="8" required>{{$firstmeet->textPlot}}</textarea>
           </div>
           <div class="mb-3">
             <label for="afterChoosePlot" class="form-label text-area-set">Text After Pilih Jadwal</label>
-            <textarea name="afterChoosePlot" class="text-area-fill" id="afterChoosePlot" rows="3" required>{{$firstmeet->afterChoosePlot}}</textarea>
+            <textarea name="afterChoosePlot" class="text-area-fill" id="afterChoosePlot" rows="8" required>{{$firstmeet->afterChoosePlot}}</textarea>
           </div>
           <div class="pt-1 pb-2">
             <label class="text-area-set" for="isPlotFirstmeet">Plot Active Tahap-1:
