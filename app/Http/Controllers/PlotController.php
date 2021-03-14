@@ -63,8 +63,8 @@ class PlotController extends Controller
         $ceklulus = Ceklulus::where('id',1)->first();
         $firstmeet = Firstmeet::find(1);
         if($caas->isLolos==1 && $statustahap->current_tahap==$caas->urut_tahap && $ceklulus->isPlotRun==1 && $plotactive->isPlotActive==NULL){
-        return view('plotchoose',compact('shift','caas','plotactive','sisakuota','plots','statustahap')); 
-    }
+            return view('plotchoose',compact('shift','caas','plotactive','sisakuota','plots','statustahap')); 
+        }
         elseif($caas->isLolos==0 && $statustahap->current_tahap==$caas->urut_tahap && $firstmeet->isPlotFirstmeet==1 && $plotactive->isPlotActive==NULL && $caas->urut_tahap==1 ){
             return view('plotfirst',compact('shift','caas','plotactive','sisakuota','plots','statustahap','firstmeet'));
         }
@@ -98,7 +98,7 @@ class PlotController extends Controller
             return view('takeplot',compact('shift','caas','plotactive','limit','ceklulus','firstmeet')); 
         }elseif($caas->isLolos==0 && $statustahap->current_tahap==$caas->urut_tahap && $firstmeet->isPlotFirstmeet==1 && $plotactive->isPlotActive==NULL && $caas->urut_tahap==1 ){
             return view('takeplot',compact('shift','caas','plotactive','limit','firstmeet','ceklulus'));
-    }
+        } 
         else return redirect('listplot');
     }
 
@@ -136,14 +136,14 @@ class PlotController extends Controller
                     ]);
             return redirect('finalPlot'); 
         }elseif($caas->isLolos==0 && $statustahap->current_tahap==$caas->urut_tahap && $firstmeet->isPlotFirstmeet==1 && $plotactive->isPlotActive==NULL && $caas->urut_tahap==1 && $limit>0){
-        Plot::create([
-                        'datacaas_id'=>$caas->id,
-                        'shifts_id'=>$shift->id,
-                    ]);
-        Plotactive::create([
-                        'datacaas_id'=>$caas->id,
-                        'isPlotActive'=>1,
-                    ]);
+            Plot::create([
+                'datacaas_id'=>$caas->id,
+                'shifts_id'=>$shift->id,
+            ]);
+            Plotactive::create([
+                'datacaas_id'=>$caas->id,
+                'isPlotActive'=>1,
+            ]);
             return redirect('finalPlot');
         }
         else return redirect('listplot');
