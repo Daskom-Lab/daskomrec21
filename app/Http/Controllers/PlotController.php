@@ -124,7 +124,8 @@ class PlotController extends Controller
                     ->leftjoin('namatahaps','statustahaps.current_tahap','=','namatahaps.id')->first();
         $limit = $shift->kuota - $sisakuota;
         $ceklulus = Ceklulus::where('id',1)->first();
-        if($caas->isLolos==1 && $plotactive->isPlotActive==NULL && $limit>0 && $ceklulus->isPlotRun==1){
+        $firstmeet = Firstmeet::find(1);
+        if($caas->isLolos==1 && $plotactive->isPlotActive==NULL && $limit>0 && $ceklulus->isPlotRun==1 && $statustahap->current_tahap==$caas->urut_tahap){
         Plot::create([
                         'datacaas_id'=>$caas->id,
                         'shifts_id'=>$shift->id,
@@ -133,6 +134,21 @@ class PlotController extends Controller
                         'datacaas_id'=>$caas->id,
                         'isPlotActive'=>1,
                     ]);
+            return redirect('finalPlot'); 
+        }elseif($caas->isLolos==0 && $statustahap->current_tahap==$caas->urut_tahap && $firstmeet->isPlotFirstmeet==1 && $plotactive->isPlotActive==NULL && $caas->urut_tahap==1 && $limit>0){
+        Plot::create([
+                        'datacaas_id'=>$caas->id,
+                        'shifts_id'=>$shift->id,
+                    ]);
+        Plotactive::create([
+                        'datacaas_id'=>$caas->id,
+                        'isPlotActive'=>1,
+                    ]);
+            return redirect('finalPlot');
+        }
+        else return redirect('listplot');
+    }
+
     public function finalPlot() {
         $id = Auth::id();
         $caas = Datacaas::where('datacaas.id',$id)
