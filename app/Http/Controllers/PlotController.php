@@ -12,6 +12,7 @@ use App\Models\Ceklulus;
 use App\Models\Shift;
 use App\Models\Plot;
 use App\Models\Plotactive;
+use App\Models\Firstmeet;
 use App\Models\Messageceklulus;
 use Route;
 use App\Http\Controllers\Controller;
