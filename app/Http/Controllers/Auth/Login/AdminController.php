@@ -15,6 +15,7 @@ use App\Models\Ceklulus;
 use App\Models\Shift;
 use App\Models\Plot;
 use App\Models\Plotactive;
+use App\Models\Firstmeet;
 use App\Models\Messageceklulus;
 use App\Http\Controllers\Controller;
 
@@ -71,7 +72,8 @@ class AdminController extends Controller
 		$pengumuman = Ceklulus::find(1);
 		$namatahap = Namatahap::all();
 		$tahapactive = Statustahap::find(1);
-		return view('adminHome',compact('admin','message','pengumuman','namatahap','tahapactive'));
+		$firstmeet = Firstmeet::find(1);
+		return view('adminHome',compact('admin','message','pengumuman','namatahap','tahapactive','firstmeet'));
 	}
 	
 }
