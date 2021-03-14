@@ -52,8 +52,8 @@
       </div>
     </div>
   </div>
-  <!-- Modal -->
-  <div class="modal fade" id="setdata" tabindex="-1" aria-labelledby="setdataLabel" aria-hidden="true">
+<!-- Modal set data -->
+<div class="modal fade" id="setdata" tabindex="-1" aria-labelledby="setdataLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-background">
         <div class="p-4 pb-1 text-center">
@@ -76,7 +76,7 @@
               <textarea name="linktext" class="text-area-fill" id="linktext" rows="3" required>{{$message->linktext}}</textarea>
             </div>
             <div class="pt-1 pb-2">
-              <label class="text-area-set" for="isActiveCek">Pengumuman :
+              <label class="text-area-set" for="isActiveCek">Pengumuman:
                 <div> 
                 <input class="form-check-input" type="radio" name="isActiveCek" value="0" id="isActiveCek" required><span> Disable</span>
                 <input class="form-check-input" style="padding: 2px" type="radio" name="isActiveCek" value="1" id="isActiveCek" required><span> Enable</span>
@@ -84,7 +84,7 @@
             </label>
             </div>
             <div class="pt-1 pb-2">
-              <label class="text-area-set" for="isActiveCek">Plot Active :
+              <label class="text-area-set" for="isActiveCek">Plot Active:
                 <div> 
                 <input class="form-check-input" type="radio" name="isPlotRun" value="0" id="isActiveCek" required><span> Disable</span>
                 <input class="form-check-input" style="padding: 2px" type="radio" name="isPlotRun" value="1" id="isActiveCek" required><span> Enable</span>
@@ -108,7 +108,44 @@
         </form>
       </div>
     </div>
+</div>
+
+<!-- Modal set data -->
+<div class="modal fade" id="setfirstmeet" tabindex="-1" aria-labelledby="setfirstmeetLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-background">
+      <div class="p-4 pb-1 text-center">
+        <span class="text-center rec-title">Set FIRSTMEET</span>
+      </div>
+      <div class="modal-body  text-center">
+          <form method="POST" action="\Setfirstmeet">
+              @csrf
+              @method('POST')
+          <div class="mb-3">
+                <label for="textPlot" class="form-label text-area-set">Text Pilih Jadwal</label>
+                <textarea name="textPlot" class="text-area-fill" id="textPlot" rows="3" required>{{$firstmeet->textPlot}}</textarea>
+          </div>
+          <div class="mb-3">
+            <label for="afterChoosePlot" class="form-label text-area-set">Text After Pilih Jadwal</label>
+            <textarea name="afterChoosePlot" class="text-area-fill" id="afterChoosePlot" rows="3" required>{{$firstmeet->afterChoosePlot}}</textarea>
+          </div>
+          <div class="pt-1 pb-2">
+            <label class="text-area-set" for="isPlotFirstmeet">Plot Active Tahap-1:
+              <div> 
+              <input class="form-check-input" type="radio" name="isPlotFirstmeet" value="0" id="isPlotFirstmeet" required><span> Disable</span>
+              <input class="form-check-input" style="padding: 2px" type="radio" name="isPlotFirstmeet" value="1" id="isPlotFirstmeet" required><span> Enable</span>
+              </div>
+            </label>
+          </div>
+      </div>
+      <div class="modal-footer d-flex justify-content-center">
+        <button type="button" class="button-cancel" data-bs-dismiss="modal">Batal</button>
+        <button type="submit" class="button-submit">Simpan</button>
+      </div>
+      </form>
+    </div>
   </div>
+</div>
 
 
 <section id="nav-section">
@@ -171,6 +208,15 @@
             @endforeach
             </span>
         </div>
+        <div>
+          <span class="Welcome-text">
+        @if($firstmeet->isPlotFirstmeet==1)
+          Isi Plot Firstmeet : <span style="color: green;font-weight:600">Aktif</span>
+        @else
+          Isi Plot Firstmeet : <span style="color: red;font-weight:600">Tidak Aktif</span>
+        @endif
+          </span>
+        </div>
         @error('password')
                 <div class="text-center pt-1">
                   <span class="text-center" style="color: red;font-weight:600;font-size:20px">ganti password gagal, password tidak boleh kosong dan minimal 8 karakter</span>
@@ -179,6 +225,7 @@
           </div>
         </div>
       </div>
+      <div class="d-flex justify-content-center">
       <div class="row pt-lg-5">
           <div class="col-lg">
             <div class="d-flex justify-content-center pt-3">
@@ -219,6 +266,17 @@
           </div>
           <div class="col-lg">
             <div class="d-flex justify-content-center pt-3">
+                <button style="background-color: #404040;color: whitesmoke;" class="home-button" data-bs-toggle="modal" data-bs-target="#setfirstmeet">
+                  <div class="menu-box-home">
+                  <div>
+                    FIRSTMEET
+                  </div>
+                  </div>
+                </button>
+              </div>
+          </div>
+          <div class="col-lg">
+            <div class="d-flex justify-content-center pt-3">
                 <button style="background-color: #404040;color: whitesmoke;" class="home-button" data-bs-toggle="modal" data-bs-target="#editpass">
                   <div class="menu-box-home">
                   <div>
@@ -230,7 +288,7 @@
           </div>
           
       </div>
-      
+    </div>
     </div>
 </section>
 
