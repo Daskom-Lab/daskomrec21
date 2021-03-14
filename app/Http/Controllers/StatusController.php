@@ -10,6 +10,7 @@ use App\Models\Statustahap;
 use App\Models\Namatahap;
 use App\Models\Ceklulus;
 use App\Models\Messageceklulus;
+use App\Models\Firstmeet;
 use Illuminate\Support\Facades\Auth;
 
 class StatusController extends Controller
@@ -62,4 +63,15 @@ class StatusController extends Controller
             ]);
         return redirect('adminHome');
     }
+
+    public function setfirstmeet(Request $request){
+        Firstmeet::where('id',1)->update([
+            'id'=>1,
+            'isPlotFirstmeet'=>$request->isPlotFirstmeet,
+            'textPlot'=>$request->textPlot,
+            'afterChoosePlot'=>$request->afterChoosePlot,
+            ]);
+        return redirect('adminHome');
+    }
+
 }
