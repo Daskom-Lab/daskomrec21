@@ -61,9 +61,14 @@ class PlotController extends Controller
         $statustahap = Statustahap::where('statustahaps.id',1)
                     ->leftjoin('namatahaps','statustahaps.current_tahap','=','namatahaps.id')->first();
         $ceklulus = Ceklulus::where('id',1)->first();
-        if($caas->isLolos==1 && $statustahap->current_tahap==$caas->urut_tahap){
+        $firstmeet = Firstmeet::find(1);
+        if($caas->isLolos==1 && $statustahap->current_tahap==$caas->urut_tahap && $ceklulus->isPlotRun==1 && $plotactive->isPlotActive==NULL){
         return view('plotchoose',compact('shift','caas','plotactive','sisakuota','plots','statustahap')); 
-        }else return redirect('home');
+    }
+        elseif($caas->isLolos==0 && $statustahap->current_tahap==$caas->urut_tahap && $firstmeet->isPlotFirstmeet==1 && $plotactive->isPlotActive==NULL && $caas->urut_tahap==1 ){
+            return view('plotfirst',compact('shift','caas','plotactive','sisakuota','plots','statustahap','firstmeet'));
+        }
+        else return redirect('home');
     }
 
     public function takeplot($id) {
