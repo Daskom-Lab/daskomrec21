@@ -13,6 +13,7 @@ use App\Models\Shift;
 use App\Models\Plot;
 use App\Models\Plotactive;
 use App\Models\Messageceklulus;
+use App\Models\Firstmeet;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Route;
@@ -57,14 +58,15 @@ class DatacaasController extends Controller
 		$caas = Datacaas::where('datacaas.id',$id)
 					->leftjoin('statuses','datacaas.id','=','statuses.datacaas_id')
 					->leftjoin('tahaps','tahaps.id','=','statuses.tahaps_id')
-					->orderBy('tahaps.urut_tahap', 'desc')->first();			
-		return view('home',compact('caas','plotactive'));
+					->orderBy('tahaps.urut_tahap', 'desc')->first();
+		$firstmeet = Firstmeet::find(1);			
+		return view('home',compact('caas','plotactive','firstmeet'));
 	}
 
 	public function caasAccount() {
 		$caas = Datacaas::leftjoin('statuses','datacaas.id','=','statuses.datacaas_id')
 					->leftjoin('tahaps','tahaps.id','=','statuses.tahaps_id')
-					->orderBy('tahaps.urut_tahap', 'desc')->paginate(10);
+					->orderBy('tahaps.urut_tahap', 'desc')->orderBy('datacaas.nim', 'asc')->paginate(20);
 		$namatahap = Namatahap::all();
 		$countcaas = Datacaas::count();
 		$countcaaslolos = Datacaas::leftjoin('statuses','datacaas.id','=','statuses.datacaas_id')
