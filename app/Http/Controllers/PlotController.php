@@ -119,8 +119,29 @@ class PlotController extends Controller
                         'datacaas_id'=>$caas->id,
                         'isPlotActive'=>1,
                     ]);
-        return redirect('listplot'); 
-        }else return redirect('listplot');
+    public function finalPlot() {
+        $id = Auth::id();
+        $caas = Datacaas::where('datacaas.id',$id)
+                    ->leftjoin('statuses','datacaas.id','=','statuses.datacaas_id')
+                    ->leftjoin('tahaps','tahaps.id','=','statuses.tahaps_id')
+                    ->orderBy('tahaps.urut_tahap', 'desc')->first();
+        $plots = Datacaas::where('datacaas.id',$id)
+                    ->leftjoin('plots','datacaas.id','=','plots.datacaas_id')
+                    ->leftjoin('shifts','shifts.id','=','plots.shifts_id')
+                    ->first();
+        $plotactive = Datacaas::where('datacaas.id',$id)
+                    ->leftjoin('plotactives','datacaas.id','=','plotactives.datacaas_id')
+                    ->first();
+        $statustahap = Statustahap::where('statustahaps.id',1)
+                    ->leftjoin('namatahaps','statustahaps.current_tahap','=','namatahaps.id')->first();
+        $ceklulus = Ceklulus::where('id',1)->first();
+        $firstmeet = Firstmeet::find(1);
+        if($caas->isLolos==1 && $statustahap->current_tahap==$caas->urut_tahap && $plotactive->isPlotActive==1){
+            return view('finalPlot',compact('caas','plotactive','plots','statustahap','firstmeet')); 
+        }elseif($caas->isLolos==0 && $caas->urut_tahap==1 && $plotactive->isPlotActive==1){
+            return view('finalPlot',compact('caas','plotactive','plots','statustahap','firstmeet'));
+        }
+        else return redirect('home');
     }
 
     public function resetplot(){
