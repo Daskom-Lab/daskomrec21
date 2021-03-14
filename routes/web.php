@@ -68,6 +68,7 @@ Route::get('/ceklulus', [StatusController::class,'check'])->name('ceklulus')->mi
 
 #plots
 Route::get('/listplot', [PlotController::class,'listplot'])->name('listplot')->middleware('auth:datacaas');
+Route::get('/finalPlot', [PlotController::class,'finalPlot'])->name('finalPlot')->middleware('auth:datacaas');
 Route::get('/takeplot/{id}', [PlotController::class,'takeplot'])->name('takeplot')->middleware('auth:datacaas');
 Route::post('/takeplot/createplot/{id}', [PlotController::class,'fixtakeplot'])->name('fixtakeplot')->middleware('auth:datacaas');
 
@@ -98,6 +99,7 @@ Route::get('/delcaas/{datacaas_id}', [DatacaasController::class,'del'])->name('d
 
 #Set Data Plot and Kelulusan
 Route::post('/SetData', [StatusController::class,'SetData'])->name('setdata')->middleware('auth:admin');
+Route::post('/Setfirstmeet', [StatusController::class,'Setfirstmeet'])->name('Setfirstmeet')->middleware('auth:admin');
 
 #Shift Section
 Route::get('/ListShift', [ShiftController::class,'ListShift'])->name('shift')->middleware('auth:admin');
