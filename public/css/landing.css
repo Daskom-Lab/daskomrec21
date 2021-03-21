@@ -6,19 +6,26 @@
     padding-top: 30px;
     padding-bottom: 30px;
 }
+@keyframes dlor{
+    0% {
+        filter: brightness(25%);
+      }
+    100% {
+        filter: brightness(100%);
+    }
+}
+
 .dlor-logoblue{
     width: 400px;
     height: 400px;
-    filter: brightness(25%);
-    transition: 0.5s;
-    
-}
-
-.dlor-logoblue:hover{
-    width: 400px;
-    height: auto;
-    filter: brightness(100%);
-    transition: 0.5s;
+    animation-name: dlor;
+    animation-duration: 3s;
+    animation-timing-function: ease-out; 
+    animation-delay: 0s;
+    animation-direction: alternate;
+    animation-iteration-count: infinite;
+    animation-fill-mode: none;
+    animation-play-state: running; 
 }
 
 .text-land-1{
@@ -51,6 +58,23 @@
     font-style: italic;
     font-size: 20px;  
 }
+
+@media only screen and (max-width:991px){
+    .dlor-logoblue{
+        width: auto;
+        height: auto;
+        filter: brightness(25%);
+        transition: 0.5s;
+        
+    }
+    .dlor-logoblue:hover{
+        width: auto;
+        height: auto;
+        filter: brightness(100%);
+        transition: 0.5s;
+    }
+}
+
 @media only screen and (max-width:576px){
     .landing-text-p{
         padding-right:30px;
