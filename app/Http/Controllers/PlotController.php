@@ -175,9 +175,9 @@ class PlotController extends Controller
         $firstmeet = Firstmeet::find(1);
         \Carbon\Carbon::setLocale('id');
         if($caas->isLolos==1 && $statustahap->current_tahap==$caas->urut_tahap && $plotactive->isPlotActive==1){
-            return view('finalPlot',compact('caas','plotactive','plots','statustahap','firstmeet')); 
+            return view('FinalPlot',compact('caas','plotactive','plots','statustahap','firstmeet')); 
         }elseif($caas->isLolos==0 && $caas->urut_tahap==1 && $plotactive->isPlotActive==1){
-            return view('finalPlot',compact('caas','plotactive','plots','statustahap','firstmeet'));
+            return view('FinalPlot',compact('caas','plotactive','plots','statustahap','firstmeet'));
         }
         else return redirect('home');
     }
