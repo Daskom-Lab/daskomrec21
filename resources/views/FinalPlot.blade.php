@@ -50,7 +50,7 @@
           </div>
           @if($caas->isLolos==1 && $firstmeet->isPlotFirstmeet==0)
             <div class="pt-2">
-                <span class="Welcome-text-semibold">Date : {{\Carbon\Carbon::parse($plots->hari)->format('j F Y')}}</span>
+                <span class="Welcome-text-semibold">Date : {{\Carbon\Carbon::parse($plots->hari)->isoFormat('dddd, D MMMM Y')}}</span>
             </div>
           @else
           @endif

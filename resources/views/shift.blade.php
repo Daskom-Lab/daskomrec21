@@ -137,8 +137,8 @@
           <div class="text-center pt-3 pb-3">
             <span style="font-style: italic;color:red;font-weight:700;font-size:25px">Kepada Admin, Mohon teliti sebelum mengaktifkan pengisian jadwal, terima kasih</span>
           </div>
-          <div class="text-center pt-2 pb-3">
-            <span style="color:rgb(19, 133, 19);font-weight:700;font-size:28px">Total Jadwal : {{$countshift}}</span>
+          <div class="text-center pt-3 pb-3" style="background-color: #2cad27;border-radius: 1rem;padding: 0 20px 0 20px;">
+            <span style="color:rgb(213, 228, 213);font-weight:700;font-size:28px">Total Jadwal : {{$countshift}}</span>
           </div>
         </div>
       </div>
@@ -183,7 +183,7 @@
                     <tr>
                         <td class="mobile-hide">{{ $no++ }}</td>
                         <td class="mobile-hide">{{ $p->namashift }}</td>
-                        <td>{{ \Carbon\Carbon::parse($p->hari)->format('j F Y') }}</td>
+                        <td>{{ \Carbon\Carbon::parse($p->hari)->isoFormat('dddd, D MMMM Y') }}</td>
                         <td>{{ $p->jam_start }} - {{ $p->jam_end }} WIB</td>
                         <td>{{ $p->kuota }}</td>
                         <td>

@@ -53,7 +53,7 @@
                 @if($caas->isLolos==1 && $ceklulus->isPlotRun==1)
                 <div class="pb-2 pt-1">
                     <label style="display: block" class="text-area-set">Tanggal :
-                    <input class="text-center text-area-fill" type="text" placeholder="tanggal" value="{{\Carbon\Carbon::parse($shift->hari)->format('j F Y')}}" disabled>
+                    <input class="text-center text-area-fill" type="text" placeholder="tanggal" value="{{\Carbon\Carbon::parse($shift->hari)->isoFormat('dddd, D MMMM Y')}}" disabled>
                 </div>
                 @else
                 @endif

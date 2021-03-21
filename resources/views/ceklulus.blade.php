@@ -119,7 +119,7 @@
           <div class="text-center pt-3 pb-3">
           <div class="pb-2">
             <span style="font-size:20px;font-weight: 400;color:black;" class="Welcome-text">
-              Belum ada Pengumuman nih, pantau terus ya Official Account Recruitment Daskom Laboratory, Semangat!
+              Belum ada Pengumuman nih, pantau terus ya Official Account Line Recruitment Daskom Laboratory, Semangat!
             </span>
           </div>
           <div class="d-flex justify-content-center">

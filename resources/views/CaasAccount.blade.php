@@ -83,23 +83,31 @@
           @if($countcaas!=0)
           <div class="text-center pt-3 pb-3">
             <div class="d-flex justify-content-center">
+              
                 <form action="/CariNIM" method="GET">
                   @csrf
-                <div><input oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" autocomplete="off" class="form-style-find" type="text" id="find" name="find" alt="find" placeholder="Cari NIM..."></div>
-                <div class="pt-2"><button type="submit" class="button-submit-find ms-1">CARI</button></div>
-                </form>
+                <div class="row">
+                <div class="col-lg">
+                <div><input oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" autocomplete="off" class="form-style-find" type="text" id="find" name="find" alt="find" placeholder="Cari NIM..." maxlength="10"></div>
+                </div>
+                <div class="col-lg">
+                <div class="sbmt-btn-margin"><button type="submit" class="button-submit-find">CARI</button></div>
+                </div>
               </div>
+                </form>
+              
+            </div>
           </div>
           @else
           @endif
-          <div class="text-center">
+          <div class="text-center p-2" style="background-color: #b2eeb0;border-radius: 1rem;">
             <span style="color:rgb(49, 49, 49);font-weight:700;font-size:28px">Total CaAs : {{$countcaas}}</span>
           </div>
-          <div class="text-center">
-            <span style="color:rgb(19, 133, 19);font-weight:700;font-size:28px">Total Lolos : {{$countcaaslolos}}</span>
+          <div class="text-center p-2" style="background-color: #2cad27;border-radius: 1rem;margin-top: 0.7rem">
+            <span style="color:rgb(30, 31, 30);font-weight:700;font-size:28px">Total Lolos : {{$countcaaslolos}}</span>
           </div>
-          <div class="text-center pb-3">
-            <span style="color:rgb(241, 41, 41);font-weight:700;font-size:28px">Total Tidak Lolos : {{$countcaasnotlolos}}</span>
+          <div class="text-center p-2" style="background-color: #f53838;border-radius: 1rem;margin-top: 0.7rem">
+            <span style="color:rgb(230, 225, 225);font-weight:700;font-size:28px">Total Tidak Lolos : {{$countcaasnotlolos}}</span>
           </div>
           @error('nim')
                 <div class="text-center pt-1">
