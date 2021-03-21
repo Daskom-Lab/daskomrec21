@@ -11,18 +11,21 @@ use App\Models\Namatahap;
 use App\Models\Ceklulus;
 use App\Models\Shift;
 use App\Models\Plot;
+use App\Models\Plotactive;
 use App\Models\Messageceklulus;
 use Route;
 use App\Http\Controllers\Controller;
 
 class ShiftController extends Controller
 {
+    
     public function ListShift()
     {
         $shift = Shift::orderBy('hari','asc')->orderBy('jam_start','asc')->paginate(10);
         $countshift = Shift::count();
         $namatahap = Namatahap::all();
         $ceklulus = Ceklulus::where('id',1)->first();
+        \Carbon\Carbon::setLocale('id');
         return view('shift',compact('shift','namatahap','ceklulus','countshift'));
     }
 
@@ -91,6 +94,9 @@ class ShiftController extends Controller
 
     public function deleteAll(){
         $shift = Shift::whereNotNull('id')->delete();
+        $plot = Plot::whereNotNull('id')->delete();
+        $plotstatus = Plotactive::whereNotNull('id')->delete();
         return redirect('ListShift');
     }
+
 }
