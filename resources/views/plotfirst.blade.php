@@ -36,14 +36,11 @@
             <span>PILIH JADWAL REKRUTMEN</span>
           </div>
           <div class="text-center pt-3 pb-3">
-            <div class="text-center">
-              <span style="color: rgb(255, 43, 43);font-size:1.5rem;font-weight:700;">!!!PERHATIAN!!!</span>
+            <div>
+                <span style="color: red;font-size:20px;font-weight:700;">!!!PERHATIAN!!!, SETELAH PILIH JADWAL, JADWAL TIDAK BISA DIUBAH LAGI, TERIMA KASIH</span>
             </div>
-            <div style="background-color: #de960e;border-radius: 0.7rem;margin-top:0.6rem;">
-                <span style="color: rgb(228, 228, 228);font-size:1.5rem;font-weight:700;">Setelah pilih jadwal, kalian tidak bisa ganti jadwal lagi</span>
-            </div>
-            <div style="background-color: #dc3545;border-radius: 0.7rem;margin-top:0.6rem;">
-              <span style="color: rgb(226, 226, 226);font-size:1.5rem;font-weight:700;">Pastikan kalian yakin dengan jadwal yang kalian pilih</span>
+            <div>
+              <span style="color: red;font-size:15px;font-weight:700;">Pastikan kalian yakin dengan jadwal yang kalian pilih.</span>
           </div>
           </div>
         </div>
@@ -62,12 +59,14 @@
                 </button></a>
                 </div>
             </div>
+            <div class="text-center pt-2 pb-4">
+                <span style="color: red;font-size:25px;font-weight:700;">{{$firstmeet->textPlot}}</span>
+            </div>
             <table class="table table-bordered table-hover table-striped text-center align-middle">
                 <thead>
                     <tr>
                       <th class="mobile-hide">No.</th>
                       <th>SHIFT</th>
-                      <th>Tanggal</th>
                       <th>Waktu</th>
                       <th>OPSI</th>
                     </tr>
@@ -78,7 +77,6 @@
                     <tr>
                       <td class="mobile-hide">{{ $no++ }}</td>
                       <td>{{ $p->namashift }}</td>
-                      <td>{{ \Carbon\Carbon::parse($p->hari)->isoFormat('dddd, D MMMM Y') }} WIB</td>
                       <td>{{ $p->jam_start }} - {{ $p->jam_end }} WIB</td>
                         <td>
                             <a href="takeplot/{{ $p->id }}"><button style="font-size: 0.9rem" class="button-submit-find">CEK SLOT</button></a>            

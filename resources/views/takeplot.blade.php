@@ -23,23 +23,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Electrolize&family=Fira+Code:wght@400&display=swap" rel="stylesheet">   
 </head>
 <body id="EditBackColor">
-<!-- Modal Caas Input -->
-<!-- Button trigger modal -->
-  <!-- Modal -->
-  <section id="nav-section">
-    <nav class="navbar navbar-expand-lg dlor-navbar">
-        <div class="container-fluid">
-          <a class="navbar-brand" href=""><img src="{{asset('/assets/dlor.png')}}" alt="logo" class="dlor-logonav"></a>
-          <div class="dlor-navright" id="dlor-toggler">
-            <ul class="navbar-nav">
-              <li class="nav-item-logout">
-                <a style="font-weight: 600;color: wheat;padding: 10px;" class="nav-link text-center" href="/logoutCaas" tabindex="-1" aria-disabled="true">LOGOUT</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
-</section>
+
+@include('layouts/navbarCaasLogout')
+@section('navcaaslogout')
+@endsection
+
 <div class="modal-dialog modal-dialog-centered pt-4 pb-4">
       <div class="modal-background">
         <div class="p-4 pb-2 text-center">
@@ -62,10 +50,13 @@
             </div>
             <label class="pb-2 text-area-set">Shift:</label>
                 <input class="text-center text-area-fill" type="text" value="{{$shift->namashift}}" disabled>
+                @if($caas->isLolos==1 && $ceklulus->isPlotRun==1)
                 <div class="pb-2 pt-1">
                     <label style="display: block" class="text-area-set">Tanggal :
-                    <input class="text-center text-area-fill" type="text" placeholder="tanggal" value="{{\Carbon\Carbon::parse($shift->hari)->format('j F Y')}}" disabled>
+                    <input class="text-center text-area-fill" type="text" placeholder="tanggal" value="{{\Carbon\Carbon::parse($shift->hari)->isoFormat('dddd, D MMMM Y')}}" disabled>
                 </div>
+                @else
+                @endif
                 <div class="pb-2">
                     <label style="display: block" class="text-area-set">Waktu (WIB) :
                     <input class="text-center text-area-fill" type="text" value="{{$shift->jam_start}} - {{$shift->jam_end}}" placeholder="jam" disabled>
@@ -78,6 +69,12 @@
             <div>
                 <span style="color: red;font-weight:700;font-size:20px;">Kuota untuk plot ini sudah full, silahkan cari jadwal lain</span>
             </div>
+            @endif
+            @if($firstmeet->isPlotFirstmeet==1)
+            <div class="pt-2">
+                <span style="color: black;font-weight:800;font-size:22px;">{{ $firstmeet->textPlot }}</span>
+            </div>
+            @else
             @endif
         </div>
         @if($limit>0)

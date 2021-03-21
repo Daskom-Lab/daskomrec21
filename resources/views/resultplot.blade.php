@@ -45,8 +45,11 @@
           <div class="text-center text-nim-head">
             <span>Hasil Plot Rekrutmen Daskom Choose You</span>
           </div>
-          <div class="text-center pt-2 pb-3">
-            <span style="color:rgb(19, 133, 19);font-weight:700;font-size:28px">Total Jadwal : {{$countshift}}</span>
+          <div class="text-center" style="background-color: #28d636;border-radius: 1rem;padding: 1rem 2rem 1rem 2rem;margin-top:1rem;">
+            <span style="color:rgb(255, 255, 255);font-weight:700;font-size:28px">Total Jadwal : {{$countshift}}</span>
+          </div>
+          <div class="text-center" style="background-color: #cc4147;border-radius: 1rem;padding: 1rem 2rem 1rem 2rem;margin-top:1rem;">
+            <span style="color:rgb(255, 255, 255);font-weight:700;font-size:28px">Total Caas Sudah pilih jadwal : {{$plot->count()}}</span>
           </div>
         </div>
       </div>
@@ -90,15 +93,15 @@
                     <tr>
                         <td class="mobile-hide">{{ $no++ }}</td>
                         <td class="mobile-hide">{{ $p->namashift }}</td>
-                        <td>{{ \Carbon\Carbon::parse($p->hari)->format('j F Y') }}</td>
+                        <td>{{ \Carbon\Carbon::parse($p->hari)->isoFormat('dddd, D MMMM Y') }}</td>
                         <td>{{ $p->jam_start }} - {{ $p->jam_end }} WIB</td>
                         <td  class="mobile-hide">{{ $p->kuota }}</td>
                         
-                        <td style="background-color: #feb224">
+                        <td style="background-color: #464645;padding:1rem 0.4rem 1rem 0.4rem;">
                         @foreach($plot as $a)
                         @if($a->shifts_id==$p->id)
                         <div>
-                        <span style="font-display: italic;color:rgb(29, 29, 29);font-weight:600">{{$a->nim}}</span>
+                        <span style="color:rgb(247, 247, 247);font-size:1.1rem;letter-spacing:0.1rem;">{{$a->nim}}</span>
                         </div>
                         @else
                         @endif

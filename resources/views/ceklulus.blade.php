@@ -23,20 +23,11 @@
     
 </head>
 <body>
-<section id="nav-section">
-    <nav class="navbar navbar-expand-lg dlor-navbar">
-        <div class="container-fluid">
-          <a class="navbar-brand" href=""><img src="{{asset('/assets/dlor.png')}}" alt="logo" class="dlor-logonav"></a>
-          <div class="dlor-navright" id="dlor-toggler">
-            <ul class="navbar-nav">
-              <li class="nav-item-logout">
-                <a style="font-weight: 600;color: wheat;padding: 10px;" class="nav-link text-center" href="/logoutCaas" tabindex="-1" aria-disabled="true">LOGOUT</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
-</section>
+
+@include('layouts/navbarCaasLogout')
+@section('navcaaslogout')
+@endsection
+
 <section id="main-nim">
   @if($Active==1)
     <div class="container p-5 pt-0">
@@ -128,7 +119,7 @@
           <div class="text-center pt-3 pb-3">
           <div class="pb-2">
             <span style="font-size:20px;font-weight: 400;color:black;" class="Welcome-text">
-              Belum ada Pengumuman nih, pantau terus ya Official Account Recruitment Daskom Laboratory, Semangat!
+              Belum ada Pengumuman nih, pantau terus ya Official Account Line Recruitment Daskom Laboratory, Semangat!
             </span>
           </div>
           <div class="d-flex justify-content-center">
@@ -156,43 +147,14 @@
     </div>
     @endif
 </section>
-<section id="daskom-section">
-  <div class="container p-lg-5">
-    <div class="row pt-sm-5 pb-5">
-      <div class="col-lg">
-        <div class="d-flex justify-content-center">
-          <img class="daskom-logo img-fluid" src="{{asset('/assets/daskom.png')}}" alt="logo">
-        </div>
-      </div>
-      <div class="col-lg">
-        <div class="c-text-about-p justify-content-center pt-lg-4 pt-sm-4">
-          <div class="c-text-about-1">
-            <span class="text-about">Lab Dasar Komputer merupakan laboratorium di bawah naungan Fakultas Teknik Elektro yang memfasilitasi semua mahasiswa tingkat satu S1 Teknik Fisika, S1 Teknik Telekomunikasi, dan S1 Teknik Elektro untuk lebih memahami dan dapat mengaplikasikan secara langsung dasar dasar algoritma dan pemrograman menggunakan Bahasa C.</span>
-          </div>
-          <div class="d-flex pt-2">
-            <div>
-              <a href="https://www.instagram.com/telu.daskom/" target="_blank"><img class="social-icon" src="{{ asset('/assets/instagram.png') }}" alt="ig"></a>
-            </div>
-            <div>
-              <a href="https://timeline.line.me/user/_dbhqzOurXL1CbjNxhYBPzSbYBVWZFDnFa5_ashs" target="_blank"><img class="social-icon" src="{{ asset('/assets/line.png') }}" alt="ig"></a>
-            </div>
-            <div>
-              <a href="https://www.youtube.com/channel/UCgCAhA5CK3tG3pofQnn-VEA" target="_blank"><img class="social-icon" src="{{ asset('/assets/youtube.png') }}" alt="ig"></a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-<section id="footer">
-<footer class="container">
-<div class="d-flex justify-content-center">
-  <div>
-    <span>Created By Chef of Daskomlab</span>
-  </div>
-</div>
-</footer>
-</section>
+
+@include('layouts/about')
+@section('aboutdaskom')
+@endsection
+
+@include('layouts/footer')
+@section('footer')
+@endsection
+
 </body>
 </html>

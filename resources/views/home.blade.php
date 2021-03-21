@@ -57,20 +57,11 @@
       </div>
     </div>
   </div>
-<section id="nav-section">
-    <nav class="navbar navbar-expand-lg dlor-navbar">
-        <div class="container-fluid">
-          <a class="navbar-brand" href=""><img src="{{asset('/assets/dlor.png')}}" alt="logo" class="dlor-logonav"></a>
-          <div class="dlor-navright" id="dlor-toggler">
-            <ul class="navbar-nav">
-              <li class="nav-item-logout">
-                <a style="font-weight: 600;color: wheat;padding: 10px;" class="nav-link text-center" href="/logoutCaas" tabindex="-1" aria-disabled="true">LOGOUT</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
-</section>
+
+@include('layouts/navbarCaasLogout')
+@section('navcaaslogout')
+@endsection
+
 <section id="main-nim">
     <div class="container p-5">
       <div class="d-flex justify-content-center">
@@ -107,79 +98,76 @@
           </div>
         </div>
       </div>
+
       <div class="d-flex justify-content-center pt-3">
-        <a style="text-decoration: none" href="\ceklulus">
-        <button style="background-color: #67C0E0" class="home-button">
-          <div class="menu-box-home">
-          <div>
-            Cek Kelulusan
-          </div>
-          </div>
-        </button>
-        </a>
-      </div>
-      @if($plotactive->isPlotActive==1 && $caas->isLolos==1)
-      <div class="d-flex justify-content-center pt-3">
-        <a style="text-decoration: none" href="\listplot">
-        <button style="background-color: #4FF569" class="home-button">
-          <div class="menu-box-home">
-          <div>
-            Jadwal Kamu
-          </div>
-          </div>
-        </button>
-        </a>
-      </div>
-      @else
-      @endif
-      <div class="d-flex justify-content-center pt-3">
-        <button style="background-color: #FF4E4E;color: whitesmoke;" class="home-button" data-bs-toggle="modal" data-bs-target="#editpass">
-          <div class="menu-box-home">
-          <div>
-            Ganti Password
-          </div>
-          </div>
-        </button>
-      </div>
-    </div>
-</section>
-<section id="daskom-section">
-  <div class="container p-lg-5">
-    <div class="row pt-sm-5 pb-5">
-      <div class="col-lg">
-        <div class="d-flex justify-content-center">
-          <img class="daskom-logo img-fluid" src="{{asset('/assets/daskom.png')}}" alt="logo">
-        </div>
-      </div>
-      <div class="col-lg">
-        <div class="c-text-about-p justify-content-center pt-lg-4 pt-sm-4">
-          <div class="c-text-about-1">
-            <span class="text-about">Lab Dasar Komputer merupakan laboratorium di bawah naungan Fakultas Teknik Elektro yang memfasilitasi semua mahasiswa tingkat satu S1 Teknik Fisika, S1 Teknik Telekomunikasi, dan S1 Teknik Elektro untuk lebih memahami dan dapat mengaplikasikan secara langsung dasar dasar algoritma dan pemrograman menggunakan Bahasa C.</span>
-          </div>
-          <div class="d-flex pt-2">
-            <div>
-              <a href="https://www.instagram.com/telu.daskom/" target="_blank"><img class="social-icon" src="{{ asset('/assets/instagram.png') }}" alt="ig"></a>
+        <div class="row">
+          <div class="col-lg">
+            <div class="d-flex justify-content-center pt-3">
+              <a style="text-decoration: none" href="\ceklulus">
+              <button style="background-color: #67C0E0" class="home-button">
+                <div class="menu-box-home">
+                <div>
+                  Cek Kelulusan
+                </div>
+                </div>
+              </button>
+              </a>
             </div>
-            <div>
-              <a href="https://timeline.line.me/user/_dbhqzOurXL1CbjNxhYBPzSbYBVWZFDnFa5_ashs" target="_blank"><img class="social-icon" src="{{ asset('/assets/line.png') }}" alt="ig"></a>
+          </div>
+          @if($plotactive->isPlotActive==1)
+          <div class="col-lg">
+            <div class="d-flex justify-content-center pt-3">
+              <a style="text-decoration: none" href="\finalPlot">
+              <button style="background-color: #4FF569" class="home-button">
+                <div class="menu-box-home">
+                <div>
+                  Jadwal Kamu
+                </div>
+                </div>
+              </button>
+              </a>
             </div>
-            <div>
-              <a href="https://www.youtube.com/channel/UCgCAhA5CK3tG3pofQnn-VEA" target="_blank"><img class="social-icon" src="{{ asset('/assets/youtube.png') }}" alt="ig"></a>
+          </div>
+          @elseif($firstmeet->isPlotFirstmeet==1 && $plotactive->isPlotActive==NULL && $caas->urut_tahap==1)
+          <div class="col-lg">
+            <div class="d-flex justify-content-center pt-3">
+              <a style="text-decoration: none" href="\listplot">
+              <button style="background-color: #4FF569" class="home-button">
+                <div class="menu-box-home">
+                <div>
+                  Pilih Jadwal
+                </div>
+                </div>
+              </button>
+              </a>
+            </div>
+          </div>
+          @else
+          @endif
+          <div class="col-lg">
+            <div class="d-flex justify-content-center pt-3">
+              <button style="background-color: #FF4E4E;color: whitesmoke;" class="home-button" data-bs-toggle="modal" data-bs-target="#editpass">
+                <div class="menu-box-home">
+                <div>
+                  Ganti Password
+                </div>
+                </div>
+              </button>
             </div>
           </div>
         </div>
       </div>
+
     </div>
-  </div>
 </section>
-<section id="footer">
-<footer class="container">
-<div class="d-flex justify-content-center">
-  <div>
-    <span>Created By Chef of Daskomlab</span>
-  </div>
-</div>
-</footer>
-</section>
+
+@include('layouts/about')
+@section('aboutdaskom')
+@endsection
+
+@include('layouts/footer')
+@section('footer')
+@endsection
+
 </body>
 </html>

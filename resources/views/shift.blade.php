@@ -114,20 +114,11 @@
       </div>
     </div>
   </div>
-<section id="nav-section">
-    <nav class="navbar navbar-expand-lg dlor-navbar">
-        <div class="container-fluid">
-          <a class="navbar-brand" href=""><img src="{{asset('/assets/dlor.png')}}" alt="logo" class="dlor-logonav"></a>
-          <div class="dlor-navright" id="dlor-toggler">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link text-center" href="/adminHome" tabindex="-1" aria-disabled="true"><img src="{{ asset('/assets/back-icon-admin.png') }}" alt="icon" width="40px" height="40px"></a>
-                </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
-</section> 
+
+@include('layouts/navbarAdminBack')
+@section('navbackadmin')
+@endsection
+
 <section id="list-section">
 <div class="container pb-5">
     <div class="pt-5 d-flex justify-content-center">
@@ -146,8 +137,8 @@
           <div class="text-center pt-3 pb-3">
             <span style="font-style: italic;color:red;font-weight:700;font-size:25px">Kepada Admin, Mohon teliti sebelum mengaktifkan pengisian jadwal, terima kasih</span>
           </div>
-          <div class="text-center pt-2 pb-3">
-            <span style="color:rgb(19, 133, 19);font-weight:700;font-size:28px">Total Jadwal : {{$countshift}}</span>
+          <div class="text-center pt-3 pb-3" style="background-color: #2cad27;border-radius: 1rem;padding: 0 20px 0 20px;">
+            <span style="color:rgb(213, 228, 213);font-weight:700;font-size:28px">Total Jadwal : {{$countshift}}</span>
           </div>
         </div>
       </div>
@@ -192,7 +183,7 @@
                     <tr>
                         <td class="mobile-hide">{{ $no++ }}</td>
                         <td class="mobile-hide">{{ $p->namashift }}</td>
-                        <td>{{ \Carbon\Carbon::parse($p->hari)->format('j F Y') }}</td>
+                        <td>{{ \Carbon\Carbon::parse($p->hari)->isoFormat('dddd, D MMMM Y') }}</td>
                         <td>{{ $p->jam_start }} - {{ $p->jam_end }} WIB</td>
                         <td>{{ $p->kuota }}</td>
                         <td>
