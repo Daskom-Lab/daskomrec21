@@ -29,7 +29,7 @@
 @endsection
 
 <section id="main-nim">
-  @if($Active==1)
+  @if($Active==1 && $urut_tahap==$current_tahap)
     <div class="container p-5 pt-0">
       <div class="d-flex justify-content-center pb-4">
         <div>
