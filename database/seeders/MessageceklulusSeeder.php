@@ -14,6 +14,10 @@ class MessageceklulusSeeder extends Seeder
      */
     public function run()
     {
-        
+        DB::table('messagecekluluses')->insert([
+            'lolostext' => 'Selamat',
+            'notlolostext' => 'kamu tidak lolos',
+            'linktext' => 'https://daskomlab.com/',
+        ]);
     }
 }
