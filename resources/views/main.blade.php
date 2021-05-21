@@ -21,7 +21,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Electrolize&family=Fira+Code:wght@400&display=swap" rel="stylesheet">   
     
 </head>
-<body>
+<body style="background-color: #fceed4">
 <section id="nav-section">
     <nav class="navbar navbar-expand-lg dlor-navbar">
         <div class="container-fluid">
