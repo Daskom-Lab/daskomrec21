@@ -20,11 +20,7 @@ class DatabaseSeeder extends Seeder
                 'isPlotRun'=>0,
             ],
         ]);
-        DB::table('messagecekluluses')->insert([
-            'lolostext' => 'Selamat',
-            'notlolostext' => 'kamu tidak lolos',
-            'linktext' => 'https://daskomlab.com/',
-        ]);
+
         DB::table('statustahaps')->insert([
             'id' => 1,
             'current_tahap' => 1,

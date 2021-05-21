@@ -15,8 +15,8 @@ class CreateMessageceklulusesTable extends Migration
     {
         Schema::create('messagecekluluses', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('lolostext');
-            $table->string('notlolostext');
+            $table->text('lolostext');
+            $table->text('notlolostext');
             $table->string('linktext');
             $table->timestamps();
         });

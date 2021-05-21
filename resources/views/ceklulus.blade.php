@@ -29,7 +29,7 @@
 @endsection
 
 <section id="main-nim">
-  @if($Active==1)
+  @if($Active==1 && $urut_tahap==$current_tahap)
     <div class="container p-5 pt-0">
       <div class="d-flex justify-content-center pb-4">
         <div>
@@ -55,7 +55,7 @@
           @if($isLolos==1 && $urut_tahap==$current_tahap)
           <div class="pt-4">
             <span style="font-size:25px;font-weight: 700;color:green;" class="Welcome-text">
-              {{$lulustext}}
+              {!!nl2br(e($lulustext))!!}
             </span>
           </div>
           <div>
@@ -76,7 +76,7 @@
           @else
           <div class="pt-3">
             <span style="font-weight: 700;color:red;" class="Welcome-text">
-              {{$failedtext}}
+              {!!nl2br(e($failedtext))!!}
             </span>
           </div>
           @endif

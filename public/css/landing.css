@@ -4,8 +4,31 @@
     background-repeat: no-repeat;
     background-size: cover;
     padding-top: 30px;
+    position: relative;
+    z-index: -1;
     padding-bottom: 30px;
+    animation: landingback 4s infinite alternate;
 }
+
+
+@keyframes landingback {
+    0%{
+        transform:scale(1);
+        transform: translateY(15px);
+        opacity: 1;
+    }
+    30%{
+        opacity: 1;
+    }
+    100%{
+        transform:scale(1.1);
+        opacity: 1;
+        transform: translateY(0);
+        filter: drop-shadow(0 0 0.5rem #ffe75e);
+    }
+}
+
+
 @keyframes dlor{
     0% {
         filter: brightness(25%);
@@ -19,7 +42,7 @@
     width: 400px;
     height: 400px;
     animation-name: dlor;
-    animation-duration: 3s;
+    animation-duration: 4s;
     animation-timing-function: ease-out; 
     animation-delay: 0s;
     animation-direction: alternate;
