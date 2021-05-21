@@ -55,7 +55,7 @@
           @if($isLolos==1 && $urut_tahap==$current_tahap)
           <div class="pt-4">
             <span style="font-size:25px;font-weight: 700;color:green;" class="Welcome-text">
-              {{$lulustext}}
+              {!!nl2br(e($lulustext))!!}
             </span>
           </div>
           <div>
@@ -76,7 +76,7 @@
           @else
           <div class="pt-3">
             <span style="font-weight: 700;color:red;" class="Welcome-text">
-              {{$failedtext}}
+              {!!nl2br(e($failedtext))!!}
             </span>
           </div>
           @endif
