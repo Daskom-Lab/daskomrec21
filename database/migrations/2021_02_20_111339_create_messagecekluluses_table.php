@@ -17,7 +17,7 @@ class CreateMessageceklulusesTable extends Migration
             $table->bigIncrements('id');
             $table->text('lolostext');
             $table->text('notlolostext');
-            $table->text('linktext');
+            $table->string('linktext');
             $table->timestamps();
         });
     }
