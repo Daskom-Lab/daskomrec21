@@ -53,7 +53,7 @@
 }
 .req-h1-text:hover{
     font-size: 3rem;
-    color: #9B8865;
+    color: #ffffff;
     filter:drop-shadow(4px 4px 5px gray);
     transition: 0.5s;
 }

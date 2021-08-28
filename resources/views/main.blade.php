@@ -69,40 +69,8 @@
 
 <section id="rekrutmen-section">
   <div class="container">
-    <div class="d-flex justify-content-center pt-4 pb-lg-5 pb-sm-5">
-      <span class="req-h1-text">RECRUITMENT</span>
-    </div>
-    <div class="row pt-3 pb-4">
-      <div class="col-lg-4 pb-4">
-        <div class="req-card">
-          <div class="d-flex justify-content-center pt-4 pb-3">
-            <img class="req-img" src="{{ asset('/assets/dlor-new.jpg') }}" alt="daftar-logo">
-          </div>
-          <div class="d-flex justify-content-center pb-4">
-            <a class="a-req" href="http://bit.ly/DaskomChooseYou" target="_blank"><button class="req-button">DAFTAR</button></a>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-4 pb-4">
-        <div class="req-card">
-          <div class="d-flex justify-content-center pt-4 pb-3">
-            <img class="req-img" src="{{ asset('/assets/kapal.png') }}" alt="login-logo">
-          </div>
-          <div class="d-flex justify-content-center pb-4">
-            <a class="a-req" href="/login"><button class="req-button">LOGIN</button></a>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-4 pb-sm-2">
-        <div class="req-card">
-          <div class="d-flex justify-content-center pt-4 pb-3">
-            <img class="req-img" src="{{ asset('/assets/chest-open.png') }}" alt="oaLine logo">
-          </div>
-          <div class="d-flex justify-content-center pb-4">
-            <a class="a-req" href="https://lin.ee/wvgpfvI" target="_blank"><button class="req-button">VISIT</button></a>
-          </div>
-        </div>
-      </div>
+    <div class="d-flex justify-content-center pt-5 pb-lg-3 pb-sm-3 text-center">
+      <span class="req-h1-text">RECRUITMENT 2022 IS COMING SOON</span>
     </div>
   </div>
 </section>
